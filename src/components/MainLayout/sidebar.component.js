@@ -43,7 +43,7 @@ const Sidebar = ({ open, handleDrawerClose }) => {
       <List>
         {MENU_LIST_ITEMS.map((item, id) => (
           <Link href={item.route}>
-            <a>
+            <a className={classes.link}>
               <ListItem
                 button
                 key={id}
@@ -51,10 +51,25 @@ const Sidebar = ({ open, handleDrawerClose }) => {
                 onClick={(event) => handleSelect(event, id)}
                 classes={{ selected: classes.selected }}
               >
-                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemIcon
+                  classes={{
+                    root:
+                      id === selectedIndex
+                        ? classes.linkTextSelected
+                        : classes.linkText,
+                  }}
+                >
+                  {item.icon}
+                </ListItemIcon>
                 <ListItemText
                   primary={item.name}
                   primaryTypographyProps={{ variant: "h5" }}
+                  classes={{
+                    root:
+                      id === selectedIndex
+                        ? classes.linkTextSelected
+                        : classes.linkText,
+                  }}
                 />
               </ListItem>
             </a>
