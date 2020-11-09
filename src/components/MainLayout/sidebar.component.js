@@ -13,7 +13,7 @@ import {
   ListItemText,
 } from "@material-ui/core";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import { MENU_LIST_ITEMS } from "../../constants/menuItems";
+import { MENU_LIST_ITEMS } from "../../constants/menu-items";
 import { sidebarStyles } from "./sidebar.styles";
 
 const useStyles = makeStyles(sidebarStyles);

@@ -5,23 +5,23 @@ import ListAltIcon from "@material-ui/icons/ListAlt";
 
 export const MENU_LIST_ITEMS = [
   {
-    name: "Dashboard",
+    name: "ramonak.io",
     icon: <DashboardIcon />,
-    route: "/dashboard",
+    route: "/ramonak",
   },
   {
-    name: "Orders",
+    name: "dev.to",
     icon: <ListAltIcon />,
-    route: "/orders",
+    route: "/devto",
   },
   {
-    name: "Employees",
+    name: "GitHub",
     icon: <PeopleIcon />,
-    route: "/employees",
+    route: "/github",
   },
   {
-    name: "Products",
+    name: "Twitter",
     icon: <ShoppingBasketIcon />,
-    route: "/products",
+    route: "/twitter",
   },
 ];
