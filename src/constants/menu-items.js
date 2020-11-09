@@ -1,7 +1,7 @@
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import PeopleIcon from "@material-ui/icons/People";
-import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
-import ListAltIcon from "@material-ui/icons/ListAlt";
+import GitHubIcon from '@material-ui/icons/GitHub';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import DevicesIcon from '@material-ui/icons/Devices';
 
 export const MENU_LIST_ITEMS = [
   {
@@ -11,17 +11,17 @@ export const MENU_LIST_ITEMS = [
   },
   {
     name: "dev.to",
-    icon: <ListAltIcon />,
+    icon: <DevicesIcon />,
     route: "/devto",
   },
   {
     name: "GitHub",
-    icon: <PeopleIcon />,
+    icon: <GitHubIcon />,
     route: "/github",
   },
   {
     name: "Twitter",
-    icon: <ShoppingBasketIcon />,
+    icon: <TwitterIcon />,
     route: "/twitter",
   },
 ];
