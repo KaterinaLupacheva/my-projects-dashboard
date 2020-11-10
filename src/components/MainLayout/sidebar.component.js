@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -21,11 +21,12 @@ const useStyles = makeStyles(sidebarStyles);
 
 const Sidebar = ({ open, handleDrawerClose }) => {
   const classes = useStyles();
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const handleSelect = (event, index) => {
-    setSelectedIndex(index);
+  const router = useRouter();
+  const initialSelection = () => {
+    return MENU_LIST_ITEMS.findIndex((el) => el.route === router.pathname);
   };
+
+  const [selectedIndex, setSelectedIndex] = useState(initialSelection());
 
   return (
     <Drawer
@@ -48,13 +49,12 @@ const Sidebar = ({ open, handleDrawerClose }) => {
       <Divider classes={{ root: classes.divider }} />
       <List classes={{ root: classes.list }}>
         {MENU_LIST_ITEMS.map((item, id) => (
-          <Link href={item.route}>
+          <Link href={item.route} key={id}>
             <a className={classes.link}>
               <ListItem
                 button
-                key={id}
                 selected={id === selectedIndex}
-                onClick={(event) => handleSelect(event, id)}
+                onClick={() => setSelectedIndex(id)}
                 classes={{ selected: classes.selected }}
               >
                 <ListItemIcon

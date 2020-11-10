@@ -7,7 +7,7 @@ import {
   Toolbar,
   IconButton,
   Typography,
-  Badge
+  Badge,
 } from "@material-ui/core";
 import LocalCafeRoundedIcon from "@material-ui/icons/LocalCafeRounded";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -38,14 +38,10 @@ const TopAppBar = ({ open, handleDrawerOpen }) => {
           color="inherit"
           noWrap
           className={classes.title}
+          align="center"
         >
-          Coffee Shop Dashboard
+          My Projects Dashboard
         </Typography>
-        <IconButton color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <LocalCafeRoundedIcon />
-          </Badge>
-        </IconButton>
       </Toolbar>
     </AppBar>
   );
