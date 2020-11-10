@@ -11,6 +11,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Typography,
 } from "@material-ui/core";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { MENU_LIST_ITEMS } from "../../constants/menu-items";
@@ -34,13 +35,18 @@ const Sidebar = ({ open, handleDrawerClose }) => {
       }}
       open={open}
     >
-      <div className={classes.toolbarIcon}>
-        <IconButton onClick={handleDrawerClose}>
-          <ChevronLeftIcon />
-        </IconButton>
+      <div className={classes.drawerTitleContainer}>
+        <Typography variant="h5" classes={{ root: classes.drawerTitle }}>
+          Dashboard
+        </Typography>
+        <div className={classes.toolbarIcon}>
+          <IconButton onClick={handleDrawerClose}>
+            <ChevronLeftIcon classes={{ root: classes.linkText }} />
+          </IconButton>
+        </div>
       </div>
-      <Divider />
-      <List>
+      <Divider classes={{ root: classes.divider }} />
+      <List classes={{ root: classes.list }}>
         {MENU_LIST_ITEMS.map((item, id) => (
           <Link href={item.route}>
             <a className={classes.link}>
@@ -63,7 +69,7 @@ const Sidebar = ({ open, handleDrawerClose }) => {
                 </ListItemIcon>
                 <ListItemText
                   primary={item.name}
-                  primaryTypographyProps={{ variant: "h5" }}
+                  primaryTypographyProps={{ variant: "subtitle1" }}
                   classes={{
                     root:
                       id === selectedIndex
@@ -76,7 +82,7 @@ const Sidebar = ({ open, handleDrawerClose }) => {
           </Link>
         ))}
       </List>
-      <Divider />
+      <Divider classes={{ root: classes.divider }} />
     </Drawer>
   );
 };

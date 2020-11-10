@@ -1,6 +1,15 @@
 import { drawerWidth } from "../../theme";
 
 export const sidebarStyles = (theme) => ({
+  drawerTitleContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  drawerTitle: {
+    paddingLeft: theme.spacing(3),
+    color: theme.palette.secondary.main,
+  },
   toolbarIcon: {
     display: "flex",
     alignItems: "center",
@@ -28,6 +37,12 @@ export const sidebarStyles = (theme) => ({
     [theme.breakpoints.up("sm")]: {
       width: theme.spacing(9),
     },
+  },
+  divider: {
+    backgroundColor: theme.palette.primary.grey,
+  },
+  list: {
+    padding: 0,
   },
   selected: {
     backgroundColor: `${theme.palette.background.selected} !important`,
