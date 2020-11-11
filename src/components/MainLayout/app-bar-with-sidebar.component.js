@@ -23,7 +23,7 @@ const AppBarWithSidebar = ({ children }) => {
       <Sidebar open={open} handleDrawerClose={handleDrawerClose} />
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
+        <Container maxWidth="md" className={classes.container}>
           <Grid container spacing={3}>
             {children}
           </Grid>

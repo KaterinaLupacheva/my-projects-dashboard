@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Paper from "@ramonak/paper";
 import "@ramonak/paper/dist/index.css";
-import { Typography, Box } from "@material-ui/core";
+import { Typography, Box, Hidden } from "@material-ui/core";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
@@ -67,14 +67,16 @@ const DevtoCard = (props) => {
                     ))}
                   </div>
                 </div>
-                {cover_image && (
-                  <Image
-                    src={cover_image}
-                    alt="Picture of the author"
-                    width={200}
-                    height={113}
-                  />
-                )}
+                <Hidden xsDown>
+                  {cover_image && (
+                    <Image
+                      src={cover_image}
+                      alt="Picture of the author"
+                      width={200}
+                      height={113}
+                    />
+                  )}
+                </Hidden>
               </div>
             </Box>
           </a>
