@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import { fetcher } from "../utils/fetcher";
 import BackDropWithSpinner from "../src/components/BackDropWithSpinner/backdrop-with-spinner.component";
+import DevtoCard from "../src/components/DevtoCard/devto-card.component";
 
 const Devto = () => {
   const { data, error } = useSWR("/api/devto", fetcher);
@@ -9,7 +10,13 @@ const Devto = () => {
   if (!data.articles) return <div>Error</div>;
 
   // render data
-  return <div>hello {data.articles[0].title}!</div>;
+  return (
+    <div>
+      {data.articles.map((article, id) => (
+        <DevtoCard {...article} key={id} />
+      ))}
+    </div>
+  );
 };
 
 export default Devto;
