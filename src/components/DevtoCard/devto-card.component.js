@@ -2,6 +2,7 @@ import Image from "next/image";
 import Paper from "@ramonak/paper";
 import "@ramonak/paper/dist/index.css";
 import { Typography } from "@material-ui/core";
+import {timestampToDate} from '../../../utils/date-helpers';
 
 const DevtoCard = (props) => {
   const {
@@ -15,12 +16,10 @@ const DevtoCard = (props) => {
     tag_list,
   } = props;
 
-  const published = new Date(published_at);
-
   return (
     <Paper elevation={3}>
       <Typography variant="h6">{title}</Typography>
-      <p>{published}</p>
+      <p>{timestampToDate(published_at)}</p>
       <p>{url}</p>
       <p>{public_reactions_count}</p>
       <p>{page_views_count}</p>

@@ -9,11 +9,10 @@ const Devto = () => {
   if (!data) return <BackDropWithSpinner open={true} />;
   if (!data.articles) return <div>Error</div>;
 
-  // render data
   return (
     <div>
-      {data.articles.map((article, id) => (
-        <DevtoCard {...article} key={id} />
+      {data.articles.map((article) => (
+        <DevtoCard {...article} key={article.id} />
       ))}
     </div>
   );
