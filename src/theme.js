@@ -9,8 +9,9 @@ const theme = createMuiTheme({
       selected: "#DDE2FF",
     },
     secondary: {
-      main: '#db1362',
+      main: "#db1362",
     },
+    textPrimary: "rgba(0, 0, 0, 0.87)",
     // error: {
     //   main: red.A400,
     // },
