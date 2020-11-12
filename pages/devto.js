@@ -57,8 +57,12 @@ const Devto = () => {
     <div>
       <Box m={3}>
         <Grid container spacing={5}>
-          <StatCard title="Followers" value={data.followersCount} />
-          <StatCard title="Total Posts" value={data.articles.length} />
+          <Grid item xs={12} sm={6} md={3}>
+            <StatCard title="Followers" value={data.followersCount} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <StatCard title="Total Posts" value={data.articles.length} />
+          </Grid>
         </Grid>
       </Box>
       <Typography variant="h3" align="center" gutterBottom>

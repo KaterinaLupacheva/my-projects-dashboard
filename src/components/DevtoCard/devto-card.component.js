@@ -71,7 +71,7 @@ const DevtoCard = (props) => {
                   {cover_image && (
                     <Image
                       src={cover_image}
-                      alt="Picture of the author"
+                      alt="Article image"
                       width={200}
                       height={113}
                     />
