@@ -9,6 +9,7 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
+  Typography,
 } from "@material-ui/core";
 
 const Devto = () => {
@@ -49,9 +50,11 @@ const Devto = () => {
     );
   };
 
-  console.log(sortedArticles);
   return (
     <div>
+      <Typography variant="h3" align="center" gutterBottom>
+        Blog Posts on dev.to
+      </Typography>
       <FormControl component="fieldset">
         <FormLabel component="legend">Sort by</FormLabel>
         <RadioGroup
