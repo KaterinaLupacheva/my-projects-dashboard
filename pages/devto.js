@@ -10,7 +10,10 @@ import {
   FormControlLabel,
   Radio,
   Typography,
+  Grid,
+  Box,
 } from "@material-ui/core";
+import StatCard from "../src/components/StatCard/stat-card.component";
 
 const Devto = () => {
   const { data, error } = useSWR("/api/devto", fetcher);
@@ -52,36 +55,44 @@ const Devto = () => {
 
   return (
     <div>
+      <Box m={3}>
+        <Grid container spacing={5}>
+          <StatCard title="Followers" value={data.followersCount} />
+          <StatCard title="Total Posts" value={data.articles.length} />
+        </Grid>
+      </Box>
       <Typography variant="h3" align="center" gutterBottom>
         Blog Posts on dev.to
       </Typography>
-      <FormControl component="fieldset">
-        <FormLabel component="legend">Sort by</FormLabel>
-        <RadioGroup
-          row
-          aria-label="sort"
-          name="sorted-articles"
-          value={sortType}
-          onChange={(event) => setSortType(event.target.value)}
-        >
-          <FormControlLabel
-            value="date"
-            control={<Radio />}
-            label="Published Date"
-          />
-          <FormControlLabel value="views" control={<Radio />} label="Views" />
-          <FormControlLabel
-            value="likes"
-            control={<Radio />}
-            label="Reactions"
-          />
-          <FormControlLabel
-            value="comments"
-            control={<Radio />}
-            label="Comments"
-          />
-        </RadioGroup>
-      </FormControl>
+      <Box m={3}>
+        <FormControl component="fieldset">
+          <FormLabel component="legend">Sorted by</FormLabel>
+          <RadioGroup
+            row
+            aria-label="sort"
+            name="sorted-articles"
+            value={sortType}
+            onChange={(event) => setSortType(event.target.value)}
+          >
+            <FormControlLabel
+              value="date"
+              control={<Radio />}
+              label="Published Date"
+            />
+            <FormControlLabel value="views" control={<Radio />} label="Views" />
+            <FormControlLabel
+              value="likes"
+              control={<Radio />}
+              label="Reactions"
+            />
+            <FormControlLabel
+              value="comments"
+              control={<Radio />}
+              label="Comments"
+            />
+          </RadioGroup>
+        </FormControl>
+      </Box>
       {sortedArticles
         ? renderArticles(sortedArticles)
         : renderArticles(data.articles)}
