@@ -33,7 +33,7 @@ const GithubCard = (props) => {
 
   return (
     <Paper elevation={3} customClass={classes.paperContainer}>
-      <Box p={1}>
+      <Box p={1} className={classes.content}>
         <Link href={html_url}>
           <a className={classes.container} target="_blank">
             <Typography variant="h4" align="center" gutterBottom>

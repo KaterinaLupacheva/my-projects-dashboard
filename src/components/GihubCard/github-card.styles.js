@@ -22,4 +22,10 @@ export const githubCardStyles = (theme) => ({
   paperContainer: {
     height: "100%",
   },
+  content: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
+    height: "100%",
+  },
 });
