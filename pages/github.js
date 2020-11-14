@@ -50,11 +50,21 @@ const GitHub = () => {
   if (!data) return <BackDropWithSpinner open={true} />;
   if (!data.user || !data.repos) return <div>Error</div>;
 
+  const countTotalStars = (repos) => {
+    let result = 0;
+    repos.forEach((repo) => {
+      if (repo.owner.login === data.user.login) {
+        result += repo.stargazers_count;
+      }
+    });
+    return result;
+  };
+
   const renderRepos = (repos) => {
     return (
       <Grid container spacing={2}>
         {repos.map((repo) => {
-          if (!repo.fork) {
+          if (!repo.fork && repo.owner.login === data.user.login) {
             return (
               <Grid item sm={6} key={repo.id}>
                 <GithubCard {...repo} />
@@ -68,7 +78,7 @@ const GitHub = () => {
 
   return (
     <div>
-      <GithubUserInfo {...data.user} />
+      <GithubUserInfo {...data.user} totalStars={countTotalStars(data.repos)} />
       <Divider />
       <Box m={3} />
       <Typography variant="h3" align="center" gutterBottom>

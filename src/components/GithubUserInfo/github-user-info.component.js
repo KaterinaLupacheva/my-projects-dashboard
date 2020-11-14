@@ -26,6 +26,7 @@ const GithubUserInfo = (props) => {
     bio,
     public_repos,
     followers,
+    totalStars
   } = props;
   const classes = useStyles();
 
@@ -92,7 +93,7 @@ const GithubUserInfo = (props) => {
         </Grid>
         <Grid container spacing={2}>
           <Grid item xs>
-            <StatCard title="Total stars" value="!!!!" />
+            <StatCard title="Total stars" value={totalStars} />
           </Grid>
           <Grid item xs>
             <StatCard title="Total forks" value="!!!!" />
