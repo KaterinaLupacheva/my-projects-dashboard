@@ -3,7 +3,7 @@ import { fetcher } from "../utils/fetcher";
 import BackDropWithSpinner from "../src/components/BackDropWithSpinner/backdrop-with-spinner.component";
 import GithubUserInfo from "../src/components/GithubUserInfo/github-user-info.component";
 import GithubCard from "../src/components/GihubCard/github-card.component";
-import { Typography, Grid } from "@material-ui/core";
+import { Typography, Grid, Divider, Box } from "@material-ui/core";
 
 const GitHub = () => {
   const { data, error } = useSWR("/api/github", fetcher);
@@ -15,6 +15,8 @@ const GitHub = () => {
   return (
     <div>
       <GithubUserInfo {...data.user} />
+      <Divider />
+      <Box m={3} />
       <Typography variant="h3" align="center" gutterBottom>
         Repositories
       </Typography>
@@ -22,8 +24,8 @@ const GitHub = () => {
         {data.repos.map((repo) => {
           if (!repo.fork) {
             return (
-              <Grid item sm={6}>
-                <GithubCard {...repo} key={repo.id} />
+              <Grid item sm={6} key={repo.id}>
+                <GithubCard {...repo} />
               </Grid>
             );
           }

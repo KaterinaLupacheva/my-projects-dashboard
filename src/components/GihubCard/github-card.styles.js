@@ -9,6 +9,7 @@ export const githubCardStyles = (theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    padding: theme.spacing(1),
   },
   statsRow: {
     display: "flex",
@@ -17,5 +18,8 @@ export const githubCardStyles = (theme) => ({
     flexWrap: "wrap",
     width: "100%",
     justifyContent: "space-between",
+  },
+  paperContainer: {
+    height: "100%",
   },
 });

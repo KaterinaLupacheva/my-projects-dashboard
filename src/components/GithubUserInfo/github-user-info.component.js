@@ -30,7 +30,7 @@ const GithubUserInfo = (props) => {
   const classes = useStyles();
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} className={classes.margin}>
       <Grid item xs={12}>
         <Typography variant="h4" align="center">
           {name}

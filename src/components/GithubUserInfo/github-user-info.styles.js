@@ -22,4 +22,7 @@ export const githubUserInfoStyles = (theme) => ({
     flexDirection: "column",
     justifyContent: "space-between",
   },
+  margin: {
+    marginBottom: theme.spacing(3),
+  },
 });

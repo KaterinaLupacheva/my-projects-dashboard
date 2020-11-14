@@ -32,11 +32,11 @@ const GithubCard = (props) => {
   const classes = useStyles();
 
   return (
-    <Paper elevation={3}>
+    <Paper elevation={3} customClass={classes.paperContainer}>
       <Box p={1}>
         <Link href={html_url}>
           <a className={classes.container} target="_blank">
-            <Typography variant="h4" align="center">
+            <Typography variant="h4" align="center" gutterBottom>
               {name}
             </Typography>
           </a>
@@ -49,7 +49,9 @@ const GithubCard = (props) => {
             </a>
           </Link>
         )}
-        <Typography align="justify">{description}</Typography>
+        <Typography align="justify" gutterBottom>
+          {description}
+        </Typography>
         <div className={classes.statsRow}>
           <div className={classes.row}>
             <StarBorderIcon fontSize="small" />
