@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import useSWR from "swr";
 import { fetcher } from "../utils/fetcher";
 import BackDropWithSpinner from "../src/components/BackDropWithSpinner/backdrop-with-spinner.component";
@@ -18,33 +18,7 @@ import {
 
 const GitHub = () => {
   const { data, error } = useSWR("/api/github", fetcher);
-  const [sortedRepos, setSortedRepos] = useState(null);
   const [sortType, setSortType] = useState("stars");
-
-  useEffect(() => {
-    const sortArray = (type) => {
-      const types = {
-        stars: "stargazers_count",
-        forks: "forks_count",
-        upd: "updated_at",
-      };
-      const sortProperty = types[type];
-      const reposArr = data.repos;
-      if (type === "upd") {
-        setSortedRepos(
-          [...reposArr].sort(
-            (a, b) => Date.parse(b[sortProperty]) - Date.parse(a[sortProperty])
-          )
-        );
-      } else {
-        setSortedRepos(
-          [...reposArr].sort((a, b) => b[sortProperty] - a[sortProperty])
-        );
-      }
-    };
-
-    data && sortArray(sortType);
-  }, [sortType]);
 
   if (error) return <div>failed to load</div>;
   if (!data) return <BackDropWithSpinner open={true} />;
@@ -61,11 +35,29 @@ const GitHub = () => {
     return result;
   };
 
-  const renderRepos = (repos) => {
+  const sortArray = (type) => {
+    const types = {
+      stars: "stargazers_count",
+      forks: "forks_count",
+      upd: "updated_at",
+    };
+    const sortProperty = types[type];
+    const reposArr = data.repos;
+    if (type === "upd") {
+      return [...reposArr].sort(
+        (a, b) => Date.parse(b[sortProperty]) - Date.parse(a[sortProperty])
+      );
+    } else {
+      return [...reposArr].sort((a, b) => b[sortProperty] - a[sortProperty]);
+    }
+  };
+
+  const renderRepos = () => {
+    const sorted = sortArray(sortType);
     return (
       <Grid container spacing={2}>
-        {repos.map((repo) => {
-          if (!repo.fork) {
+        {sorted.map((repo) => {
+          if (repo.owner.login === data.user.login) {
             return (
               <Grid item sm={6} key={repo.id}>
                 <GithubCard {...repo} />
@@ -104,7 +96,7 @@ const GitHub = () => {
           </RadioGroup>
         </FormControl>
       </Box>
-      {sortedRepos ? renderRepos(sortedRepos) : renderRepos(data.repos)}
+      {renderRepos()}
     </div>
   );
 };
