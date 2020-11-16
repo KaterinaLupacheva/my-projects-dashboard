@@ -55,10 +55,16 @@ const NpmPackageCard = (props) => {
       </Typography>
       <Box m={1} className={classes.dataContainer}>
         {renderLineChart}
-        <StatCard
-          title="Average per day"
-          value={averageDownloads(data.lastMonthDownloads.downloads)}
-        />
+        <Box className={classes.statsContainer}>
+          <StatCard
+            title="Average per day"
+            value={averageDownloads(data.lastMonthDownloads.downloads)}
+          />
+          <StatCard
+            title="Weekly downloads"
+            value={data.weeklyDownloads.downloads}
+          />
+        </Box>
       </Box>
     </Paper>
   );

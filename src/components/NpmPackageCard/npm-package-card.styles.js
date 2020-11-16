@@ -6,4 +6,9 @@ export const npmPackageCardStyles = (theme) => ({
     display: "flex",
     justifyContent: "space-between",
   },
+  statsContainer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
+  },
 });
