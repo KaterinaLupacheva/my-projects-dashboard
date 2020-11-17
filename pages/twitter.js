@@ -9,12 +9,12 @@ const Twitter = () => {
 
   if (error) return <div>failed to load</div>;
   if (!data) return <BackDropWithSpinner open={true} />;
-  if (!data.followers) return <div>Error</div>;
+  if (!data.userData) return <div>Error</div>;
 
   return (
     <div>
       <CustomHead title="Twitter stats" />
-      <StatsCard title="Followers" value={data.followers.ids.length} />
+      <StatsCard title="Followers" value={data.userData.followers_count} />
     </div>
   );
 };

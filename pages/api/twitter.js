@@ -1,6 +1,6 @@
 export default async (_, res) => {
-  const followersResponse = await fetch(
-    `https://api.twitter.com/1.1/followers/ids.json?screen_name=${process.env.TWITTER_USERNAME}`,
+  const userResponse = await fetch(
+    `https://api.twitter.com/1.1/users/show.json?screen_name=${process.env.TWITTER_USERNAME}`,
     {
       headers: {
         Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN}`,
@@ -8,9 +8,9 @@ export default async (_, res) => {
     }
   );
 
-  const followers = await followersResponse.json();
+  const userData = await userResponse.json();
 
   return res.status(200).json({
-    followers,
+    userData,
   });
 };
