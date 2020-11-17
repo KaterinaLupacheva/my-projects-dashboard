@@ -14,6 +14,7 @@ import {
   Box,
 } from "@material-ui/core";
 import StatCard from "../src/components/StatCard/stat-card.component";
+import CustomHead from "../src/components/Head/head";
 
 const Devto = () => {
   const { data, error } = useSWR("/api/devto", fetcher);
@@ -55,6 +56,7 @@ const Devto = () => {
 
   return (
     <div>
+      <CustomHead title="dev.to stats" />
       <Box m={3}>
         <Grid container spacing={5}>
           <Grid item xs={12} sm={6} md={3}>

@@ -1,13 +1,10 @@
-import Head from "next/head";
+import CustomHead from "../src/components/Head/head";
 import Ramonak from "./ramonak";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Dashboard</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <CustomHead title="Dashboard" />
       <Ramonak />
     </>
   );

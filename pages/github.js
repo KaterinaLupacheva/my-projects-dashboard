@@ -15,6 +15,7 @@ import {
   FormControlLabel,
   Radio,
 } from "@material-ui/core";
+import CustomHead from "../src/components/Head/head";
 
 const GitHub = () => {
   const { data, error } = useSWR("/api/github", fetcher);
@@ -71,6 +72,7 @@ const GitHub = () => {
 
   return (
     <div>
+      <CustomHead title="GitHub stats" />
       <GithubUserInfo
         {...data.user}
         totalStarsAndForks={countTotalStarsAndForks(data.repos)}
