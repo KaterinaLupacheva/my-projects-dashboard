@@ -4,6 +4,11 @@ export const githubCardStyles = (theme) => ({
     "&:hover": {
       textDecoration: "underline",
     },
+    display: "flex",
+    justifyContent: "center",
+  },
+  icon: {
+    marginLeft: theme.spacing(1),
   },
   row: {
     display: "flex",

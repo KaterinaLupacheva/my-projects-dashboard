@@ -12,6 +12,7 @@ import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import GavelIcon from "@material-ui/icons/Gavel";
+import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 
 const useStyles = makeStyles(githubCardStyles);
 
@@ -36,8 +37,9 @@ const GithubCard = (props) => {
       <Box p={1} className={classes.content}>
         <Link href={html_url}>
           <a className={classes.container} target="_blank">
-            <Typography variant="h4" align="center" gutterBottom>
+            <Typography variant="h5" align="center" gutterBottom>
               {name}
+              <OpenInNewIcon fontSize="small" className={classes.icon} />
             </Typography>
           </a>
         </Link>
@@ -45,7 +47,7 @@ const GithubCard = (props) => {
           <Link href={homepage}>
             <a target="_blank" className={classes.row}>
               <LanguageIcon fontSize="small" />
-              <Typography>Website</Typography>
+              <Typography variant="subtitle2">Website</Typography>
             </a>
           </Link>
         )}
