@@ -8,9 +8,11 @@ const Npm = () => {
       <Typography variant="h3" align="center" gutterBottom>
         NPM packages
       </Typography>
-      {packages.map((p, id) => (
-        <NpmPackageCard packageName={p} key={id} />
-      ))}
+      
+        {packages.map((p, id) => (
+          
+            <NpmPackageCard packageName={p} key={id} />
+        ))}
     </Box>
   );
 };

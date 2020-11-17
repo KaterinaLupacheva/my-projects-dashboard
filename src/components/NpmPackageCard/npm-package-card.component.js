@@ -5,7 +5,7 @@ import Paper from "@ramonak/paper";
 import "@ramonak/paper/dist/index.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { npmPackageCardStyles } from "./npm-package-card.styles";
-import { Typography, Box } from "@material-ui/core";
+import { Typography, Grid } from "@material-ui/core";
 import {
   LineChart,
   Line,
@@ -13,6 +13,7 @@ import {
   XAxis,
   YAxis,
   Tooltip,
+  ResponsiveContainer,
 } from "recharts";
 import StatCard from "../StatCard/stat-card.component";
 
@@ -34,38 +35,43 @@ const NpmPackageCard = (props) => {
   };
 
   const renderLineChart = (
-    <LineChart
-      width={600}
-      height={300}
-      data={data.lastMonthDownloads.downloads}
-      margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-    >
-      <Line type="monotone" dataKey="downloads" stroke="#8884d8" />
-      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-      <XAxis dataKey="day" />
-      <YAxis />
-      <Tooltip />
-    </LineChart>
+    <ResponsiveContainer width="100%" height="100%">
+      <LineChart data={data.lastMonthDownloads.downloads}>
+        <Line type="monotone" dataKey="downloads" stroke="#8884d8" />
+        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <XAxis dataKey="day" />
+        <YAxis />
+        <Tooltip />
+      </LineChart>
+    </ResponsiveContainer>
   );
 
   return (
     <Paper elevation={3} customClass={classes.paperContainer}>
-      <Typography variant="h6" align="center">
+      <Typography variant="h6" align="center" gutterBottom>
         {data.lastMonthDownloads.package}
       </Typography>
-      <Box m={1} className={classes.dataContainer}>
-        {renderLineChart}
-        <Box className={classes.statsContainer}>
-          <StatCard
-            title="Average per day"
-            value={averageDownloads(data.lastMonthDownloads.downloads)}
-          />
-          <StatCard
-            title="Weekly downloads"
-            value={data.weeklyDownloads.downloads}
-          />
-        </Box>
-      </Box>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={9}>
+          {renderLineChart}
+        </Grid>
+        <Grid item xs={12} md={3}>
+          <Grid container>
+            <Grid item xs={12} sm={6} md={12}>
+              <StatCard
+                title="Average per day"
+                value={averageDownloads(data.lastMonthDownloads.downloads)}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={12}>
+              <StatCard
+                title="Weekly downloads"
+                value={data.weeklyDownloads.downloads}
+              />
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
     </Paper>
   );
 };
