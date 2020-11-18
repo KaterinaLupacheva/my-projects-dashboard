@@ -3,6 +3,8 @@ import useSWR from "swr";
 import { fetcher } from "../utils/fetcher";
 import BackDropWithSpinner from "../src/components/BackDropWithSpinner/backdrop-with-spinner.component";
 import StatsCard from "../src/components/StatCard/stat-card.component";
+import TwitterUserInfo from "../src/components/TwitterUserInfo/twitter-user-info.component";
+import { Grid, Box } from "@material-ui/core";
 
 const Twitter = () => {
   const { data, error } = useSWR("/api/twitter", fetcher);
@@ -12,10 +14,22 @@ const Twitter = () => {
   if (!data.userData) return <div>Error</div>;
 
   return (
-    <div>
+    <>
       <CustomHead title="Twitter stats" />
-      <StatsCard title="Followers" value={data.userData.followers_count} />
-    </div>
+      <Box style={{ width: "100%" }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={6}>
+            <TwitterUserInfo {...data.userData} />
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <StatsCard
+              title="Followers"
+              value={data.userData.followers_count}
+            />
+          </Grid>
+        </Grid>
+      </Box>
+    </>
   );
 };
 
