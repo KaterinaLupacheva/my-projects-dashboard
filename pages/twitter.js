@@ -3,6 +3,7 @@ import useSWR from "swr";
 import { fetcher } from "../utils/fetcher";
 import BackDropWithSpinner from "../src/components/BackDropWithSpinner/backdrop-with-spinner.component";
 import TwitterUserInfo from "../src/components/TwitterUserInfo/twitter-user-info.component";
+import TweetCard from "../src/components/TweetCard/tweet-card.component";
 import { Box, Typography } from "@material-ui/core";
 
 const Twitter = () => {
@@ -23,6 +24,9 @@ const Twitter = () => {
           {data.userData.description}
         </Typography>
         <TwitterUserInfo {...data.userData} />
+        {data.tweetsData.map((tweet, id) => (
+          <TweetCard {...tweet} key={id} />
+        ))}
       </Box>
     </>
   );
