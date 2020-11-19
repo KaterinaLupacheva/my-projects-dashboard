@@ -17,4 +17,8 @@ export const tweetCardStyles = (theme) => ({
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
   },
+  link: {
+    textDecoration: "none",
+    color: "grey",
+  },
 });

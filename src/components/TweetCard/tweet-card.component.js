@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Typography, Box, Chip } from "@material-ui/core";
 import clsx from "clsx";
 import Paper from "@ramonak/paper";
@@ -16,8 +17,30 @@ const TweetCard = (props) => {
     retweet_count,
     favorite_count,
     in_reply_to_status_id,
+    truncated,
   } = props;
   const classes = useStyles();
+
+  const transformTweet = () => {
+    const twitterLink = " https://t.co/";
+    const parts = text.split(twitterLink);
+    const tweet = parts[0];
+    const link = twitterLink.concat(parts[1]);
+    return (
+      <div>
+        <Typography>
+          {tweet}
+          <Link href={link}>
+            <a target="_blank" className={classes.link}>
+              <Typography variant="caption" component="span">
+                Read More
+              </Typography>
+            </a>
+          </Link>
+        </Typography>
+      </div>
+    );
+  };
 
   return (
     <Paper elevation={3} customClass={classes.container}>
@@ -45,7 +68,8 @@ const TweetCard = (props) => {
             </Typography>
           </div>
         </div>
-        <Typography>{text}</Typography>
+        {truncated ? transformTweet() : <Typography>{text}</Typography>}
+
         <div className={classes.row}>
           <div className={clsx(classes.row, classes.paddingSide)}>
             <RepeatIcon fontSize="small" />
