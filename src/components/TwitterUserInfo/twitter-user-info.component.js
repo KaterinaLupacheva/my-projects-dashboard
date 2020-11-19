@@ -25,7 +25,7 @@ const TwitterUserInfo = (props) => {
   const classes = useStyles();
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} className={classes.margin}>
       <Grid item xs={12} md={6}>
         <Paper elevation={3}>
           <div className={classes.container}>

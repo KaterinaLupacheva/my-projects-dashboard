@@ -20,4 +20,7 @@ export const twitterUserInfoStyles = (theme) => ({
     justifyContent: "center",
     padding: theme.spacing(0.5),
   },
+  margin: {
+    marginBottom: theme.spacing(3),
+  },
 });
