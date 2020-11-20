@@ -2,14 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import { topAppBarStyles } from "./top-app-bar.styles";
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Badge,
-} from "@material-ui/core";
-import LocalCafeRoundedIcon from "@material-ui/icons/LocalCafeRounded";
+import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles(topAppBarStyles);
