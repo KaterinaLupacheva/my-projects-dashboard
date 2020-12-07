@@ -1,6 +1,18 @@
 import { connectToDatabase } from "../../../utils/mongodb";
+import Cors from "cors";
+import initMiddleware from "../../../utils/initMiddleware";
+
+// Initialize the cors middleware
+const cors = initMiddleware(
+  Cors({
+    origin: ["http://localhost:3001"],
+    methods: ["GET"],
+  })
+);
 
 export default async (req, res) => {
+  await cors(req, res);
+
   const {
     query: { param },
   } = req;
