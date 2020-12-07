@@ -5,7 +5,7 @@ import initMiddleware from "../../../utils/initMiddleware";
 // Initialize the cors middleware
 const cors = initMiddleware(
   Cors({
-    origin: ["http://localhost:3001"],
+    origin: ["http://localhost:3000", "https://katerinalupacheva.github.io"],
     methods: ["GET"],
   })
 );
