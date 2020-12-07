@@ -3,15 +3,16 @@ import Cors from "cors";
 import initMiddleware from "../../../utils/initMiddleware";
 
 // Initialize the cors middleware
-const cors = initMiddleware(
-  Cors({
-    origin: ["https://katerinalupacheva.github.io/react-progress-bar/"],
-    methods: ["GET"],
-  })
-);
+// const cors = initMiddleware(
+//   Cors({
+//     origin: ["https://katerinalupacheva.github.io/react-progress-bar/"],
+//     methods: ["GET"],
+//     allowedHeaders: "*"
+//   })
+// );
 
 export default async (req, res) => {
-  await cors(req, res);
+  // await cors(req, res);
 
   const {
     query: { param },
