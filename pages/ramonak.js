@@ -17,8 +17,8 @@ const Ramonak = () => {
   const mapSlugs = () => {
     let mappedDocs = [];
     SLUGS.forEach((obj) => {
-      const newDoc = data.docs.find((doc) => doc.slug === obj.slug);
-      mappedDocs.push({ ...newDoc, description: obj.description });
+      const doc = data.docs.find((d) => d.slug === obj.slug);
+      mappedDocs.push({ ...doc, description: obj.description });
     });
     return mappedDocs;
   };
