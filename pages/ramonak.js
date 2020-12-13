@@ -36,7 +36,7 @@ const Ramonak = () => {
       {docs.map((d) => (
         <StatCard
           key={d._id}
-          value={d.views ? d.views : 0}
+          value={d.totalViews ? d.totalViews : 0}
           title={d.description}
         />
       ))}

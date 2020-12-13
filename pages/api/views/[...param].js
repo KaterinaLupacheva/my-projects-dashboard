@@ -1,4 +1,5 @@
 import { connectToDatabase } from "../../../utils/mongodb";
+import moment from "moment";
 
 export default async (req, res) => {
   const {
@@ -31,22 +32,46 @@ export default async (req, res) => {
     await viewsCollection
       .insertOne({
         slug: slug,
-        views: 0,
+        totalViews: 0,
+        viewsData: [{ date: moment().format("DD-MM-YYYY"), views: 0 }],
       })
       .then((doc) => {
         existedDoc = doc.ops[0];
       });
   }
 
-  //increment count views by one
-  await viewsCollection.updateOne(
-    { slug: slug },
-    {
-      $set: {
-        views: existedDoc.views + 1,
-      },
-    }
+  //check if that there are views already today
+  const dateExists = existedDoc.viewsData.find(
+    (item) => item.date === moment().format("DD-MM-YYYY")
   );
+
+  //increment count views by one
+  if (dateExists) {
+    await viewsCollection.updateOne(
+      { slug: slug, "viewsData.date": moment().format("DD-MM-YYYY") },
+      {
+        $inc: {
+          totalViews: 1,
+          "viewsData.$.views": 1,
+        },
+      }
+    );
+  } else {
+    await viewsCollection.updateOne(
+      { slug: slug },
+      {
+        $push: {
+          viewsData: {
+            date: moment().format("DD-MM-YYYY"),
+            views: 1,
+          },
+        },
+        $inc: {
+          totalViews: 1,
+        },
+      }
+    );
+  }
 
   //get updated doc
   const document = await viewsCollection
@@ -59,6 +84,6 @@ export default async (req, res) => {
     });
 
   return res.status(200).json({
-    views: document.views,
+    document,
   });
 };
