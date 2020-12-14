@@ -7,6 +7,8 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
+import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import { viewsTableStyles } from "./views-table.styles";
 
 const useStyles = makeStyles(viewsTableStyles);
@@ -33,7 +35,16 @@ const ViewsTable = ({ data }) => {
               <TableCell>{row.description}</TableCell>
               <TableCell>{countThisWeekViews()}</TableCell>
               <TableCell>{row.totalViews}</TableCell>
-              <TableCell>Details button</TableCell>
+              <TableCell>
+                <Button
+                  size="small"
+                  variant="contained"
+                  endIcon={<OpenInNewIcon />}
+                  //   onClick={() => setIsModalOpen(true)}
+                >
+                  Details
+                </Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
