@@ -10,12 +10,26 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import { viewsTableStyles } from "./views-table.styles";
+import { daysRange } from "../../../utils/date-helpers";
+import moment from "moment";
 
 const useStyles = makeStyles(viewsTableStyles);
 
 const ViewsTable = ({ data }) => {
   console.log(data);
-  const countThisWeekViews = () => {};
+  const lastSevenDaysRange = daysRange(moment().subtract(6, "days"), moment());
+
+  const countThisWeekViews = (id) => {
+    let views = 0;
+    const row = data.find((item) => item._id === id);
+    lastSevenDaysRange.forEach((date) => {
+      const targetDate = row.viewsData?.find((d) => d.date === date);
+      if (targetDate) {
+        views += targetDate.views;
+      }
+    });
+    return views;
+  };
   const classes = useStyles();
 
   return (
@@ -24,7 +38,7 @@ const ViewsTable = ({ data }) => {
         <TableHead>
           <TableRow>
             <TableCell>Source</TableCell>
-            <TableCell>This week views</TableCell>
+            <TableCell>Last 7 days views</TableCell>
             <TableCell>Total views</TableCell>
             <TableCell>Details</TableCell>
           </TableRow>
@@ -33,7 +47,7 @@ const ViewsTable = ({ data }) => {
           {data.map((row) => (
             <TableRow key={row._id}>
               <TableCell>{row.description}</TableCell>
-              <TableCell>{countThisWeekViews()}</TableCell>
+              <TableCell>{countThisWeekViews(row._id)}</TableCell>
               <TableCell>{row.totalViews}</TableCell>
               <TableCell>
                 <Button
