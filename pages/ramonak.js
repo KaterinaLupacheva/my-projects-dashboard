@@ -2,7 +2,6 @@ import CustomHead from "../src/components/Head/head";
 import useSWR from "swr";
 import { fetcher } from "../utils/fetcher";
 import BackDropWithSpinner from "../src/components/BackDropWithSpinner/backdrop-with-spinner.component";
-import StatCard from "../src/components/StatCard/stat-card.component";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { SLUGS, RAMONAK_BLOG, NPM_PACKAGE } from "../src/constants/slugs";
@@ -45,19 +44,17 @@ const Ramonak = () => {
   const docs = mapSlugs();
 
   return (
-    <>
+    <Box width="100%">
       <CustomHead title="Projects stats" />
-      <Box width="100%">
-        <Typography variant="h2" align="center" gutterBottom>
-          Blog posts Views count
-        </Typography>
-      </Box>
+      <Typography variant="h3" align="center" gutterBottom>
+        Blog posts Views count
+      </Typography>
       <ViewsTable data={docs[RAMONAK_BLOG]} />
-      <Typography variant="h2" align="center" gutterBottom>
+      <Typography variant="h3" align="center" gutterBottom>
         NPM packages demos views
       </Typography>
       <ViewsTable data={docs[NPM_PACKAGE]} />
-    </>
+    </Box>
   );
 };
 

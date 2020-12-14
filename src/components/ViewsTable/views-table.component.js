@@ -9,6 +9,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import OpenInNewIcon from "@material-ui/icons/OpenInNew";
+import WeekViews from "./week-views.component";
 import { viewsTableStyles } from "./views-table.styles";
 import { daysRange } from "../../../utils/date-helpers";
 import moment from "moment";
@@ -16,13 +17,18 @@ import moment from "moment";
 const useStyles = makeStyles(viewsTableStyles);
 
 const ViewsTable = ({ data }) => {
+  const classes = useStyles();
   console.log(data);
   const lastSevenDaysRange = daysRange(moment().subtract(6, "days"), moment());
+  const prevSevenDaysRange = daysRange(
+    moment().subtract(13, "days"),
+    moment().subtract(7, "days")
+  );
 
-  const countThisWeekViews = (id) => {
+  const countViews = (id, range) => {
     let views = 0;
     const row = data.find((item) => item._id === id);
-    lastSevenDaysRange.forEach((date) => {
+    range.forEach((date) => {
       const targetDate = row.viewsData?.find((d) => d.date === date);
       if (targetDate) {
         views += targetDate.views;
@@ -30,7 +36,14 @@ const ViewsTable = ({ data }) => {
     });
     return views;
   };
-  const classes = useStyles();
+
+  const viewsComparison = (id) => {
+    const thisWeekViews = countViews(id, lastSevenDaysRange);
+    const prevWeekViews = countViews(id, prevSevenDaysRange);
+    const change =
+      prevWeekViews !== 0 ? (thisWeekViews / prevWeekViews - 1) * 100 : 0;
+    return { thisWeekViews, change };
+  };
 
   return (
     <TableContainer component={Paper}>
@@ -47,7 +60,9 @@ const ViewsTable = ({ data }) => {
           {data.map((row) => (
             <TableRow key={row._id}>
               <TableCell>{row.description}</TableCell>
-              <TableCell>{countThisWeekViews(row._id)}</TableCell>
+              <TableCell>
+                <WeekViews {...viewsComparison(row._id)} />
+              </TableCell>
               <TableCell>{row.totalViews}</TableCell>
               <TableCell>
                 <Button
