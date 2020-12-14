@@ -18,8 +18,7 @@ const Ramonak = () => {
   const mapSlugs = () => {
     let id = 0;
     let mappedDocs = [];
-    const grouped = groupBy(SLUGS, "group");
-    console.log(grouped);
+
     SLUGS.forEach((obj) => {
       const doc = data.docs.find((d) => d.slug === obj.slug);
       if (doc) {
@@ -33,7 +32,7 @@ const Ramonak = () => {
         id++;
       }
     });
-    return mappedDocs;
+    return groupBy(mappedDocs, "group");
   };
 
   const groupBy = (arr, property) => {
@@ -44,18 +43,20 @@ const Ramonak = () => {
   };
 
   const docs = mapSlugs();
-  // console.log(docs)
 
   return (
     <>
       <CustomHead title="Projects stats" />
       <Box width="100%">
         <Typography variant="h2" align="center" gutterBottom>
-          |Blog posts Views count
+          Blog posts Views count
         </Typography>
       </Box>
-
-      <ViewsTable data={docs} />
+      <ViewsTable data={docs[RAMONAK_BLOG]} />
+      <Typography variant="h2" align="center" gutterBottom>
+        NPM packages demos views
+      </Typography>
+      <ViewsTable data={docs[NPM_PACKAGE]} />
     </>
   );
 };
