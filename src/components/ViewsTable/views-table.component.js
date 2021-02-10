@@ -50,7 +50,8 @@ const ViewsTable = ({ data }) => {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Source</TableCell>
+            <TableCell>Published</TableCell>
+            <TableCell>Title</TableCell>
             <TableCell>Last 7 days views</TableCell>
             <TableCell>Total views</TableCell>
             <TableCell>Details</TableCell>
@@ -59,6 +60,9 @@ const ViewsTable = ({ data }) => {
         <TableBody>
           {data.map((row) => (
             <TableRow key={row._id}>
+              <TableCell>
+                {moment(row.published).format("MMM DD, YYYY")}
+              </TableCell>
               <TableCell>{row.description}</TableCell>
               <TableCell>
                 <WeekViews {...viewsComparison(row._id)} />

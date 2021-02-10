@@ -23,6 +23,7 @@ const Ramonak = () => {
       if (doc) {
         mappedDocs.push({
           ...doc,
+          published: obj.published,
           description: obj.description,
           group: obj.group,
         });
