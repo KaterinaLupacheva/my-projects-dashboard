@@ -7,24 +7,20 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
-import OpenInNewIcon from "@material-ui/icons/OpenInNew";
-import WeekViews from "./week-views.component";
-import { viewsTableStyles } from "./views-table.styles";
 import { daysRange } from "../../../utils/date-helpers";
+import BlogItem from "./blog-item.component";
+import { viewsTableStyles } from "./views-table.styles";
 import moment from "moment";
 
 const useStyles = makeStyles(viewsTableStyles);
 
 const ViewsTable = ({ data }) => {
   const classes = useStyles();
-  console.log(data);
   const lastSevenDaysRange = daysRange(moment().subtract(6, "days"), moment());
   const prevSevenDaysRange = daysRange(
     moment().subtract(13, "days"),
     moment().subtract(7, "days")
   );
-
   const countViews = (id, range) => {
     let views = 0;
     const row = data.find((item) => item._id === id);
@@ -46,43 +42,28 @@ const ViewsTable = ({ data }) => {
   };
 
   return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Published</TableCell>
-            <TableCell>Title</TableCell>
-            <TableCell>Last 7 days views</TableCell>
-            <TableCell>Total views</TableCell>
-            <TableCell>Details</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map((row) => (
-            <TableRow key={row._id}>
-              <TableCell>
-                {moment(row.published).format("MMM DD, YYYY")}
-              </TableCell>
-              <TableCell>{row.description}</TableCell>
-              <TableCell>
-                <WeekViews {...viewsComparison(row._id)} />
-              </TableCell>
-              <TableCell>{row.totalViews}</TableCell>
-              <TableCell>
-                <Button
-                  size="small"
-                  variant="contained"
-                  endIcon={<OpenInNewIcon />}
-                  //   onClick={() => setIsModalOpen(true)}
-                >
-                  Details
-                </Button>
-              </TableCell>
+    <>
+      <TableContainer component={Paper}>
+        <Table className={classes.table} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Published</TableCell>
+              <TableCell>Title</TableCell>
+              <TableCell>Last 7 days views</TableCell>
+              <TableCell>Total views</TableCell>
+              <TableCell>Details</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {data.map((row) => (
+              <TableRow key={row._id}>
+                <BlogItem row={row} {...viewsComparison(row._id)} />
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
   );
 };
 
