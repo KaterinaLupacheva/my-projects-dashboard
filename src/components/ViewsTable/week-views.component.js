@@ -11,6 +11,7 @@ const useStyles = makeStyles(weekViewsStyles);
 const WeekViews = (props) => {
   const { thisWeekViews, change } = props;
   const classes = useStyles();
+  const roundChange = Math.round(change);
 
   return (
     <div className={classes.container}>
@@ -28,7 +29,11 @@ const WeekViews = (props) => {
           ""
         )}
         <Typography variant="body2">
-          {change > 0 ? `${change}%` : change < 0 ? `${change * -1}%` : ""}
+          {change > 0
+            ? `${roundChange}%`
+            : change < 0
+            ? `${roundChange * -1}%`
+            : ""}
         </Typography>
       </div>
     </div>
