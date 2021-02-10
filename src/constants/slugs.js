@@ -134,4 +134,16 @@ export const SLUGS = [
       "React: How to create a custom Button Group component in 5 minutes",
     group: RAMONAK_BLOG,
   },
+  {
+    slug: "ramonak: dashboard-layout-react-material-ui",
+    description:
+      "How to create a classic Dashboard layout.",
+    group: RAMONAK_BLOG,
+  },
+  {
+    slug: "ramonak: react-google-analytics-consent",
+    description:
+      "How to conditionally enable Google Analytics tracker depending on a user's prior consent.",
+    group: RAMONAK_BLOG,
+  },
 ];
