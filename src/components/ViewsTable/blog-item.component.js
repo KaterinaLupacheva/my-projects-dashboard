@@ -12,7 +12,7 @@ const BlogItem = ({ row, ...otherProps }) => {
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
-  console.table(row);
+
   return (
     <>
       <TableCell>{moment(row.published).format("MMM DD, YYYY")}</TableCell>
@@ -31,7 +31,11 @@ const BlogItem = ({ row, ...otherProps }) => {
           Details
         </Button>
       </TableCell>
-      <BlogViewsDetails open={isModalOpen} handleClose={handleModalClose} />
+      <BlogViewsDetails
+        open={isModalOpen}
+        handleClose={handleModalClose}
+        data={row.viewsData}
+      />
     </>
   );
 };
