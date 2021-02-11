@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "debug": "npm --node-options=--inspect run dev"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
