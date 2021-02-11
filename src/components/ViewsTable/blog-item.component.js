@@ -34,7 +34,7 @@ const BlogItem = ({ row, ...otherProps }) => {
       <BlogViewsDetails
         open={isModalOpen}
         handleClose={handleModalClose}
-        data={row.viewsData}
+        data={row}
       />
     </>
   );

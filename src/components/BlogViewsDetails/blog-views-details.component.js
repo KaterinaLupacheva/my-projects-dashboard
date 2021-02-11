@@ -1,42 +1,64 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
+import Typography from "@material-ui/core/Typography";
 import CustomLineChart from "../Charts/LineChart.component";
 import moment from "moment";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   modal: {
     height: "50vh",
+  },
+  chartContainer: {
+    width: "90%",
+    height: "70%",
+    margin: theme.spacing(2),
+  },
+  title: {
+    paddingTop: theme.spacing(2),
   },
 }));
 
 const BlogViewsDetails = ({ handleClose, open, data }) => {
   const classes = useStyles();
+  const { viewsData, description } = data;
   const prepareViewsData = () => {
     let result = [];
-    if (data.length === 1) {
-      result.push(data[0]);
-    } else if (data.length > 1 && data.length % 2 === 0) {
-      for (let i = 0; i < data.length; i += 2) {
-        const el1 = data[i];
-        const el2 = data[i + 1];
-        result.push(el1);
-        let start = moment(el1.date, "DD-MM-YYYY").format("YYYY-MM-DD");
+    if (viewsData.length > 1) {
+      for (let i = 0; i < viewsData.length; i += 2) {
+        const el1 = viewsData[i];
+        const el2 = viewsData[i + 1];
 
-        const end = moment(el2.date, "DD-MM-YYYY");
-        let tempDate = moment(start).add(1, "days");
-        while (tempDate.isBetween(start, end)) {
-          result.push({
-            date: tempDate.format("DD-MM-YYYY"),
-            views: 0,
-          });
-          tempDate.add(1, "days");
+        const start = moment(el1.date, "DD-MM-YYYY").format("YYYY-MM-DD");
+        const end = moment(el2?.date, "DD-MM-YYYY");
+        if (!el2) {
+          const prevDate = moment(viewsData[i - 1].date, "DD-MM-YYYY").format(
+            "YYYY-MM-DD"
+          );
+          result.push(fillEmptyDates(prevDate, start));
+          result.push(el1);
+        } else {
+          result.push(el1);
+          result.push(fillEmptyDates(start, end));
+          result.push(el2);
         }
-        result.push(el2);
       }
     } else {
-      result = data;
+      result = viewsData;
     }
-    return result;
+    return result.flat();
+  };
+
+  const fillEmptyDates = (start, end) => {
+    let emptyDates = [];
+    let tempDate = moment(start).add(1, "days");
+    while (tempDate.isBetween(start, end)) {
+      emptyDates.push({
+        date: tempDate.format("DD-MM-YYYY"),
+        views: 0,
+      });
+      tempDate.add(1, "days");
+    }
+    return emptyDates;
   };
 
   return (
@@ -48,7 +70,18 @@ const BlogViewsDetails = ({ handleClose, open, data }) => {
       fullWidth
       classes={{ paper: classes.modal }}
     >
-      <div style={{ height: "100%", width: "100%", padding: "50px 10px" }}>
+      <Typography
+        variant="h5"
+        gutterBottom
+        align="center"
+        className={classes.title}
+      >
+        Views Count
+      </Typography>
+      <Typography variant="h6" gutterBottom align="center">
+        {description}
+      </Typography>
+      <div className={classes.chartContainer}>
         <CustomLineChart
           data={prepareViewsData()}
           lineDataKey="views"

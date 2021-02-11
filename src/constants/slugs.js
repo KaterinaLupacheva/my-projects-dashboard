@@ -161,14 +161,13 @@ export const SLUGS = [
   {
     published: "2021-02-02",
     slug: "ramonak: dashboard-layout-react-material-ui",
-    description: "How to create a classic Dashboard layout.",
+    description: "Dashboard layout with React.js and Material-UI",
     group: RAMONAK_BLOG,
   },
   {
     published: "2021-02-08",
     slug: "ramonak: react-google-analytics-consent",
-    description:
-      "How to conditionally enable Google Analytics tracker depending on a user's prior consent.",
+    description: "React: enable Google Analytics after a user grants consent",
     group: RAMONAK_BLOG,
   },
 ];
