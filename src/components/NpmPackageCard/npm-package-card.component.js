@@ -6,15 +6,7 @@ import "@ramonak/paper/dist/index.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { npmPackageCardStyles } from "./npm-package-card.styles";
 import { Typography, Grid } from "@material-ui/core";
-import {
-  LineChart,
-  Line,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
+import CustomLineChart from '../Charts/LineChart.component'
 import StatCard from "../StatCard/stat-card.component";
 
 const useStyles = makeStyles(npmPackageCardStyles);
@@ -34,18 +26,6 @@ const NpmPackageCard = (props) => {
     return avg;
   };
 
-  const renderLineChart = (
-    <ResponsiveContainer width="100%" height="100%">
-      <LineChart data={data.lastMonthDownloads.downloads}>
-        <Line type="monotone" dataKey="downloads" stroke="#8884d8" />
-        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-        <XAxis dataKey="day" />
-        <YAxis />
-        <Tooltip />
-      </LineChart>
-    </ResponsiveContainer>
-  );
-
   return (
     <Paper elevation={3} customClass={classes.paperContainer}>
       <Typography variant="h6" align="center" gutterBottom>
@@ -53,7 +33,7 @@ const NpmPackageCard = (props) => {
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12} md={9}>
-          {renderLineChart}
+          <CustomLineChart data={data.lastMonthDownloads.downloads} lineDataKey="downloads" xDataKey="day"/>
         </Grid>
         <Grid item xs={12} md={3}>
           <Grid container>

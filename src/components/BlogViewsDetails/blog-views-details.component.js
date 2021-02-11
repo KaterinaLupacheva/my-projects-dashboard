@@ -1,12 +1,21 @@
+import { makeStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
+import CustomLineChart from "../Charts/LineChart.component";
 import moment from "moment";
 
-const BlogViewsDetails = ({ handleClose, open, data }) => {
-  console.log(data);
+const useStyles = makeStyles(() => ({
+  modal: {
+    height: "50vh",
+  },
+}));
 
+const BlogViewsDetails = ({ handleClose, open, data }) => {
+  const classes = useStyles();
   const prepareViewsData = () => {
     let result = [];
-    if (data.length > 1) {
+    if (data.length === 1) {
+      result.push(data[0]);
+    } else if (data.length > 1 && data.length % 2 === 0) {
       for (let i = 0; i < data.length; i += 2) {
         const el1 = data[i];
         const el2 = data[i + 1];
@@ -30,11 +39,22 @@ const BlogViewsDetails = ({ handleClose, open, data }) => {
     return result;
   };
 
-  const res = prepareViewsData();
-
   return (
-    <Dialog onClose={handleClose} aria-labelledby="details-dialog" open={open}>
-      <div>dialog</div>
+    <Dialog
+      onClose={handleClose}
+      aria-labelledby="details-dialog"
+      open={open}
+      maxWidth="md"
+      fullWidth
+      classes={{ paper: classes.modal }}
+    >
+      <div style={{ height: "100%", width: "100%", padding: "50px 10px" }}>
+        <CustomLineChart
+          data={prepareViewsData()}
+          lineDataKey="views"
+          xDataKey="date"
+        />
+      </div>
     </Dialog>
   );
 };
