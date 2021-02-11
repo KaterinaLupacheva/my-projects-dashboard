@@ -1,14 +1,39 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, Theme } from "@material-ui/core/styles";
+import green from "@material-ui/core/colors/green";
+import red from "@material-ui/core/colors/red";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
-import { weekViewsStyles } from "./week-views.styles";
 
-const useStyles = makeStyles(weekViewsStyles);
+const useStyles = makeStyles((theme: Theme) => ({
+  container: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  bottomRow: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    padding: theme.spacing(1, 0, 0, 1),
+  },
+  green: {
+    color: green[500],
+    fontSize: "1.5rem",
+  },
+  red: {
+    color: red.A200,
+    fontSize: "1.5rem",
+  },
+}));
 
-const WeekViews = (props) => {
+type WeekViewsProps = {
+  thisWeekViews: number;
+  change: number;
+};
+
+const WeekViews = (props: WeekViewsProps) => {
   const { thisWeekViews, change } = props;
   const classes = useStyles();
   const roundChange = Math.round(change);
@@ -33,7 +58,7 @@ const WeekViews = (props) => {
             ? `${roundChange}%`
             : change < 0
             ? `${roundChange * -1}%`
-            : ""}
+            : roundChange}
         </Typography>
       </div>
     </div>
