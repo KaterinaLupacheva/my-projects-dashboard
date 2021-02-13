@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "debug": "npm --node-options=--inspect run dev",
+    "postinstall": "husky install",
     "type-check": "tsc --project tsconfig.json --pretty --noEmit",
     "lint": "eslint --ext js,jsx,ts,tsx --fix"
   },
@@ -36,10 +37,5 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^5.0.9",
     "prettier": "^2.2.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run type-check && npm run lint ."
-    }
   }
 }
