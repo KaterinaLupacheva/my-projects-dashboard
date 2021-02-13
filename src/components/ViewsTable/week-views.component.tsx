@@ -33,7 +33,7 @@ type WeekViewsProps = {
   change: number;
 };
 
-const WeekViews: string = (props: WeekViewsProps) => {
+const WeekViews: boolean = (props: WeekViewsProps) => {
   const { thisWeekViews, change } = props;
   const classes = useStyles();
   const roundChange = Math.round(change);
