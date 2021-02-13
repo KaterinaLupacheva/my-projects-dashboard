@@ -1,30 +1,30 @@
-import React from "react";
-import { makeStyles, Theme } from "@material-ui/core/styles";
-import green from "@material-ui/core/colors/green";
-import red from "@material-ui/core/colors/red";
-import Typography from "@material-ui/core/Typography";
-import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
-import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import React from 'react';
+import { makeStyles, Theme } from '@material-ui/core/styles';
+import green from '@material-ui/core/colors/green';
+import red from '@material-ui/core/colors/red';
+import Typography from '@material-ui/core/Typography';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   bottomRow: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
     padding: theme.spacing(1, 0, 0, 1),
   },
   green: {
     color: green[500],
-    fontSize: "1.5rem",
+    fontSize: '1.5rem',
   },
   red: {
     color: red.A200,
-    fontSize: "1.5rem",
+    fontSize: '1.5rem',
   },
 }));
 
@@ -33,7 +33,7 @@ type WeekViewsProps = {
   change: number;
 };
 
-const WeekViews = (props: WeekViewsProps) => {
+const WeekViews: string = (props: WeekViewsProps) => {
   const { thisWeekViews, change } = props;
   const classes = useStyles();
   const roundChange = Math.round(change);
@@ -51,7 +51,7 @@ const WeekViews = (props: WeekViewsProps) => {
         ) : change < 0 ? (
           <ArrowDownwardIcon fontSize="small" />
         ) : (
-          ""
+          ''
         )}
         <Typography variant="body2">
           {change > 0

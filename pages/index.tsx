@@ -1,5 +1,5 @@
-import CustomHead from "../src/components/Head/head";
-import Ramonak from "./ramonak";
+import CustomHead from '../src/components/Head/head';
+import Ramonak from './ramonak';
 
 export default function Home() {
   return (
