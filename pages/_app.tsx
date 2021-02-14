@@ -1,24 +1,31 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Head from "next/head";
-import { ThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import theme from "../src/theme";
-import AppBarWithSidebar from "../src/components/MainLayout/";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { ThemeProvider } from '@material-ui/core/styles';
+import Head from 'next/head';
+import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 
-export default function MyApp(props) {
+import AppBarWithSidebar from '../src/components/MainLayout';
+import theme from '../src/theme';
+
+type MyAppProps = {
+  Component: React.ComponentType;
+  /* eslint-disable @typescript-eslint/no-explicit-any*/
+  pageProps: any;
+};
+
+export default function MyApp(props: MyAppProps): ReactElement {
   const { Component, pageProps } = props;
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector("#jss-server-side");
+    const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles);
+      jssStyles.parentElement?.removeChild(jssStyles);
     }
   }, []);
 
   return (
-    <React.Fragment>
+    <>
       <Head>
         <title>My dashboard</title>
         <meta
@@ -33,7 +40,7 @@ export default function MyApp(props) {
           <Component {...pageProps} />
         </AppBarWithSidebar>
       </ThemeProvider>
-    </React.Fragment>
+    </>
   );
 }
 
