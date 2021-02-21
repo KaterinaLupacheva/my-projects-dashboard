@@ -1,4 +1,4 @@
-import { GROUP } from '../src/constants/slugs';
+import { GROUP } from '../constants/slugs';
 
 export type DevtoSortOptions = 'date' | 'views' | 'likes' | 'comments';
 

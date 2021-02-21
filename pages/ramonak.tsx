@@ -2,10 +2,10 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import useSWR from 'swr';
 
-import BackDropWithSpinner from '../src/components/BackDropWithSpinner/backdrop-with-spinner.component';
-import CustomHead from '../src/components/Head/head';
-import ViewsTable from '../src/components/ViewsTable/views-table.component';
-import { GROUP, SLUGS } from '../src/constants/slugs';
+import BackDropWithSpinner from '../components/BackDropWithSpinner/backdrop-with-spinner.component';
+import CustomHead from '../components/Head/head';
+import ViewsTable from '../components/ViewsTable/views-table.component';
+import { GROUP, SLUGS } from '../constants/slugs';
 import { IMappedDoc, IViews } from '../types/general';
 import { fetcher } from '../utils/fetcher';
 

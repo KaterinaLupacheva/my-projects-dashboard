@@ -12,10 +12,10 @@ import {
 import { useState } from 'react';
 import useSWR from 'swr';
 
-import BackDropWithSpinner from '../src/components/BackDropWithSpinner/backdrop-with-spinner.component';
-import GithubCard from '../src/components/GihubCard/github-card.component';
-import GithubUserInfo from '../src/components/GithubUserInfo/github-user-info.component';
-import CustomHead from '../src/components/Head/head';
+import BackDropWithSpinner from '../components/BackDropWithSpinner/backdrop-with-spinner.component';
+import GithubCard from '../components/GihubCard/github-card.component';
+import GithubUserInfo from '../components/GithubUserInfo/github-user-info.component';
+import CustomHead from '../components/Head/head';
 import { GithubSortOptions, IRepo } from '../types/general';
 import { fetcher } from '../utils/fetcher';
 

@@ -5,8 +5,8 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import AppBarWithSidebar from '../src/components/MainLayout';
-import theme from '../src/theme';
+import AppBarWithSidebar from '../components/MainLayout';
+import theme from '../styles/theme';
 
 export default function MyApp(props: AppProps): JSX.Element {
   const { Component, pageProps } = props;

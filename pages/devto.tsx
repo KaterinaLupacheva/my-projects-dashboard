@@ -11,10 +11,10 @@ import {
 import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 
-import BackDropWithSpinner from '../src/components/BackDropWithSpinner/backdrop-with-spinner.component';
-import DevtoCard from '../src/components/DevtoCard/devto-card.component';
-import CustomHead from '../src/components/Head/head';
-import StatCard from '../src/components/StatCard/stat-card.component';
+import BackDropWithSpinner from '../components/BackDropWithSpinner/backdrop-with-spinner.component';
+import DevtoCard from '../components/DevtoCard/devto-card.component';
+import CustomHead from '../components/Head/head';
+import StatCard from '../components/StatCard/stat-card.component';
 import type { DevtoSortOptions } from '../types/general';
 import { IArticle } from '../types/general';
 import { fetcher } from '../utils/fetcher';

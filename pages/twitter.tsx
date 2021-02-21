@@ -12,10 +12,10 @@ import {
 import { useState } from 'react';
 import useSWR from 'swr';
 
-import BackDropWithSpinner from '../src/components/BackDropWithSpinner/backdrop-with-spinner.component';
-import CustomHead from '../src/components/Head/head';
-import TweetCard from '../src/components/TweetCard/tweet-card.component';
-import TwitterUserInfo from '../src/components/TwitterUserInfo/twitter-user-info.component';
+import BackDropWithSpinner from '../components/BackDropWithSpinner/backdrop-with-spinner.component';
+import CustomHead from '../components/Head/head';
+import TweetCard from '../components/TweetCard/tweet-card.component';
+import TwitterUserInfo from '../components/TwitterUserInfo/twitter-user-info.component';
 import { TwitterSortOptions } from '../types/general';
 import { fetcher } from '../utils/fetcher';
 
