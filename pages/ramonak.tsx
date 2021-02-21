@@ -2,11 +2,11 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import useSWR from 'swr';
 
-import BackDropWithSpinner from '../components/BackDropWithSpinner/backdrop-with-spinner.component';
+import BackDropWithSpinner from '../components/BackdropWithSpinner';
 import CustomHead from '../components/Head/head';
 import ViewsTable from '../components/ViewsTable/views-table.component';
 import { GROUP, SLUGS } from '../constants/slugs';
-import { IMappedDoc, IViews } from '../types/general';
+import { DailyViews, IMappedDoc, IViews } from '../types/general';
 import { fetcher } from '../utils/fetcher';
 
 const Ramonak = (): JSX.Element => {
@@ -30,7 +30,12 @@ const Ramonak = (): JSX.Element => {
           group: obj.group,
         });
       } else {
-        mappedDocs.push({ ...obj, _id: id, totalViews: 0 });
+        mappedDocs.push({
+          ...obj,
+          _id: id,
+          totalViews: 0,
+          viewsData: [] as DailyViews[],
+        });
         id++;
       }
     });
@@ -39,18 +44,22 @@ const Ramonak = (): JSX.Element => {
 
   type ObjectKey = keyof Omit<IMappedDoc, 'published'>;
 
-  const groupBy = <T,>(
-    arr: T[],
+  const groupBy = (
+    arr: IMappedDoc[],
     property: ObjectKey
-  ): { [key: string]: T[] } => {
+  ): { [key in keyof typeof GROUP]: IMappedDoc[] } => {
     return arr.reduce((acc, cur) => {
       //@ts-ignore
       acc[cur[property]] = [...(acc[cur[property]] || []), cur];
       return acc;
-    }, {} as { [key: string]: T[] });
+    }, {} as { [key in keyof typeof GROUP]: IMappedDoc[] });
   };
 
-  const docs = mapSlugs();
+  type MappedDocs = {
+    [key in keyof typeof GROUP]: IMappedDoc[];
+  };
+
+  const docs: MappedDocs = mapSlugs();
 
   return (
     <Box width="100%">

@@ -11,8 +11,8 @@ import {
 import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 
-import BackDropWithSpinner from '../components/BackDropWithSpinner/backdrop-with-spinner.component';
-import DevtoCard from '../components/DevtoCard/devto-card.component';
+import BackDropWithSpinner from '../components/BackdropWithSpinner';
+import DevtoCard from '../components/DevtoCard';
 import CustomHead from '../components/Head/head';
 import StatCard from '../components/StatCard/stat-card.component';
 import type { DevtoSortOptions } from '../types/general';

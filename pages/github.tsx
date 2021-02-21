@@ -12,7 +12,7 @@ import {
 import { useState } from 'react';
 import useSWR from 'swr';
 
-import BackDropWithSpinner from '../components/BackDropWithSpinner/backdrop-with-spinner.component';
+import BackDropWithSpinner from '../components/BackdropWithSpinner';
 import GithubCard from '../components/GihubCard/github-card.component';
 import GithubUserInfo from '../components/GithubUserInfo/github-user-info.component';
 import CustomHead from '../components/Head/head';

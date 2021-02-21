@@ -12,7 +12,7 @@ import {
 import { useState } from 'react';
 import useSWR from 'swr';
 
-import BackDropWithSpinner from '../components/BackDropWithSpinner/backdrop-with-spinner.component';
+import BackDropWithSpinner from '../components/BackdropWithSpinner';
 import CustomHead from '../components/Head/head';
 import TweetCard from '../components/TweetCard/tweet-card.component';
 import TwitterUserInfo from '../components/TwitterUserInfo/twitter-user-info.component';

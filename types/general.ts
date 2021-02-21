@@ -53,8 +53,9 @@ export interface ISlug {
 }
 
 export interface IMappedDoc extends ISlug {
-  _id: number;
+  _id: number | string;
   totalViews: number;
+  viewsData: DailyViews[];
 }
 
 export type TwitterSortOptions = 'date' | 'retweets' | 'likes';
