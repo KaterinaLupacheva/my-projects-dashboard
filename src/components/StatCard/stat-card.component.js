@@ -1,8 +1,10 @@
-import { Typography } from "@material-ui/core";
-import Paper from "@ramonak/paper";
-import "@ramonak/paper/dist/index.css";
-import { makeStyles } from "@material-ui/core/styles";
-import { statCardStyles } from "./stat-card.styles";
+import '@ramonak/paper/dist/index.css';
+
+import { Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@ramonak/paper';
+
+import { statCardStyles } from './stat-card.styles';
 
 const useStyles = makeStyles(statCardStyles);
 

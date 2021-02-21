@@ -1,3 +1,3 @@
-import AppBarWithSidebar from "./app-bar-with-sidebar.component";
+import AppBarWithSidebar from './app-bar-with-sidebar.component';
 
 export default AppBarWithSidebar;

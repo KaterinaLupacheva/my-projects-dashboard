@@ -1,11 +1,11 @@
 export const statCardStyles = (theme) => ({
   paper: {
     padding: theme.spacing(1),
-    textAlign: "center",
+    textAlign: 'center',
     color: theme.palette.primary.main,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100%"
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
   },
 });

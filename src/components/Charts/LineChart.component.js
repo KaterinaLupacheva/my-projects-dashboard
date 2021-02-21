@@ -1,12 +1,12 @@
 import {
-  LineChart,
-  Line,
   CartesianGrid,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
+} from 'recharts';
 
 const CustomLineChart = ({ data, lineDataKey, xDataKey }) => (
   <ResponsiveContainer width="100%" height="100%">

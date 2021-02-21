@@ -1,25 +1,25 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import { daysRange } from "../../../utils/date-helpers";
-import BlogItem from "./blog-item.component";
-import { viewsTableStyles } from "./views-table.styles";
-import moment from "moment";
+import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import moment from 'moment';
+
+import { daysRange } from '../../../utils/date-helpers';
+import BlogItem from './blog-item.component';
+import { viewsTableStyles } from './views-table.styles';
 
 const useStyles = makeStyles(viewsTableStyles);
 
 const ViewsTable = ({ data }) => {
   const classes = useStyles();
-  const lastSevenDaysRange = daysRange(moment().subtract(6, "days"), moment());
+  const lastSevenDaysRange = daysRange(moment().subtract(6, 'days'), moment());
   const prevSevenDaysRange = daysRange(
-    moment().subtract(13, "days"),
-    moment().subtract(7, "days")
+    moment().subtract(13, 'days'),
+    moment().subtract(7, 'days')
   );
   const countViews = (id, range) => {
     let views = 0;

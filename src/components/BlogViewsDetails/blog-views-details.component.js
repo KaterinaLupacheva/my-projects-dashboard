@@ -1,16 +1,17 @@
-import { makeStyles } from "@material-ui/core/styles";
-import Dialog from "@material-ui/core/Dialog";
-import Typography from "@material-ui/core/Typography";
-import CustomLineChart from "../Charts/LineChart.component";
-import moment from "moment";
+import Dialog from '@material-ui/core/Dialog';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import moment from 'moment';
+
+import CustomLineChart from '../Charts/LineChart.component';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    height: "50vh",
+    height: '50vh',
   },
   chartContainer: {
-    width: "90%",
-    height: "70%",
+    width: '90%',
+    height: '70%',
     margin: theme.spacing(2),
   },
   title: {
@@ -28,11 +29,11 @@ const BlogViewsDetails = ({ handleClose, open, data }) => {
         const el1 = viewsData[i];
         const el2 = viewsData[i + 1];
 
-        const start = moment(el1.date, "DD-MM-YYYY").format("YYYY-MM-DD");
-        const end = moment(el2?.date, "DD-MM-YYYY");
+        const start = moment(el1.date, 'DD-MM-YYYY').format('YYYY-MM-DD');
+        const end = moment(el2?.date, 'DD-MM-YYYY');
         if (!el2) {
-          const prevDate = moment(viewsData[i - 1].date, "DD-MM-YYYY").format(
-            "YYYY-MM-DD"
+          const prevDate = moment(viewsData[i - 1].date, 'DD-MM-YYYY').format(
+            'YYYY-MM-DD'
           );
           result.push(fillEmptyDates(prevDate, start));
           result.push(el1);
@@ -50,13 +51,13 @@ const BlogViewsDetails = ({ handleClose, open, data }) => {
 
   const fillEmptyDates = (start, end) => {
     let emptyDates = [];
-    let tempDate = moment(start).add(1, "days");
+    let tempDate = moment(start).add(1, 'days');
     while (tempDate.isBetween(start, end)) {
       emptyDates.push({
-        date: tempDate.format("DD-MM-YYYY"),
+        date: tempDate.format('DD-MM-YYYY'),
         views: 0,
       });
-      tempDate.add(1, "days");
+      tempDate.add(1, 'days');
     }
     return emptyDates;
   };

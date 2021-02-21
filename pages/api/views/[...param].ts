@@ -1,7 +1,13 @@
-import { connectToDatabase } from "../../../utils/mongodb";
-import moment from "moment";
+import moment from 'moment';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async (req, res) => {
+import { DailyViews, IViews } from '../../../types/general';
+import { connectToDatabase } from '../../../utils/mongodb';
+
+export default async (
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   const {
     query: { param },
   } = req;
@@ -9,11 +15,11 @@ export default async (req, res) => {
   const slug = param.toString();
 
   const { db } = await connectToDatabase();
-  const viewsCollection = await db.collection("view_counts");
+  const viewsCollection = await db.collection('view_counts');
 
   if (!slug) {
     return res.status(400).json({
-      message: "Article slug not provided",
+      message: 'Article slug not provided',
     });
   }
 
@@ -23,7 +29,7 @@ export default async (req, res) => {
       slug: slug,
     })
     .toArray()
-    .then((doc) => {
+    .then((doc: IViews[]) => {
       return doc[0];
     });
 
@@ -33,26 +39,27 @@ export default async (req, res) => {
       .insertOne({
         slug: slug,
         totalViews: 0,
-        viewsData: [{ date: moment().format("DD-MM-YYYY"), views: 0 }],
+        viewsData: [{ date: moment().format('DD-MM-YYYY'), views: 0 }],
       })
-      .then((doc) => {
+      /* eslint-disable  @typescript-eslint/no-explicit-any */
+      .then((doc: any) => {
         existedDoc = doc.ops[0];
       });
   }
 
   //check if that there are views already today
   const dateExists = existedDoc.viewsData.find(
-    (item) => item.date === moment().format("DD-MM-YYYY")
+    (item: DailyViews) => item.date === moment().format('DD-MM-YYYY')
   );
 
   //increment count views by one
   if (dateExists) {
     await viewsCollection.updateOne(
-      { slug: slug, "viewsData.date": moment().format("DD-MM-YYYY") },
+      { slug: slug, 'viewsData.date': moment().format('DD-MM-YYYY') },
       {
         $inc: {
           totalViews: 1,
-          "viewsData.$.views": 1,
+          'viewsData.$.views': 1,
         },
       }
     );
@@ -62,7 +69,7 @@ export default async (req, res) => {
       {
         $push: {
           viewsData: {
-            date: moment().format("DD-MM-YYYY"),
+            date: moment().format('DD-MM-YYYY'),
             views: 1,
           },
         },
@@ -79,7 +86,7 @@ export default async (req, res) => {
       slug: slug,
     })
     .toArray()
-    .then((doc) => {
+    .then((doc: IViews[]) => {
       return doc[0];
     });
 

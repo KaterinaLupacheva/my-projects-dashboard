@@ -1,22 +1,22 @@
 export const devtoCardStyles = (theme) => ({
   container: {
-    textDecoration: "none",
+    textDecoration: 'none',
     color: theme.palette.textPrimary,
-    width: "100%",
+    width: '100%',
   },
   rowContainer: {
-    display: "flex",
-    justifyContent: "space-between",
+    display: 'flex',
+    justifyContent: 'space-between',
   },
   row: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   column: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-evenly",
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
   },
   paddingSide: {
     paddingLeft: theme.spacing(1),

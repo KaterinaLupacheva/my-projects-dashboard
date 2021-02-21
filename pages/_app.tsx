@@ -1,19 +1,14 @@
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
+import { AppProps } from 'next/app';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import React, { ReactElement } from 'react';
+import React from 'react';
 
 import AppBarWithSidebar from '../src/components/MainLayout';
 import theme from '../src/theme';
 
-type MyAppProps = {
-  Component: React.ComponentType;
-  /* eslint-disable @typescript-eslint/no-explicit-any*/
-  pageProps: any;
-};
-
-export default function MyApp(props: MyAppProps): ReactElement {
+export default function MyApp(props: AppProps): JSX.Element {
   const { Component, pageProps } = props;
 
   React.useEffect(() => {

@@ -1,9 +1,10 @@
-import React from "react";
-import clsx from "clsx";
-import { makeStyles } from "@material-ui/core/styles";
-import { topAppBarStyles } from "./top-app-bar.styles";
-import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
+import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import MenuIcon from '@material-ui/icons/Menu';
+import clsx from 'clsx';
+import React from 'react';
+
+import { topAppBarStyles } from './top-app-bar.styles';
 
 const useStyles = makeStyles(topAppBarStyles);
 

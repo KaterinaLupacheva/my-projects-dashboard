@@ -1,39 +1,41 @@
-import { useState } from "react";
-import CustomHead from "../src/components/Head/head";
-import useSWR from "swr";
-import { fetcher } from "../utils/fetcher";
-import BackDropWithSpinner from "../src/components/BackDropWithSpinner/backdrop-with-spinner.component";
-import TwitterUserInfo from "../src/components/TwitterUserInfo/twitter-user-info.component";
-import TweetCard from "../src/components/TweetCard/tweet-card.component";
 import {
   Box,
-  Typography,
-  Grid,
   Divider,
   FormControl,
-  FormLabel,
-  RadioGroup,
-  Radio,
   FormControlLabel,
-} from "@material-ui/core";
+  FormLabel,
+  Grid,
+  Radio,
+  RadioGroup,
+  Typography,
+} from '@material-ui/core';
+import { useState } from 'react';
+import useSWR from 'swr';
 
-const Twitter = () => {
-  const { data, error } = useSWR("/api/twitter", fetcher);
-  const [sortType, setSortType] = useState("date");
+import BackDropWithSpinner from '../src/components/BackDropWithSpinner/backdrop-with-spinner.component';
+import CustomHead from '../src/components/Head/head';
+import TweetCard from '../src/components/TweetCard/tweet-card.component';
+import TwitterUserInfo from '../src/components/TwitterUserInfo/twitter-user-info.component';
+import { TwitterSortOptions } from '../types/general';
+import { fetcher } from '../utils/fetcher';
+
+const Twitter = (): JSX.Element => {
+  const { data, error } = useSWR('/api/twitter', fetcher);
+  const [sortType, setSortType] = useState<TwitterSortOptions>('date');
 
   if (error) return <div>failed to load</div>;
   if (!data) return <BackDropWithSpinner open={true} />;
   if (!data.userData || !data.tweetsData) return <div>Error</div>;
 
-  const sortArray = (type) => {
+  const sortArray = (type: TwitterSortOptions) => {
     const types = {
-      date: "created_at",
-      retweets: "retweet_count",
-      likes: "favorite_count",
+      date: 'created_at',
+      retweets: 'retweet_count',
+      likes: 'favorite_count',
     };
     const sortProperty = types[type];
     const tweetsArr = data.tweetsData;
-    if (type === "date") {
+    if (type === 'date') {
       return [...tweetsArr].sort(
         (a, b) => Date.parse(b[sortProperty]) - Date.parse(a[sortProperty])
       );
@@ -58,7 +60,7 @@ const Twitter = () => {
   return (
     <>
       <CustomHead title="Twitter stats" />
-      <Box style={{ width: "100%" }}>
+      <Box style={{ width: '100%' }}>
         <Typography variant="h2" align="center">
           {data.userData.name}
         </Typography>
@@ -81,7 +83,9 @@ const Twitter = () => {
             aria-label="sort"
             name="sorted-articles"
             value={sortType}
-            onChange={(event) => setSortType(event.target.value)}
+            onChange={(event) =>
+              setSortType(event.target.value as TwitterSortOptions)
+            }
           >
             <FormControlLabel
               value="date"

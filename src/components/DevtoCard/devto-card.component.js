@@ -1,14 +1,16 @@
-import Image from "next/image";
-import Link from "next/link";
-import Paper from "@ramonak/paper";
-import "@ramonak/paper/dist/index.css";
-import { Typography, Box, Hidden } from "@material-ui/core";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import VisibilityIcon from "@material-ui/icons/Visibility";
-import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
-import { timestampToDate } from "../../../utils/date-helpers";
-import { makeStyles } from "@material-ui/core/styles";
-import { devtoCardStyles } from "./devto-card.styles";
+import '@ramonak/paper/dist/index.css';
+
+import { Box, Hidden, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import Paper from '@ramonak/paper';
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { timestampToDate } from '../../../utils/date-helpers';
+import { devtoCardStyles } from './devto-card.styles';
 
 const useStyles = makeStyles(devtoCardStyles);
 

@@ -1,9 +1,14 @@
-export default async (req, res) => {
+import { NextApiRequest, NextApiResponse } from 'next';
+
+export default async (
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   const {
     query: { param },
   } = req;
 
-  const packageName = param.toString().replace(",", "/");
+  const packageName = param.toString().replace(',', '/');
 
   const response = await fetch(
     `https://api.npmjs.org/downloads/range/last-month/${packageName}`

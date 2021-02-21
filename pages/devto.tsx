@@ -1,33 +1,38 @@
-import { useState, useEffect } from "react";
-import useSWR from "swr";
-import { fetcher } from "../utils/fetcher";
-import BackDropWithSpinner from "../src/components/BackDropWithSpinner/backdrop-with-spinner.component";
-import DevtoCard from "../src/components/DevtoCard/devto-card.component";
 import {
-  FormControl,
-  FormLabel,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  Typography,
-  Grid,
   Box,
-} from "@material-ui/core";
-import StatCard from "../src/components/StatCard/stat-card.component";
-import CustomHead from "../src/components/Head/head";
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Grid,
+  Radio,
+  RadioGroup,
+  Typography,
+} from '@material-ui/core';
+import { useEffect, useState } from 'react';
+import useSWR from 'swr';
 
-const Devto = () => {
-  const { data, error } = useSWR("/api/devto", fetcher);
-  const [sortedArticles, setSortedArticles] = useState(null);
-  const [sortType, setSortType] = useState("date");
+import BackDropWithSpinner from '../src/components/BackDropWithSpinner/backdrop-with-spinner.component';
+import DevtoCard from '../src/components/DevtoCard/devto-card.component';
+import CustomHead from '../src/components/Head/head';
+import StatCard from '../src/components/StatCard/stat-card.component';
+import type { DevtoSortOptions } from '../types/general';
+import { IArticle } from '../types/general';
+import { fetcher } from '../utils/fetcher';
+
+const Devto = (): JSX.Element => {
+  const { data, error } = useSWR('/api/devto', fetcher);
+  const [sortedArticles, setSortedArticles] = useState<IArticle[] | undefined>(
+    undefined
+  );
+  const [sortType, setSortType] = useState<DevtoSortOptions>('date');
 
   useEffect(() => {
-    const sortArray = (type) => {
+    const sortArray = (type: DevtoSortOptions) => {
       const types = {
-        date: "published_at",
-        views: "page_views_count",
-        likes: "public_reactions_count",
-        comments: "comments_count",
+        date: 'published_at',
+        views: 'page_views_count',
+        likes: 'public_reactions_count',
+        comments: 'comments_count',
       };
       const sortProperty = types[type];
       const artArr = data.articles;
@@ -44,7 +49,7 @@ const Devto = () => {
   if (!data) return <BackDropWithSpinner open={true} />;
   if (!data.articles) return <div>Error</div>;
 
-  const renderArticles = (articles) => {
+  const renderArticles = (articles: Array<IArticle>) => {
     return (
       <div>
         {articles.map((article) => (
@@ -78,7 +83,9 @@ const Devto = () => {
             aria-label="sort"
             name="sorted-articles"
             value={sortType}
-            onChange={(event) => setSortType(event.target.value)}
+            onChange={(event) =>
+              setSortType(event.target.value as DevtoSortOptions)
+            }
           >
             <FormControlLabel
               value="date"

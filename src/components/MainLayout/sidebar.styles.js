@@ -1,40 +1,40 @@
-import { drawerWidth } from "../../theme";
+import { drawerWidth } from '../../theme';
 
 export const sidebarStyles = (theme) => ({
   drawerTitleContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   drawerTitle: {
     paddingLeft: theme.spacing(3),
     color: theme.palette.secondary.main,
   },
   toolbarIcon: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    padding: "0 8px",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: '0 8px',
     ...theme.mixins.toolbar,
   },
   drawerPaper: {
-    position: "relative",
-    whiteSpace: "nowrap",
+    position: 'relative',
+    whiteSpace: 'nowrap',
     width: drawerWidth,
-    transition: theme.transitions.create("width", {
+    transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
     backgroundColor: theme.palette.background.dark,
   },
   drawerPaperClose: {
-    overflowX: "hidden",
-    transition: theme.transitions.create("width", {
+    overflowX: 'hidden',
+    transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
     width: 0,
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up('sm')]: {
       width: theme.spacing(9),
     },
   },
@@ -49,7 +49,7 @@ export const sidebarStyles = (theme) => ({
     fontWeight: 600,
   },
   link: {
-    textDecoration: "none",
+    textDecoration: 'none',
   },
   linkText: {
     color: theme.palette.primary.grey,

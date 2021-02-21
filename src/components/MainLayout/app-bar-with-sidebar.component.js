@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { appBarWithSidebarStyles } from "./app-bar-with-sidebar.styles";
-import Sidebar from "./sidebar.component";
-import TopAppBar from "./top-app-bar.component";
-import { Grid, Box, Typography, Link, Container } from "@material-ui/core";
+import { Box, Container, Grid, Link, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react';
+
+import { appBarWithSidebarStyles } from './app-bar-with-sidebar.styles';
+import Sidebar from './sidebar.component';
+import TopAppBar from './top-app-bar.component';
 
 const useStyles = makeStyles(appBarWithSidebarStyles);
 
@@ -39,12 +40,12 @@ const AppBarWithSidebar = ({ children }) => {
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
+      {'Copyright © '}
       <Link color="inherit" href="https://ramonak.io/">
         ramonak.io
-      </Link>{" "}
+      </Link>{' '}
       {new Date().getFullYear()}
-      {"."}
+      {'.'}
     </Typography>
   );
 }

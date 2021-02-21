@@ -1,13 +1,15 @@
-import useSWR from "swr";
-import { fetcher } from "../../../utils/fetcher";
-import BackDropWithSpinner from "../BackDropWithSpinner/backdrop-with-spinner.component";
-import Paper from "@ramonak/paper";
-import "@ramonak/paper/dist/index.css";
-import { makeStyles } from "@material-ui/core/styles";
-import { npmPackageCardStyles } from "./npm-package-card.styles";
-import { Typography, Grid } from "@material-ui/core";
-import CustomLineChart from '../Charts/LineChart.component'
-import StatCard from "../StatCard/stat-card.component";
+import '@ramonak/paper/dist/index.css';
+
+import { Grid, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@ramonak/paper';
+import useSWR from 'swr';
+
+import { fetcher } from '../../../utils/fetcher';
+import BackDropWithSpinner from '../BackDropWithSpinner/backdrop-with-spinner.component';
+import CustomLineChart from '../Charts/LineChart.component';
+import StatCard from '../StatCard/stat-card.component';
+import { npmPackageCardStyles } from './npm-package-card.styles';
 
 const useStyles = makeStyles(npmPackageCardStyles);
 
@@ -33,7 +35,11 @@ const NpmPackageCard = (props) => {
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12} md={9}>
-          <CustomLineChart data={data.lastMonthDownloads.downloads} lineDataKey="downloads" xDataKey="day"/>
+          <CustomLineChart
+            data={data.lastMonthDownloads.downloads}
+            lineDataKey="downloads"
+            xDataKey="day"
+          />
         </Grid>
         <Grid item xs={12} md={3}>
           <Grid container>

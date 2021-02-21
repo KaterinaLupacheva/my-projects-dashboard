@@ -1,21 +1,22 @@
-import React, { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import clsx from "clsx";
-import { makeStyles } from "@material-ui/core/styles";
 import {
+  Divider,
   Drawer,
   IconButton,
-  Divider,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Typography,
-} from "@material-ui/core";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import { MENU_LIST_ITEMS } from "../../constants/menu-items";
-import { sidebarStyles } from "./sidebar.styles";
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import clsx from 'clsx';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+
+import { MENU_LIST_ITEMS } from '../../constants/menu-items';
+import { sidebarStyles } from './sidebar.styles';
 
 const useStyles = makeStyles(sidebarStyles);
 
@@ -69,7 +70,7 @@ const Sidebar = ({ open, handleDrawerClose }) => {
                 </ListItemIcon>
                 <ListItemText
                   primary={item.name}
-                  primaryTypographyProps={{ variant: "subtitle1" }}
+                  primaryTypographyProps={{ variant: 'subtitle1' }}
                   classes={{
                     root:
                       id === selectedIndex

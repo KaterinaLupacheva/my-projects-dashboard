@@ -1,12 +1,14 @@
-import Link from "next/link";
-import { Typography, Box, Chip } from "@material-ui/core";
-import clsx from "clsx";
-import Paper from "@ramonak/paper";
-import "@ramonak/paper/dist/index.css";
-import { makeStyles } from "@material-ui/core/styles";
-import { tweetCardStyles } from "./tweet-card.styles";
-import RepeatIcon from "@material-ui/icons/Repeat";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import '@ramonak/paper/dist/index.css';
+
+import { Box, Chip, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import RepeatIcon from '@material-ui/icons/Repeat';
+import Paper from '@ramonak/paper';
+import clsx from 'clsx';
+import Link from 'next/link';
+
+import { tweetCardStyles } from './tweet-card.styles';
 
 const useStyles = makeStyles(tweetCardStyles);
 
@@ -22,7 +24,7 @@ const TweetCard = (props) => {
   const classes = useStyles();
 
   const transformTweet = () => {
-    const twitterLink = " https://t.co/";
+    const twitterLink = ' https://t.co/';
     const parts = text.split(twitterLink);
     const tweet = parts[0];
     const link = twitterLink.concat(parts[1]);
@@ -54,16 +56,16 @@ const TweetCard = (props) => {
         <div className={classes.rowSpaceBetween}>
           <Chip
             variant="outlined"
-            color={in_reply_to_status_id ? "secondary" : "primary"}
-            label={in_reply_to_status_id ? "Reply" : "Tweet"}
+            color={in_reply_to_status_id ? 'secondary' : 'primary'}
+            label={in_reply_to_status_id ? 'Reply' : 'Tweet'}
           />
           <div className={classes.row}>
             <Typography variant="subtitle2">Created: &nbsp;</Typography>
             <Typography variant="body2" color="textSecondary">
-              {new Date(created_at).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "short",
-                day: "numeric",
+              {new Date(created_at).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
               })}
             </Typography>
           </div>

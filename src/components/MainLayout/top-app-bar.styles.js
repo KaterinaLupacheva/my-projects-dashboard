@@ -1,9 +1,9 @@
-import { drawerWidth } from "../../theme";
+import { drawerWidth } from '../../theme';
 
 export const topAppBarStyles = (theme) => ({
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(["width", "margin"], {
+    transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
@@ -11,7 +11,7 @@ export const topAppBarStyles = (theme) => ({
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
+    transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
@@ -20,7 +20,7 @@ export const topAppBarStyles = (theme) => ({
     marginRight: 36,
   },
   menuButtonHidden: {
-    display: "none",
+    display: 'none',
   },
   title: {
     flexGrow: 1,

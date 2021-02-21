@@ -1,4 +1,9 @@
-export default async (_, res) => {
+import { NextApiRequest, NextApiResponse } from 'next';
+
+export default async (
+  _: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   const userResponse = await fetch(
     `https://api.twitter.com/1.1/users/show.json?screen_name=${process.env.TWITTER_USERNAME}`,
     {

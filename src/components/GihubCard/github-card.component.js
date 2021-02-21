@@ -1,18 +1,20 @@
-import { Typography, Box } from "@material-ui/core";
-import Link from "next/link";
-import Paper from "@ramonak/paper";
-import "@ramonak/paper/dist/index.css";
-import { makeStyles } from "@material-ui/core/styles";
-import { githubCardStyles } from "./github-card.styles";
-import LanguageIcon from "@material-ui/icons/Language";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
-import CallSplitIcon from "@material-ui/icons/CallSplit";
-import VisibilityIcon from "@material-ui/icons/Visibility";
-import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
-import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
-import GavelIcon from "@material-ui/icons/Gavel";
-import OpenInNewIcon from "@material-ui/icons/OpenInNew";
+import '@ramonak/paper/dist/index.css';
+
+import { Box, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import CallSplitIcon from '@material-ui/icons/CallSplit';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import GavelIcon from '@material-ui/icons/Gavel';
+import LanguageIcon from '@material-ui/icons/Language';
+import OpenInNewIcon from '@material-ui/icons/OpenInNew';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import Paper from '@ramonak/paper';
+import Link from 'next/link';
+
+import { githubCardStyles } from './github-card.styles';
 
 const useStyles = makeStyles(githubCardStyles);
 
@@ -76,22 +78,22 @@ const GithubCard = (props) => {
           <div className={classes.row}>
             <CalendarTodayIcon fontSize="small" />
             <Typography>
-              Created{" "}
-              {new Date(created_at).toLocaleDateString("en-US", {
-                month: "short",
-                day: "numeric",
-                year: "numeric",
+              Created{' '}
+              {new Date(created_at).toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric',
               })}
             </Typography>
           </div>
           <div className={classes.row}>
             <AccessTimeIcon fontSize="small" />
             <Typography>
-              Updated{" "}
-              {new Date(updated_at).toLocaleDateString("en-US", {
-                month: "short",
-                day: "numeric",
-                year: "numeric",
+              Updated{' '}
+              {new Date(updated_at).toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric',
               })}
             </Typography>
           </div>

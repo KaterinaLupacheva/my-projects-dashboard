@@ -1,10 +1,9 @@
-import React from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
 import green from '@material-ui/core/colors/green';
 import red from '@material-ui/core/colors/red';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
@@ -33,7 +32,7 @@ type WeekViewsProps = {
   change: number;
 };
 
-const WeekViews = (           props: WeekViewsProps) => {
+const WeekViews = (props: WeekViewsProps) => {
   const { thisWeekViews, change } = props;
   const classes = useStyles();
   const roundChange = Math.round(change);

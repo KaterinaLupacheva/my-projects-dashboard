@@ -1,15 +1,17 @@
-import Image from "next/image";
-import Link from "next/link";
-import { makeStyles } from "@material-ui/core/styles";
-import { githubUserInfoStyles } from "./github-user-info.styles";
-import { Typography, Grid } from "@material-ui/core";
-import Paper from "@ramonak/paper";
-import "@ramonak/paper/dist/index.css";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
-import WorkOutlineIcon from "@material-ui/icons/WorkOutline";
-import LanguageIcon from "@material-ui/icons/Language";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import StatCard from "../StatCard/stat-card.component";
+import '@ramonak/paper/dist/index.css';
+
+import { Grid, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import LanguageIcon from '@material-ui/icons/Language';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
+import Paper from '@ramonak/paper';
+import Image from 'next/image';
+import Link from 'next/link';
+
+import StatCard from '../StatCard/stat-card.component';
+import { githubUserInfoStyles } from './github-user-info.styles';
 
 const useStyles = makeStyles(githubUserInfoStyles);
 
