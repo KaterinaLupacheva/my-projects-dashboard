@@ -1,14 +1,46 @@
-import { Box, Container, Grid, Link, Typography } from '@material-ui/core';
+import {
+  Box,
+  Container,
+  Grid,
+  Link,
+  Theme,
+  Typography,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { useState } from 'react';
 
-import { appBarWithSidebarStyles } from './app-bar-with-sidebar.styles';
-import Sidebar from './sidebar.component';
-import TopAppBar from './top-app-bar.component';
+import Sidebar from './Sidebar';
+import TopAppBar from './TopAppBar';
 
-const useStyles = makeStyles(appBarWithSidebarStyles);
+const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    display: 'flex',
+  },
+  appBarSpacer: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    height: '100vh',
+    overflow: 'auto',
+  },
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+    minHeight: '90vh',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  copyright: {
+    marginTop: 'auto',
+  },
+}));
 
-const AppBarWithSidebar = ({ children }) => {
+interface AppBarWithSidebarProps {
+  children: React.ReactNode;
+}
+
+const AppBarWithSidebar = ({
+  children,
+}: AppBarWithSidebarProps): JSX.Element => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const handleDrawerOpen = () => {

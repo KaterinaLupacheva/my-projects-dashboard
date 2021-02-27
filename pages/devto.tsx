@@ -13,7 +13,7 @@ import useSWR from 'swr';
 
 import BackDropWithSpinner from '../components/BackdropWithSpinner';
 import DevtoCard from '../components/DevtoCard';
-import CustomHead from '../components/Head/head';
+import CustomHead from '../components/Head';
 import StatCard from '../components/StatCard/stat-card.component';
 import type { DevtoSortOptions } from '../types/general';
 import { IArticle } from '../types/general';

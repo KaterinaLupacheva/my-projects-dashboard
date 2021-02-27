@@ -1,6 +1,6 @@
 import '@ramonak/paper/dist/index.css';
 
-import { Box, Typography } from '@material-ui/core';
+import { Box, Theme, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
@@ -11,14 +11,50 @@ import LanguageIcon from '@material-ui/icons/Language';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+//@ts-ignore
 import Paper from '@ramonak/paper';
 import Link from 'next/link';
 
-import { githubCardStyles } from './github-card.styles';
+import { IRepo } from '../types/general';
 
-const useStyles = makeStyles(githubCardStyles);
+const useStyles = makeStyles((theme: Theme) => ({
+  container: {
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  icon: {
+    marginLeft: theme.spacing(1),
+  },
+  row: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: theme.spacing(1),
+  },
+  statsRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    width: '100%',
+    justifyContent: 'space-between',
+  },
+  paperContainer: {
+    height: '100%',
+  },
+  content: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    height: '100%',
+  },
+}));
 
-const GithubCard = (props) => {
+const GithubCard = (props: IRepo): JSX.Element => {
   const {
     name,
     html_url,

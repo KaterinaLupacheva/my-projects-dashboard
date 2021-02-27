@@ -1,9 +1,13 @@
 import Head from 'next/head';
 
-const CustomHead = (props) => {
+interface CustomHeadProps {
+  title: string;
+}
+
+const CustomHead = ({ title }: CustomHeadProps): JSX.Element => {
   return (
     <Head>
-      <title>{props.title}</title>
+      <title>{title}</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <link rel="icon" href="/favicon.ico" />
     </Head>

@@ -8,7 +8,7 @@ import {
   ListItemText,
   Typography,
 } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import clsx from 'clsx';
 import Link from 'next/link';
@@ -16,11 +16,74 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
 import { MENU_LIST_ITEMS } from '../../constants/menu-items';
-import { sidebarStyles } from './sidebar.styles';
+import { CustomTheme } from '../../styles/CustomTheme';
+import { drawerWidth } from '../../styles/theme';
 
-const useStyles = makeStyles(sidebarStyles);
+const useStyles = makeStyles((theme: Theme) => ({
+  drawerTitleContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  drawerTitle: {
+    paddingLeft: theme.spacing(3),
+    color: theme.palette.secondary.main,
+  },
+  toolbarIcon: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
+  },
+  drawerPaper: {
+    position: 'relative',
+    whiteSpace: 'nowrap',
+    width: drawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    backgroundColor: CustomTheme.color.bgDark,
+  },
+  drawerPaperClose: {
+    overflowX: 'hidden',
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    width: 0,
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing(9),
+    },
+  },
+  divider: {
+    backgroundColor: CustomTheme.color.grey,
+  },
+  list: {
+    padding: 0,
+  },
+  selected: {
+    backgroundColor: `${CustomTheme.color.bgSelected} !important`,
+    fontWeight: 600,
+  },
+  link: {
+    textDecoration: 'none',
+  },
+  linkText: {
+    color: CustomTheme.color.grey,
+  },
+  linkTextSelected: {
+    color: CustomTheme.color.bgSelected,
+  },
+}));
 
-const Sidebar = ({ open, handleDrawerClose }) => {
+interface SideBarProps {
+  open: boolean;
+  handleDrawerClose: () => void;
+}
+
+const Sidebar = ({ open, handleDrawerClose }: SideBarProps): JSX.Element => {
   const classes = useStyles();
   const router = useRouter();
   const initialSelection = () => {

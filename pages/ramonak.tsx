@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import useSWR from 'swr';
 
 import BackDropWithSpinner from '../components/BackdropWithSpinner';
-import CustomHead from '../components/Head/head';
+import CustomHead from '../components/Head';
 import ViewsTable from '../components/ViewsTable/views-table.component';
 import { GROUP, SLUGS } from '../constants/slugs';
 import { DailyViews, IMappedDoc, IViews } from '../types/general';

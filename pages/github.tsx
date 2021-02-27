@@ -13,9 +13,9 @@ import { useState } from 'react';
 import useSWR from 'swr';
 
 import BackDropWithSpinner from '../components/BackdropWithSpinner';
-import GithubCard from '../components/GihubCard/github-card.component';
-import GithubUserInfo from '../components/GithubUserInfo/github-user-info.component';
-import CustomHead from '../components/Head/head';
+import GithubCard from '../components/GitHubCard';
+import GithubUserInfo from '../components/GithubUserInfo';
+import CustomHead from '../components/Head';
 import { GithubSortOptions, IRepo } from '../types/general';
 import { fetcher } from '../utils/fetcher';
 

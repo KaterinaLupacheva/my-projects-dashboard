@@ -1,21 +1,49 @@
 import '@ramonak/paper/dist/index.css';
 
 import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import LanguageIcon from '@material-ui/icons/Language';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
+//@ts-ignore
 import Paper from '@ramonak/paper';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import StatCard from '../StatCard/stat-card.component';
-import { githubUserInfoStyles } from './github-user-info.styles';
+import { IGithubUser } from '../types/general';
+import StatCard from './StatCard/stat-card.component';
 
-const useStyles = makeStyles(githubUserInfoStyles);
+const useStyles = makeStyles((theme: Theme) => ({
+  container: {
+    padding: theme.spacing(1),
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  avatar: {
+    borderRadius: '100%',
+  },
+  row: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  column: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+  },
+  gridColumn: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
+  margin: {
+    marginBottom: theme.spacing(3),
+  },
+}));
 
-const GithubUserInfo = (props) => {
+const GithubUserInfo = (props: IGithubUser): JSX.Element => {
   const {
     login,
     avatar_url,
@@ -28,8 +56,9 @@ const GithubUserInfo = (props) => {
     bio,
     public_repos,
     followers,
+    totalStarsAndForks: { stars, forks },
   } = props;
-  const { stars, forks } = props.totalStarsAndForks;
+
   const classes = useStyles();
 
   return (

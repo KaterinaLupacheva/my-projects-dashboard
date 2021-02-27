@@ -37,9 +37,29 @@ export interface IRepo {
   watchers_count: number;
   language: string;
   forks_count: number;
-  license: string;
+  license: {
+    spdx_id: string;
+  };
   owner: {
     login: string;
+  };
+}
+
+export interface IGithubUser {
+  login: string;
+  avatar_url: string;
+  html_url: string;
+  name: string;
+  company: string;
+  blog: string;
+  location: string;
+  email: string;
+  bio: string;
+  public_repos: number;
+  followers: number;
+  totalStarsAndForks: {
+    stars: number;
+    forks: number;
   };
 }
 

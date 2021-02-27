@@ -1,6 +1,6 @@
 import { Box, Typography } from '@material-ui/core';
 
-import CustomHead from '../components/Head/head';
+import CustomHead from '../components/Head';
 import NpmPackageCard from '../components/NpmPackageCard/npm-package-card.component';
 import { packages } from '../constants/npm-packages';
 
