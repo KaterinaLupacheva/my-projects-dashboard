@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { MongoClient } from 'mongodb';
 
 const { MONGODB_URI, MONGODB_DB } = process.env;
@@ -19,10 +20,10 @@ if (!MONGODB_DB) {
  * in development. This prevents connections growing exponentiatlly
  * during API Route usage.
  */
-let cached = global.mongo;
-if (!cached) cached = global.mongo = {};
+let cached = (global as any).mongo;
+if (!cached) cached = (global as any).mongo = {};
 
-export async function connectToDatabase() {
+export async function connectToDatabase(): Promise<any> {
   if (cached.conn) return cached.conn;
   if (!cached.promise) {
     const conn = {};
@@ -30,12 +31,15 @@ export async function connectToDatabase() {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     };
+    //@ts-ignore
     cached.promise = MongoClient.connect(MONGODB_URI, opts)
       .then((client) => {
+        //@ts-ignore
         conn.client = client;
         return client.db(MONGODB_DB);
       })
       .then((db) => {
+        //@ts-ignore
         conn.db = db;
         cached.conn = conn;
       });

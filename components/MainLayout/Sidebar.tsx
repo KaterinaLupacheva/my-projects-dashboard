@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: CustomTheme.color.grey,
   },
   linkTextSelected: {
-    color: CustomTheme.color.bgSelected,
+    color: theme.palette.primary.contrastText,
   },
 }));
 
@@ -112,8 +112,8 @@ const Sidebar = ({ open, handleDrawerClose }: SideBarProps): JSX.Element => {
       </div>
       <Divider classes={{ root: classes.divider }} />
       <List classes={{ root: classes.list }}>
-        {MENU_LIST_ITEMS.map((item, id) => (
-          <Link href={item.route} key={id}>
+        {MENU_LIST_ITEMS.map(({ route, Icon, name }, id) => (
+          <Link href={route} key={id}>
             <a className={classes.link}>
               <ListItem
                 button
@@ -129,10 +129,10 @@ const Sidebar = ({ open, handleDrawerClose }: SideBarProps): JSX.Element => {
                         : classes.linkText,
                   }}
                 >
-                  {item.icon}
+                  <Icon />
                 </ListItemIcon>
                 <ListItemText
-                  primary={item.name}
+                  primary={name}
                   primaryTypographyProps={{ variant: 'subtitle1' }}
                   classes={{
                     root:

@@ -1,3 +1,6 @@
+import type { SvgIconTypeMap } from '@material-ui/core';
+import type { OverridableComponent } from '@material-ui/core/OverridableComponent';
+
 import { GROUP } from '../constants/slugs';
 
 export type DevtoSortOptions = 'date' | 'views' | 'likes' | 'comments';
@@ -107,4 +110,10 @@ export interface ITweeterUser {
 export interface IViewsComparison {
   thisWeekViews: number;
   change: number;
+}
+
+export interface IMenuItem {
+  name: string;
+  Icon: OverridableComponent<SvgIconTypeMap>;
+  route: string;
 }

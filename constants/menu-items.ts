@@ -4,32 +4,33 @@ import DevicesIcon from '@material-ui/icons/Devices';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import TwitterIcon from '@material-ui/icons/Twitter';
 
+import { IMenuItem } from '../types/general';
 import * as ROUTES from './routes';
 
-export const MENU_LIST_ITEMS = [
+export const MENU_LIST_ITEMS: IMenuItem[] = [
   {
     name: 'ramonak.io',
-    icon: <DashboardIcon />,
+    Icon: DashboardIcon,
     route: ROUTES.RAMONAK,
   },
   {
     name: 'dev.to',
-    icon: <DevicesIcon />,
+    Icon: DevicesIcon,
     route: ROUTES.DEVTO,
   },
   {
     name: 'GitHub',
-    icon: <GitHubIcon />,
+    Icon: GitHubIcon,
     route: ROUTES.GITHUB,
   },
   {
     name: 'Twitter',
-    icon: <TwitterIcon />,
+    Icon: TwitterIcon,
     route: ROUTES.TWITTER,
   },
   {
     name: 'NPM packages',
-    icon: <BallotIcon />,
+    Icon: BallotIcon,
     route: ROUTES.NPM,
   },
 ];
