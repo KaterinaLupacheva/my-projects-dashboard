@@ -1,6 +1,6 @@
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 
-export const timestampToDate = (timestamp) => {
+export const timestampToDate = (timestamp: string): Date | string | number => {
   const options = {
     weekday: 'long',
     year: 'numeric',
@@ -10,9 +10,12 @@ export const timestampToDate = (timestamp) => {
   return new Date(timestamp).toLocaleDateString('en-US', options);
 };
 
-export const daysRange = (startDate, endDate) => {
-  let dates = [];
-  let start = moment(startDate);
+export const daysRange = (
+  startDate: string | Moment,
+  endDate: string | Moment
+): string[] => {
+  const dates = [];
+  const start = moment(startDate);
   const end = moment(endDate);
 
   while (start.isSameOrBefore(end)) {

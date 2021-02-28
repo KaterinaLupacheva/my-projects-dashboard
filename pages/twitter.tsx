@@ -14,8 +14,8 @@ import useSWR from 'swr';
 
 import BackDropWithSpinner from '../components/BackdropWithSpinner';
 import CustomHead from '../components/Head';
-import TweetCard from '../components/TweetCard/tweet-card.component';
-import TwitterUserInfo from '../components/TwitterUserInfo/twitter-user-info.component';
+import TweetCard from '../components/TweetCard';
+import TwitterUserInfo from '../components/TwitterUserInfo';
 import { TwitterSortOptions } from '../types/general';
 import { fetcher } from '../utils/fetcher';
 

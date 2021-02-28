@@ -1,20 +1,46 @@
 import '@ramonak/paper/dist/index.css';
 
 import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import LinkIcon from '@material-ui/icons/Link';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+//@ts-ignore
 import Paper from '@ramonak/paper';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import StatsCard from '../StatCard/stat-card.component';
-import { twitterUserInfoStyles } from './twitter-user-info.styles';
+import { ITweeterUser } from '../types/general';
+import StatsCard from './StatCard';
 
-const useStyles = makeStyles(twitterUserInfoStyles);
+const useStyles = makeStyles((theme: Theme) => ({
+  container: {
+    padding: theme.spacing(1),
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  avatar: {
+    borderRadius: '100%',
+  },
+  column: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    width: '100%',
+  },
+  row: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: theme.spacing(0.5),
+  },
+  margin: {
+    marginBottom: theme.spacing(3),
+  },
+}));
 
-const TwitterUserInfo = (props) => {
+const TwitterUserInfo = (props: ITweeterUser): JSX.Element => {
   const {
     profile_image_url_https,
     screen_name,

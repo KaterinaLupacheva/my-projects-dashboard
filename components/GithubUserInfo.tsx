@@ -12,7 +12,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { IGithubUser } from '../types/general';
-import StatCard from './StatCard/stat-card.component';
+import StatCard from './StatCard';
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {

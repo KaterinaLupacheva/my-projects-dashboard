@@ -8,24 +8,32 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import moment from 'moment';
 
+import { IMappedDoc, IViewsComparison } from '../../types/general';
 import { daysRange } from '../../utils/date-helpers';
-import BlogItem from './blog-item.component';
-import { viewsTableStyles } from './views-table.styles';
+import BlogItem from './BlogItem';
 
-const useStyles = makeStyles(viewsTableStyles);
+const useStyles = makeStyles(() => ({
+  table: {
+    minWidth: 650,
+  },
+}));
 
-const ViewsTable = ({ data }) => {
+interface ViewsTableProps {
+  data: IMappedDoc[];
+}
+
+const ViewsTable = ({ data }: ViewsTableProps): JSX.Element => {
   const classes = useStyles();
   const lastSevenDaysRange = daysRange(moment().subtract(6, 'days'), moment());
   const prevSevenDaysRange = daysRange(
     moment().subtract(13, 'days'),
     moment().subtract(7, 'days')
   );
-  const countViews = (id, range) => {
+  const countViews = (id: string | number, range: string[]) => {
     let views = 0;
-    const row = data.find((item) => item._id === id);
+    const row: IMappedDoc | undefined = data.find((item) => item._id === id);
     range.forEach((date) => {
-      const targetDate = row.viewsData?.find((d) => d.date === date);
+      const targetDate = row?.viewsData?.find((d) => d.date === date);
       if (targetDate) {
         views += targetDate.views;
       }
@@ -33,7 +41,7 @@ const ViewsTable = ({ data }) => {
     return views;
   };
 
-  const viewsComparison = (id) => {
+  const viewsComparison = (id: string | number): IViewsComparison => {
     const thisWeekViews = countViews(id, lastSevenDaysRange);
     const prevWeekViews = countViews(id, prevSevenDaysRange);
     const change =

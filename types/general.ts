@@ -79,3 +79,32 @@ export interface IMappedDoc extends ISlug {
 }
 
 export type TwitterSortOptions = 'date' | 'retweets' | 'likes';
+
+export interface INpmDownloads {
+  downloads: number;
+  day: string;
+}
+
+export interface ITweet {
+  text: string;
+  created_at: string;
+  retweet_count: number;
+  favorite_count: number;
+  in_reply_to_status_id: boolean;
+  truncated: boolean;
+}
+
+export interface ITweeterUser {
+  profile_image_url_https: string;
+  screen_name: string;
+  name: string;
+  location: string;
+  created_at: string;
+  followers_count: number;
+  friends_count: number;
+}
+
+export interface IViewsComparison {
+  thisWeekViews: number;
+  change: number;
+}

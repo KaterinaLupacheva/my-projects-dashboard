@@ -1,18 +1,42 @@
 import '@ramonak/paper/dist/index.css';
 
 import { Box, Chip, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import RepeatIcon from '@material-ui/icons/Repeat';
+//@ts-ignore
 import Paper from '@ramonak/paper';
 import clsx from 'clsx';
 import Link from 'next/link';
 
-import { tweetCardStyles } from './tweet-card.styles';
+import { ITweet } from '../types/general';
 
-const useStyles = makeStyles(tweetCardStyles);
+const useStyles = makeStyles((theme: Theme) => ({
+  container: {
+    marginTop: theme.spacing(1),
+    height: '100%',
+  },
+  row: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  rowSpaceBetween: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  paddingSide: {
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+  },
+  link: {
+    textDecoration: 'none',
+    color: 'grey',
+  },
+}));
 
-const TweetCard = (props) => {
+const TweetCard = (props: ITweet): JSX.Element => {
   const {
     text,
     created_at,

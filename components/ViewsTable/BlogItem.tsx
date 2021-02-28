@@ -4,10 +4,15 @@ import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import moment from 'moment';
 import { useState } from 'react';
 
+import { IMappedDoc, IViewsComparison } from '../../types/general';
 import BlogViewsDetails from '../BlogViewsDetails';
-import WeekViews from './week-views.component';
+import WeekViews from './WeekViews';
 
-const BlogItem = ({ row, ...otherProps }) => {
+interface BlogItemProps extends IViewsComparison {
+  row: IMappedDoc;
+}
+
+const BlogItem = ({ row, ...otherProps }: BlogItemProps): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleModalClose = () => {
     setIsModalOpen(false);

@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 
+import { IViewsComparison } from '../../types/general';
+
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
     display: 'flex',
@@ -27,12 +29,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-type WeekViewsProps = {
-  thisWeekViews: number;
-  change: number;
-};
-
-const WeekViews = (props: WeekViewsProps) => {
+const WeekViews = (props: IViewsComparison): JSX.Element => {
   const { thisWeekViews, change } = props;
   const classes = useStyles();
   const roundChange = Math.round(change);

@@ -1,7 +1,7 @@
 import { Box, Typography } from '@material-ui/core';
 
 import CustomHead from '../components/Head';
-import NpmPackageCard from '../components/NpmPackageCard/npm-package-card.component';
+import NpmPackageCard from '../components/NpmPackageCard';
 import { packages } from '../constants/npm-packages';
 
 const Npm = (): JSX.Element => {

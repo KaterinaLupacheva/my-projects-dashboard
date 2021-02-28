@@ -1,20 +1,28 @@
 import '@ramonak/paper/dist/index.css';
 
 import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
+//@ts-ignore
 import Paper from '@ramonak/paper';
 import useSWR from 'swr';
 
-import { fetcher } from '../../../utils/fetcher';
-import BackDropWithSpinner from '../BackdropWithSpinner';
-import CustomLineChart from '../LineChart';
-import StatCard from '../StatCard/stat-card.component';
-import { npmPackageCardStyles } from './npm-package-card.styles';
+import { INpmDownloads } from '../types/general';
+import { fetcher } from '../utils/fetcher';
+import BackDropWithSpinner from './BackdropWithSpinner';
+import CustomLineChart from './LineChart';
+import StatCard from './StatCard';
 
-const useStyles = makeStyles(npmPackageCardStyles);
+const useStyles = makeStyles((theme: Theme) => ({
+  paperContainer: {
+    padding: theme.spacing(1),
+  },
+}));
 
-const NpmPackageCard = (props) => {
-  const { packageName } = props;
+interface NpmPackageCardProps {
+  packageName: string;
+}
+
+const NpmPackageCard = ({ packageName }: NpmPackageCardProps): JSX.Element => {
   const { data, error } = useSWR(`/api/npm/${packageName}`, fetcher);
   const classes = useStyles();
 
@@ -22,7 +30,7 @@ const NpmPackageCard = (props) => {
   if (!data) return <BackDropWithSpinner open={true} />;
   if (!data.lastMonthDownloads) return <div>Error</div>;
 
-  const averageDownloads = (downloadsData) => {
+  const averageDownloads = (downloadsData: INpmDownloads[]) => {
     const sum = downloadsData.reduce((a, b) => a + b.downloads, 0);
     const avg = Math.round(sum / downloadsData.length) || 0;
     return avg;
