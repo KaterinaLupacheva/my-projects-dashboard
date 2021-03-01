@@ -1,8 +1,5 @@
-import '@ramonak/paper/dist/index.css';
-
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-//@ts-ignore
 import Paper from '@ramonak/paper';
 import useSWR from 'swr';
 

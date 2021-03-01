@@ -1,11 +1,8 @@
-import '@ramonak/paper/dist/index.css';
-
 import { Box, Hidden, Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import VisibilityIcon from '@material-ui/icons/Visibility';
-//@ts-ignore
 import Paper from '@ramonak/paper';
 import Image from 'next/image';
 import Link from 'next/link';

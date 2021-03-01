@@ -1,11 +1,8 @@
-import '@ramonak/paper/dist/index.css';
-
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import LinkIcon from '@material-ui/icons/Link';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-//@ts-ignore
 import Paper from '@ramonak/paper';
 import Image from 'next/image';
 import Link from 'next/link';

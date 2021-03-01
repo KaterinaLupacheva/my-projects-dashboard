@@ -1,12 +1,9 @@
-import '@ramonak/paper/dist/index.css';
-
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import LanguageIcon from '@material-ui/icons/Language';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
-//@ts-ignore
 import Paper from '@ramonak/paper';
 import Image from 'next/image';
 import Link from 'next/link';

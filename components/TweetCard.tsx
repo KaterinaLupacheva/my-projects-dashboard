@@ -1,10 +1,7 @@
-import '@ramonak/paper/dist/index.css';
-
 import { Box, Chip, Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import RepeatIcon from '@material-ui/icons/Repeat';
-//@ts-ignore
 import Paper from '@ramonak/paper';
 import clsx from 'clsx';
 import Link from 'next/link';

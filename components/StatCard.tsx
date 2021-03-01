@@ -1,8 +1,5 @@
-import '@ramonak/paper/dist/index.css';
-
 import { Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-//@ts-ignore
 import Paper from '@ramonak/paper';
 
 const useStyles = makeStyles((theme: Theme) => ({

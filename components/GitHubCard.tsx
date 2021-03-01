@@ -1,5 +1,3 @@
-import '@ramonak/paper/dist/index.css';
-
 import { Box, Theme, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
@@ -11,7 +9,6 @@ import LanguageIcon from '@material-ui/icons/Language';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import VisibilityIcon from '@material-ui/icons/Visibility';
-//@ts-ignore
 import Paper from '@ramonak/paper';
 import Link from 'next/link';
 
