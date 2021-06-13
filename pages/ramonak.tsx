@@ -35,6 +35,11 @@ const Ramonak = (): JSX.Element => {
         NPM packages demos views
       </Typography>
       <ViewsTable data={docs[GROUP.NPM_PACKAGE]} />
+      <Box margin={5} />
+      <Typography variant="h3" align="center" gutterBottom>
+        Apps views
+      </Typography>
+      <ViewsTable data={docs[GROUP.APP]} />
     </Box>
   );
 };

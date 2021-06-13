@@ -1,6 +1,7 @@
 export enum GROUP {
   NPM_PACKAGE = 'NPM_PACKAGE',
   RAMONAK_BLOG = 'RAMONAK_BLOG',
+  APP = 'APP',
 }
 
 export const SLUGS = [
@@ -184,5 +185,29 @@ export const SLUGS = [
     slug: 'ramonak: react-google-analytics-consent',
     description: 'React: enable Google Analytics after a user grants consent',
     group: GROUP.RAMONAK_BLOG,
+  },
+  {
+    published: '2020-03-12',
+    slug: 'app: tabata',
+    description: 'Tabata App',
+    group: GROUP.APP,
+  },
+  {
+    published: '2020-10-29',
+    slug: 'app: financial-manager',
+    description: 'Financial Manager App',
+    group: GROUP.APP,
+  },
+  {
+    published: '2020-03-10',
+    slug: 'app: github-api-dashboard',
+    description: 'GitHub API Dashboard',
+    group: GROUP.APP,
+  },
+  {
+    published: '2020-04-25',
+    slug: 'app: coffee-dashboard',
+    description: 'Coffee Shop Dashboard',
+    group: GROUP.APP,
   },
 ];
