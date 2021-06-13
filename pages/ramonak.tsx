@@ -5,9 +5,10 @@ import useSWR from 'swr';
 import BackDropWithSpinner from '../components/BackdropWithSpinner';
 import CustomHead from '../components/Head';
 import ViewsTable from '../components/ViewsTable/ViewsTable';
-import { GROUP, SLUGS } from '../constants/slugs';
-import { DailyViews, IMappedDoc, IViews } from '../types/general';
+import { GROUP } from '../constants/slugs';
+import { IMappedDoc } from '../types/general';
 import { fetcher } from '../utils/fetcher';
+import { mapSlugs } from '../utils/table-data';
 
 const Ramonak = (): JSX.Element => {
   const { data, error } = useSWR('/api/views', fetcher);
@@ -16,50 +17,11 @@ const Ramonak = (): JSX.Element => {
   if (!data) return <BackDropWithSpinner open={true} />;
   if (!data.docs) return <div>Error</div>;
 
-  const mapSlugs = () => {
-    let id = 0;
-    const mappedDocs: IMappedDoc[] = [];
-
-    SLUGS.forEach((obj) => {
-      const doc = data.docs.find((d: IViews) => d.slug === obj.slug);
-      if (doc) {
-        mappedDocs.push({
-          ...doc,
-          published: obj.published,
-          description: obj.description,
-          group: obj.group,
-        });
-      } else {
-        mappedDocs.push({
-          ...obj,
-          _id: id,
-          totalViews: 0,
-          viewsData: [] as DailyViews[],
-        });
-        id++;
-      }
-    });
-    return groupBy(mappedDocs, 'group');
-  };
-
-  type ObjectKey = keyof Omit<IMappedDoc, 'published'>;
-
-  const groupBy = (
-    arr: IMappedDoc[],
-    property: ObjectKey
-  ): { [key in keyof typeof GROUP]: IMappedDoc[] } => {
-    return arr.reduce((acc, cur) => {
-      //@ts-ignore
-      acc[cur[property]] = [...(acc[cur[property]] || []), cur];
-      return acc;
-    }, {} as { [key in keyof typeof GROUP]: IMappedDoc[] });
-  };
-
   type MappedDocs = {
     [key in keyof typeof GROUP]: IMappedDoc[];
   };
 
-  const docs: MappedDocs = mapSlugs();
+  const docs: MappedDocs = mapSlugs(data);
 
   return (
     <Box width="100%">
@@ -68,6 +30,7 @@ const Ramonak = (): JSX.Element => {
         Blog posts Views count
       </Typography>
       <ViewsTable data={docs[GROUP.RAMONAK_BLOG]} />
+      <Box margin={5} />
       <Typography variant="h3" align="center" gutterBottom>
         NPM packages demos views
       </Typography>

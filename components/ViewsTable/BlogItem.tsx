@@ -4,15 +4,16 @@ import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import moment from 'moment';
 import { useState } from 'react';
 
-import { IMappedDoc, IViewsComparison } from '../../types/general';
+import { IMappedDoc } from '../../types/general';
 import BlogViewsDetails from '../BlogViewsDetails';
 import WeekViews from './WeekViews';
 
-interface BlogItemProps extends IViewsComparison {
+interface BlogItemProps {
   row: IMappedDoc;
 }
 
-const BlogItem = ({ row, ...otherProps }: BlogItemProps): JSX.Element => {
+const BlogItem = ({ row }: BlogItemProps): JSX.Element => {
+  const { published, description, thisWeekViews, change, totalViews } = row;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleModalClose = () => {
     setIsModalOpen(false);
@@ -20,12 +21,12 @@ const BlogItem = ({ row, ...otherProps }: BlogItemProps): JSX.Element => {
 
   return (
     <>
-      <TableCell>{moment(row.published).format('MMM DD, YYYY')}</TableCell>
-      <TableCell>{row.description}</TableCell>
+      <TableCell>{moment(published).format('MMM DD, YYYY')}</TableCell>
+      <TableCell>{description}</TableCell>
       <TableCell>
-        <WeekViews {...otherProps} />
+        <WeekViews thisWeekViews={thisWeekViews} change={change} />
       </TableCell>
-      <TableCell>{row.totalViews}</TableCell>
+      <TableCell>{totalViews}</TableCell>
       <TableCell>
         <Button
           size="small"

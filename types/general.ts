@@ -71,7 +71,7 @@ export type GithubSortOptions = 'stars' | 'forks' | 'upd';
 export interface ISlug {
   slug: string;
   description: string;
-  published?: string;
+  published: string;
   group: GROUP;
 }
 
@@ -79,6 +79,8 @@ export interface IMappedDoc extends ISlug {
   _id: number | string;
   totalViews: number;
   viewsData: DailyViews[];
+  thisWeekViews: number;
+  change: number;
 }
 
 export type TwitterSortOptions = 'date' | 'retweets' | 'likes';

@@ -5,6 +5,7 @@ export enum GROUP {
 
 export const SLUGS = [
   {
+    published: '2020-04-09',
     slug: 'react-progress-bar',
     description: 'React progress bar playground',
     group: GROUP.NPM_PACKAGE,
