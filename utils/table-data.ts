@@ -1,12 +1,13 @@
-import { daysRange } from './date-helpers';
 import moment from 'moment';
+
+import { GROUP, SLUGS } from '../constants/slugs';
 import {
   DailyViews,
   IMappedDoc,
   IViews,
   IViewsComparison,
 } from '../types/general';
-import { GROUP, SLUGS } from '../constants/slugs';
+import { daysRange } from './date-helpers';
 
 const lastSevenDaysRange = daysRange(moment().subtract(6, 'days'), moment());
 const prevSevenDaysRange = daysRange(
