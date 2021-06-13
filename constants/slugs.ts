@@ -17,6 +17,12 @@ export const SLUGS = [
     group: GROUP.NPM_PACKAGE,
   },
   {
+    published: '2020-11-03',
+    slug: 'paper-component',
+    description: 'Paper component library demo',
+    group: GROUP.NPM_PACKAGE,
+  },
+  {
     published: '2019-09-30',
     slug: 'ramonak: top-10-women-in-tech-business',
     description: 'Top10 women in tech business',
