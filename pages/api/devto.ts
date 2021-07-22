@@ -2,10 +2,12 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { IArticle } from '../../types/general';
 
-export default async (
-  _: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> => {
+type DevtoReturn = {
+  articles: IArticle[];
+  followersCount: number;
+};
+
+export async function queryDevto(): Promise<DevtoReturn> {
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set('Content-Type', 'application/json');
   process.env.DEVTO_API_KEY &&
@@ -25,8 +27,17 @@ export default async (
   const articles: IArticle[] = await articlesResponse.json();
   const followers = await followersResponse.json();
 
+  return { articles, followersCount: followers.length };
+}
+
+export default async (
+  _: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
+  const { articles, followersCount } = await queryDevto();
+
   return res.status(200).json({
     articles,
-    followersCount: followers.length,
+    followersCount,
   });
 };

@@ -119,3 +119,14 @@ export interface IMenuItem {
   Icon: OverridableComponent<SvgIconTypeMap>;
   route: string;
 }
+
+export interface FollowersData {
+  date: string;
+  count: number;
+}
+
+export interface DevtoStatsDoc {
+  _id: number | string;
+  name: string;
+  followers: FollowersData[];
+}
