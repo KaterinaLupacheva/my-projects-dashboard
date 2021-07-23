@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 
 import BackDropWithSpinner from '../components/BackdropWithSpinner';
+import DetailedStatCard from '../components/DetailedStatCard';
 import DevtoCard from '../components/DevtoCard';
 import CustomHead from '../components/Head';
 import StatCard from '../components/StatCard';
@@ -65,7 +66,7 @@ const Devto = (): JSX.Element => {
       <Box m={3}>
         <Grid container spacing={5}>
           <Grid item xs={12} sm={6} md={3}>
-            <StatCard title="Followers" value={data.followersCount} />
+            <DetailedStatCard title="Followers" value={data.followersCount} />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <StatCard title="Total Posts" value={data.articles.length} />
