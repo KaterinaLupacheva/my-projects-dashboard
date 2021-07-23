@@ -8,6 +8,6 @@ jobs:
     steps:
       - name: Call our API route
         run: |
-          curl --request GET \
+          curl --request POST \
           --url 'https://my-projects-dashboard.vercel.app/api/stats' \
           --header 'Authorization: Bearer ${{ secrets.APP_API_KEY }}'
