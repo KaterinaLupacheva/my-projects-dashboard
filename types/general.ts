@@ -123,7 +123,7 @@ export interface IMenuItem {
 export type FollowersData = {
   date: string;
   count: number;
-}
+};
 
 export interface DevtoStatsDoc {
   _id: number | string;

@@ -1,11 +1,11 @@
 import { CircularProgress, Typography } from '@material-ui/core';
 import { green, red } from '@material-ui/core/colors';
+import IconButton from '@material-ui/core/IconButton';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import Paper from '@ramonak/paper';
 import React, { useState } from 'react';
 import useSWR from 'swr';
-import IconButton from '@material-ui/core/IconButton';
 
 import { fetcher } from '../utils/fetcher';
 import { calculateChange } from '../utils/stats-helpers';
