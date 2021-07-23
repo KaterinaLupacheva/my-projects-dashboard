@@ -1,4 +1,5 @@
 import moment from 'moment';
+
 import { FollowersData } from '../types/general';
 
 const followersCount = ({

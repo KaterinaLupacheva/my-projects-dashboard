@@ -120,7 +120,7 @@ export interface IMenuItem {
   route: string;
 }
 
-export interface FollowersData {
+export type FollowersData = {
   date: string;
   count: number;
 }

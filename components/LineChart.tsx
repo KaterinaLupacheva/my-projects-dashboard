@@ -1,18 +1,19 @@
 import {
   CartesianGrid,
-  DataKey,
   Line,
   LineChart,
+  LineProps,
   ResponsiveContainer,
   Tooltip,
   XAxis,
+  XAxisProps,
   YAxis,
 } from 'recharts';
 
 interface CustomLineChartProps {
-  data: ReadonlyArray<Record<string, unknown>>;
-  lineDataKey: DataKey;
-  xDataKey: DataKey;
+  data: Record<string, unknown>[];
+  lineDataKey: LineProps['dataKey'];
+  xDataKey: XAxisProps['dataKey'];
 }
 
 const CustomLineChart = ({
