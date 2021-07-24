@@ -26,7 +26,7 @@ const CustomLineChart = ({
       <Line type="monotone" dataKey={lineDataKey} stroke="#8884d8" />
       <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
       <XAxis dataKey={xDataKey} />
-      <YAxis />
+      <YAxis domain={['auto', 'auto']} />
       <Tooltip />
     </LineChart>
   </ResponsiveContainer>
