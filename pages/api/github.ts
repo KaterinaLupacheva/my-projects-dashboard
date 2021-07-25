@@ -11,12 +11,15 @@ export default async (
     },
   });
 
-  const reposResponse = await fetch('https://api.github.com/user/repos', {
-    headers: {
-      Accept: 'application/vnd.github.v3+json',
-      Authorization: `token ${process.env.GITHUB_PERSONAL_TOKEN}`,
-    },
-  });
+  const reposResponse = await fetch(
+    'https://api.github.com/user/repos?per_page=100',
+    {
+      headers: {
+        Accept: 'application/vnd.github.v3+json',
+        Authorization: `token ${process.env.GITHUB_PERSONAL_TOKEN}`,
+      },
+    }
+  );
 
   const user = await userResponse.json();
   const repos = await reposResponse.json();
