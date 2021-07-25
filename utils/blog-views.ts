@@ -1,4 +1,5 @@
 import moment from 'moment';
+
 import { DailyViews } from '../types/general';
 
 export const prepareViewsData = (viewsData: DailyViews[]) => {
