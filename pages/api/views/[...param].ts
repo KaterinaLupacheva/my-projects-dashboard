@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { DailyViews, IViews } from '../../../types/general';
+import { IViews } from '../../../types/general';
 import { connectToDatabase } from '../../../utils/mongodb';
 
 export default async (
@@ -46,18 +46,27 @@ export default async (
       });
   }
 
+  //current date in format "YYYY-MM-DD"
+  const curDate = new Date().toISOString().substring(0, 10);
+
   //check if that there are views already today
   const dateExists = existedDoc.viewsData.find(
-    (item: DailyViews) =>
-      item.date.substring(0, 10) === new Date().toISOString().substring(0, 10) //current date in format "YYYY-MM-DD"
+    (item: any) => item.date.toISOString().substring(0, 10) === curDate
   );
+
+  const midNight = new Date(new Date().setUTCHours(0, 0, 0, 0));
 
   //increment count views by one
   if (dateExists) {
+    //increment today's views count
     await viewsCollection.updateOne(
       {
         slug: slug,
-        'viewsData.date': new RegExp(new Date().toISOString().substring(0, 10)),
+        viewsData: {
+          $elemMatch: {
+            date: { $gte: midNight },
+          },
+        },
       },
       {
         $inc: {
