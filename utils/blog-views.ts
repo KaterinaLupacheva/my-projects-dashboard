@@ -1,6 +1,7 @@
 import moment from 'moment';
 
 import { DailyViews } from '../types/general';
+import { getDate } from './date-helpers';
 
 export const prepareViewsData = (viewsData: DailyViews[]) => {
   let result = [];
@@ -41,12 +42,4 @@ const fillEmptyDates = (start: string, end: string) => {
     tempDate.add(1, 'days');
   }
   return emptyDates;
-};
-
-const getDate = (dateValue: string): string => {
-  if (dateValue.length > 10) {
-    return moment(new Date(dateValue).getTime()).format('YYYY-MM-DD');
-  } else {
-    return moment(dateValue, 'DD-MM-YYYY').format('YYYY-MM-DD');
-  }
 };

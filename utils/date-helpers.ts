@@ -24,3 +24,11 @@ export const daysRange = (
   }
   return dates;
 };
+
+export const getDate = (dateValue: string): string => {
+  if (dateValue.length > 10) {
+    return moment(new Date(dateValue).getTime()).format('YYYY-MM-DD');
+  } else {
+    return moment(dateValue, 'DD-MM-YYYY').format('YYYY-MM-DD');
+  }
+};

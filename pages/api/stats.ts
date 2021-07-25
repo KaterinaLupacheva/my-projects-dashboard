@@ -1,7 +1,6 @@
-import moment from 'moment';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { DevtoStatsDoc, FollowersData } from '../../types/general';
+import { DevtoStatsDoc } from '../../types/general';
 import { connectToDatabase } from '../../utils/mongodb';
 import { queryDevto } from './devto';
 
@@ -34,9 +33,7 @@ export default async (
           await statsCollection
             .insertOne({
               name: 'devto',
-              followers: [
-                { date: moment().format('DD-MM-YYYY'), count: followersCount },
-              ],
+              followers: [{ date: new Date(), count: followersCount }],
             })
             /* eslint-disable  @typescript-eslint/no-explicit-any */
             .then((doc: any) => {
@@ -44,9 +41,12 @@ export default async (
             });
         }
 
+        //current date in format "YYYY-MM-DD"
+        const curDate = new Date().toISOString().substring(0, 10);
+
         //check if api was called today
         const dateExists = existedDoc.followers.find(
-          (item: FollowersData) => item.date === moment().format('DD-MM-YYYY')
+          (item: any) => item.date.toISOString().substring(0, 10) === curDate
         );
 
         //update followers count
@@ -56,7 +56,7 @@ export default async (
             {
               $push: {
                 followers: {
-                  date: moment().format('DD-MM-YYYY'),
+                  date: new Date(),
                   count: followersCount,
                 },
               },

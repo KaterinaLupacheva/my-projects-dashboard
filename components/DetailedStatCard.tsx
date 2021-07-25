@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 import useSWR from 'swr';
 
 import { fetcher } from '../utils/fetcher';
-import { calculateChange } from '../utils/stats-helpers';
+import { prepareFollowersData } from '../utils/stats-helpers';
 import FollowersDetails from './FollowersDetails';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -62,7 +62,7 @@ const DetailedStatCard = ({
   if (!data) return <CircularProgress color="inherit" />;
   if (!data.followersStats) return <div>Error</div>;
 
-  const change = calculateChange(data.followersStats);
+  const { change, tranformedData } = prepareFollowersData(data.followersStats);
   const color = change > 0 ? `${classes.green}` : `${classes.red}`;
 
   return (
@@ -82,7 +82,7 @@ const DetailedStatCard = ({
       <FollowersDetails
         open={isModalOpen}
         handleClose={handleModalClose}
-        data={data.followersStats}
+        data={tranformedData}
       />
     </>
   );

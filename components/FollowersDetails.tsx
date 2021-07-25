@@ -30,6 +30,7 @@ const FollowersDetails = ({
   handleClose,
 }: FollowersDetailsProps): JSX.Element => {
   const classes = useStyles();
+
   return (
     <Dialog
       onClose={handleClose}

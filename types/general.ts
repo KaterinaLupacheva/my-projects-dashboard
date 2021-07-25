@@ -121,6 +121,11 @@ export interface IMenuItem {
   route: string;
 }
 
+export type APIFollowersData = {
+  date: Date;
+  count: number;
+};
+
 export type FollowersData = {
   date: string;
   count: number;
