@@ -1,4 +1,3 @@
-import moment from 'moment';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { DailyViews, IViews } from '../../../types/general';
@@ -39,7 +38,7 @@ export default async (
       .insertOne({
         slug: slug,
         totalViews: 0,
-        viewsData: [{ date: moment(), views: 0 }],
+        viewsData: [{ date: new Date(), views: 0 }],
       })
       /* eslint-disable  @typescript-eslint/no-explicit-any */
       .then((doc: any) => {
@@ -49,13 +48,13 @@ export default async (
 
   //check if that there are views already today
   const dateExists = existedDoc.viewsData.find(
-    (item: DailyViews) => item.date === moment()
+    (item: DailyViews) => item.date === new Date()
   );
 
   //increment count views by one
   if (dateExists) {
     await viewsCollection.updateOne(
-      { slug: slug, 'viewsData.date': moment() },
+      { slug: slug, 'viewsData.date': new Date() },
       {
         $inc: {
           totalViews: 1,
@@ -69,7 +68,7 @@ export default async (
       {
         $push: {
           viewsData: {
-            date: moment(),
+            date: new Date(),
             views: 1,
           },
         },

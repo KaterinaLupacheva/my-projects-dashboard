@@ -19,7 +19,7 @@ export interface IArticle {
 }
 
 export type DailyViews = {
-  date: Moment;
+  date: Date | string;
   views: number;
 };
 
