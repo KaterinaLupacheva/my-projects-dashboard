@@ -55,7 +55,10 @@ export default async (
   //increment count views by one
   if (dateExists) {
     await viewsCollection.updateOne(
-      { slug: slug, 'viewsData.date': new Date() },
+      {
+        slug: slug,
+        'viewsData.date': new RegExp(new Date().toISOString().substring(0, 10)),
+      },
       {
         $inc: {
           totalViews: 1,
