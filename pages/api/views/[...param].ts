@@ -49,7 +49,7 @@ export default async (
   //check if that there are views already today
   const dateExists = existedDoc.viewsData.find(
     (item: DailyViews) =>
-      item.date.substring(0, 10) === new Date().toISOString().substring(0, 10)
+      item.date.substring(0, 10) === new Date().toISOString().substring(0, 10) //current date in format "YYYY-MM-DD"
   );
 
   //increment count views by one
