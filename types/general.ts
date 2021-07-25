@@ -1,5 +1,6 @@
 import type { SvgIconTypeMap } from '@material-ui/core';
 import type { OverridableComponent } from '@material-ui/core/OverridableComponent';
+import { Moment } from 'moment';
 
 import { GROUP } from '../constants/slugs';
 
@@ -18,7 +19,7 @@ export interface IArticle {
 }
 
 export type DailyViews = {
-  date: string;
+  date: Moment;
   views: number;
 };
 

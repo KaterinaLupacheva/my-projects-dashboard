@@ -39,7 +39,7 @@ export default async (
       .insertOne({
         slug: slug,
         totalViews: 0,
-        viewsData: [{ date: moment().format('DD-MM-YYYY'), views: 0 }],
+        viewsData: [{ date: moment(), views: 0 }],
       })
       /* eslint-disable  @typescript-eslint/no-explicit-any */
       .then((doc: any) => {
@@ -49,13 +49,13 @@ export default async (
 
   //check if that there are views already today
   const dateExists = existedDoc.viewsData.find(
-    (item: DailyViews) => item.date === moment().format('DD-MM-YYYY')
+    (item: DailyViews) => item.date === moment()
   );
 
   //increment count views by one
   if (dateExists) {
     await viewsCollection.updateOne(
-      { slug: slug, 'viewsData.date': moment().format('DD-MM-YYYY') },
+      { slug: slug, 'viewsData.date': moment() },
       {
         $inc: {
           totalViews: 1,
@@ -69,7 +69,7 @@ export default async (
       {
         $push: {
           viewsData: {
-            date: moment().format('DD-MM-YYYY'),
+            date: moment(),
             views: 1,
           },
         },

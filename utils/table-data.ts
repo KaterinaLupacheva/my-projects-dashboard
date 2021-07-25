@@ -15,7 +15,8 @@ const prevSevenDaysRange = daysRange(
   moment().subtract(7, 'days')
 );
 
-const countViews = (range: string[], viewsData: DailyViews[]) => {
+//TODO change range prop data type
+const countViews = (range: any[], viewsData: DailyViews[]) => {
   let views = 0;
   range.forEach((date) => {
     const targetDate = viewsData.find((d) => d.date === date);
