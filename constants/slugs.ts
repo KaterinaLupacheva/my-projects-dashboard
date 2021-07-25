@@ -187,6 +187,12 @@ export const SLUGS = [
     group: GROUP.RAMONAK_BLOG,
   },
   {
+    published: '2021-07-21',
+    slug: 'ramonak: react-native-internationalization',
+    description: 'React Native Internationalization with i18next',
+    group: GROUP.RAMONAK_BLOG,
+  },
+  {
     published: '2020-03-12',
     slug: 'app: tabata',
     description: 'Tabata App',
