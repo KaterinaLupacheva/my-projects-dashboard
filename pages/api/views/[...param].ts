@@ -48,7 +48,7 @@ export default async (
 
   //check if that there are views already today
   const dateExists = existedDoc.viewsData.find(
-    (item: DailyViews) => item.date === new Date()
+    (item: DailyViews) => item.date === new Date().toISOString()
   );
 
   //increment count views by one
