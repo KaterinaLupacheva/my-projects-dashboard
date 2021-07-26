@@ -52,7 +52,7 @@ const DetailedStatCard = ({
   title,
 }: DetailedStatCardProps): JSX.Element => {
   const classes = useStyles();
-  const { data } = useSWR('/api/stats', fetcher);
+  const { data } = useSWR('/api/stats/devto', fetcher);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleModalClose = () => {

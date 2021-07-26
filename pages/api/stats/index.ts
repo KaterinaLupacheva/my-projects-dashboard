@@ -1,11 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { checkDateExists } from '../../utils/date-helpers';
-import { checkDocExists, insertDoc } from '../../utils/db-query';
-import { connectToDatabase } from '../../utils/mongodb';
-import { countTotalStarsAndForks } from '../../utils/stats-helpers';
-import { queryDevto } from './devto';
-import { queryGithub } from './github';
+import { checkDateExists } from '../../../utils/date-helpers';
+import { checkDocExists, insertDoc } from '../../../utils/db-query';
+import { connectToDatabase } from '../../../utils/mongodb';
+import { countTotalStarsAndForks } from '../../../utils/stats-helpers';
+import { queryDevto } from '../devto';
+import { queryGithub } from '../github';
 
 export default async (
   req: NextApiRequest,
@@ -29,17 +29,6 @@ export default async (
     } catch (error) {
       res.status(500).json({ statusCode: 500, message: error.message });
     }
-  }
-
-  if (req.method === 'GET') {
-    const { db } = await connectToDatabase();
-    const statsCollection = await db.collection('stats');
-
-    const docs = await statsCollection.find({ name: 'devto' }).toArray();
-
-    return res.status(200).json({
-      followersStats: docs[0].followers,
-    });
   }
 };
 
