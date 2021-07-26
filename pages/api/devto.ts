@@ -2,12 +2,12 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { IArticle } from '../../types/general';
 
-type DevtoReturn = {
+type APIDevto = {
   articles: IArticle[];
   followersCount: number;
 };
 
-export async function queryDevto(): Promise<DevtoReturn> {
+export async function queryDevto(): Promise<APIDevto> {
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set('Content-Type', 'application/json');
   process.env.DEVTO_API_KEY &&

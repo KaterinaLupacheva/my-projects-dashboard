@@ -84,3 +84,10 @@ export default async (
     });
   }
 };
+
+//for github:
+// - query github (get user and repos)
+
+//update doc in collection
+
+//get method - based on slug
