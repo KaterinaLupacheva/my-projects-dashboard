@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-import { APIFollowersData } from '../types/general';
+import { APIFollowersData, IRepo } from '../types/general';
 import { getDate } from './date-helpers';
 
 const followersCount = ({
@@ -47,4 +47,23 @@ export const prepareFollowersData = (data: APIFollowersData[]) => {
     change: calculateChange(data),
     tranformedData: transformData(data),
   };
+};
+
+type StarsAndForks = {
+  stars: number;
+  forks: number;
+};
+
+export const countTotalStarsAndForks = (
+  repos: IRepo[],
+  userHandle: string
+): StarsAndForks => {
+  const result = { stars: 0, forks: 0 };
+  repos.forEach((repo: IRepo) => {
+    if (repo.owner.login === userHandle) {
+      result.stars += repo.stargazers_count;
+      result.forks += repo.forks_count;
+    }
+  });
+  return result;
 };

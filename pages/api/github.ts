@@ -1,9 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+
 import { IGithubUser, IRepo } from '../../types/general';
 
 type APIGithub = {
   user: Omit<IGithubUser, 'totalStarsAndForks'>;
-  repos: IRepo;
+  repos: IRepo[];
 };
 
 export async function queryGithub(): Promise<APIGithub> {

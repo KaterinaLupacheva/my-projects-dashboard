@@ -32,3 +32,16 @@ export const getDate = (dateValue: string): string => {
     return moment(dateValue, 'DD-MM-YYYY').format('YYYY-MM-DD');
   }
 };
+
+//current date in format "YYYY-MM-DD"
+const curDate = new Date().toISOString().substring(0, 10);
+
+//check if that there are views already today
+export const checkDateExists = (array: any[]) =>
+  array.find((item: any) => {
+    const dbDate =
+      typeof item.date !== 'string'
+        ? item.date.toISOString().substring(0, 10)
+        : item.date;
+    return dbDate === curDate;
+  });

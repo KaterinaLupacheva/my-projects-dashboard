@@ -16,8 +16,9 @@ import BackDropWithSpinner from '../components/BackdropWithSpinner';
 import GithubCard from '../components/GitHubCard';
 import GithubUserInfo from '../components/GithubUserInfo';
 import CustomHead from '../components/Head';
-import { GithubSortOptions, IRepo } from '../types/general';
+import { GithubSortOptions } from '../types/general';
 import { fetcher } from '../utils/fetcher';
+import { countTotalStarsAndForks } from '../utils/stats-helpers';
 
 const GitHub = (): JSX.Element => {
   const { data, error } = useSWR('/api/github', fetcher);
@@ -27,16 +28,7 @@ const GitHub = (): JSX.Element => {
   if (!data) return <BackDropWithSpinner open={true} />;
   if (!data.user || !data.repos) return <div>Error</div>;
 
-  const countTotalStarsAndForks = (repos: IRepo[]) => {
-    const result = { stars: 0, forks: 0 };
-    repos.forEach((repo: IRepo) => {
-      if (repo.owner.login === data.user.login) {
-        result.stars += repo.stargazers_count;
-        result.forks += repo.forks_count;
-      }
-    });
-    return result;
-  };
+  const starsAndForks = countTotalStarsAndForks(data.repos, data.user.login);
 
   const sortArray = (type: GithubSortOptions) => {
     const types = {
@@ -75,10 +67,7 @@ const GitHub = (): JSX.Element => {
   return (
     <div>
       <CustomHead title="GitHub stats" />
-      <GithubUserInfo
-        {...data.user}
-        totalStarsAndForks={countTotalStarsAndForks(data.repos)}
-      />
+      <GithubUserInfo {...data.user} totalStarsAndForks={starsAndForks} />
       <Divider />
       <Box m={3} />
       <Typography variant="h3" align="center" gutterBottom>
