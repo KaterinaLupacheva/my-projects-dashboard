@@ -1,7 +1,7 @@
 import { Dialog, makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
-import { StatsData } from '../types/general';
 
+import { StatsData } from '../types/general';
 import CustomLineChart from './LineChart';
 
 const useStyles = makeStyles((theme) => ({
