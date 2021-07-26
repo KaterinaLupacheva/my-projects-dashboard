@@ -11,11 +11,13 @@ import {
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import clsx from 'clsx';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
 import { MENU_LIST_ITEMS } from '../../constants/menu-items';
+// import logo from '../../public/logo.png';
 import { CustomTheme } from '../../styles/CustomTheme';
 import { drawerWidth } from '../../styles/theme';
 
@@ -76,6 +78,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   linkTextSelected: {
     color: theme.palette.primary.contrastText,
   },
+  logo: {
+    marginLeft: theme.spacing(1),
+  },
 }));
 
 interface SideBarProps {
@@ -101,8 +106,11 @@ const Sidebar = ({ open, handleDrawerClose }: SideBarProps): JSX.Element => {
       open={open}
     >
       <div className={classes.drawerTitleContainer}>
+        <div className={classes.logo}>
+          <Image src="/logo.png" alt="logo" width={50} height={25} />
+        </div>
         <Typography variant="h5" classes={{ root: classes.drawerTitle }}>
-          Dashboard
+          Ramonak
         </Typography>
         <div className={classes.toolbarIcon}>
           <IconButton onClick={handleDrawerClose}>
