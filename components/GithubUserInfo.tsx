@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@material-ui/core';
+import { CircularProgress, Grid, Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import LanguageIcon from '@material-ui/icons/Language';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
@@ -7,8 +7,11 @@ import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
 import Paper from '@ramonak/paper';
 import Image from 'next/image';
 import Link from 'next/link';
+import useSWR from 'swr';
 
 import { IGithubUser } from '../types/general';
+import { fetcher } from '../utils/fetcher';
+import DetailedStatCard from './DetailedStatCard';
 import StatCard from './StatCard';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -57,6 +60,9 @@ const GithubUserInfo = (props: IGithubUser): JSX.Element => {
   } = props;
 
   const classes = useStyles();
+
+  const { data } = useSWR('/api/stats/github', fetcher);
+  if (!data) return <CircularProgress color="inherit" />;
 
   return (
     <Grid container spacing={2} className={classes.margin}>
@@ -113,18 +119,34 @@ const GithubUserInfo = (props: IGithubUser): JSX.Element => {
       <Grid item xs={12} md={6} className={classes.gridColumn}>
         <Grid container spacing={2}>
           <Grid item xs>
-            <StatCard title="Total Repos" value={public_repos} />
+            <DetailedStatCard
+              data={data?.reposStats}
+              title="Total Repos"
+              value={public_repos}
+            />
           </Grid>
           <Grid item xs>
-            <StatCard title="Followers" value={followers} />
+            <DetailedStatCard
+              data={data?.followersStats}
+              title="Followers"
+              value={followers}
+            />
           </Grid>
         </Grid>
         <Grid container spacing={2}>
           <Grid item xs>
-            <StatCard title="Total stars" value={stars} />
+            <DetailedStatCard
+              data={data?.starsStats}
+              title="Total stars"
+              value={stars}
+            />
           </Grid>
           <Grid item xs>
-            <StatCard title="Total forks" value={forks} />
+            <DetailedStatCard
+              data={data?.forksStats}
+              title="Total forks"
+              value={forks}
+            />
           </Grid>
         </Grid>
       </Grid>

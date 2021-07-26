@@ -1,15 +1,13 @@
-import { CircularProgress, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { green, red } from '@material-ui/core/colors';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import Paper from '@ramonak/paper';
 import React, { useState } from 'react';
-import useSWR from 'swr';
 
-import { fetcher } from '../utils/fetcher';
-import { prepareFollowersData } from '../utils/stats-helpers';
-import FollowersDetails from './FollowersDetails';
+import { prepareStatsDetails } from '../utils/stats-helpers';
+import StatsDetails from './StatsDetails';
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
@@ -23,6 +21,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   container: {
     justifyContent: 'space-between',
     width: '100%',
+    padding: theme.spacing(1),
   },
   column: {
     display: 'flex',
@@ -43,48 +42,45 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface DetailedStatCardProps {
+  data: any;
   value: number;
   title: string;
 }
 
 const DetailedStatCard = ({
+  data,
   value,
   title,
 }: DetailedStatCardProps): JSX.Element => {
   const classes = useStyles();
-  const { data } = useSWR('/api/stats/devto', fetcher);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
 
-  if (!data) return <CircularProgress color="inherit" />;
-  if (!data.followersStats) return <div>Error</div>;
-
-  const { change, tranformedData } = prepareFollowersData(data.followersStats);
+  const { change, transformedData } = prepareStatsDetails(data);
   const color = change > 0 ? `${classes.green}` : `${classes.red}`;
 
   return (
-    <>
-      <Paper customClass={classes.paper} elevation={3}>
-        <div className={classes.container}>
-          <Typography variant="h4">{value}</Typography>
-          <Typography variant="button">{title}</Typography>
-        </div>
-        <div className={classes.column}>
-          <IconButton onClick={() => setIsModalOpen(true)} size="small">
-            <OpenInNewIcon fontSize="small" color="secondary" />
-          </IconButton>
-          <Typography className={color}>{change}</Typography>
-        </div>
-      </Paper>
-      <FollowersDetails
+    <Paper customClass={classes.paper} elevation={3}>
+      <div className={classes.container}>
+        <Typography variant="h4">{value}</Typography>
+        <Typography variant="button">{title}</Typography>
+      </div>
+      <div className={classes.column}>
+        <IconButton onClick={() => setIsModalOpen(true)} size="small">
+          <OpenInNewIcon fontSize="small" color="secondary" />
+        </IconButton>
+        <Typography className={color}>{change}</Typography>
+      </div>
+      <StatsDetails
         open={isModalOpen}
         handleClose={handleModalClose}
-        data={tranformedData}
+        data={transformedData}
+        title={title}
       />
-    </>
+    </Paper>
   );
 };
 

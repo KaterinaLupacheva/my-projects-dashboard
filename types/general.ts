@@ -121,12 +121,12 @@ export interface IMenuItem {
   route: string;
 }
 
-export type APIFollowersData = {
+export type APIStatsData = {
   date: Date;
   count: number;
 };
 
-export type FollowersData = {
+export type StatsData = {
   date: string;
   count: number;
 };
@@ -134,5 +134,10 @@ export type FollowersData = {
 export interface DevtoStatsDoc {
   _id: number | string;
   name: string;
-  followers: FollowersData[];
+  followers: StatsData[];
 }
+
+export type StatsDetails = {
+  change: number | string;
+  transformedData: StatsData[];
+};

@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-import { APIFollowersData, IRepo } from '../types/general';
+import { APIStatsData, IRepo, StatsData, StatsDetails } from '../types/general';
 import { getDate } from './date-helpers';
 
 const followersCount = ({
@@ -8,9 +8,9 @@ const followersCount = ({
   data,
 }: {
   date: string;
-  data: APIFollowersData[];
+  data: APIStatsData[];
 }): number => {
-  const dayStat = data.find((item: APIFollowersData) => {
+  const dayStat = data.find((item: APIStatsData) => {
     if (typeof item.date !== 'string') {
       return item.date.toISOString().substring(0, 10) === date;
     } else {
@@ -20,7 +20,7 @@ const followersCount = ({
   return dayStat?.count || 0;
 };
 
-const calculateChange = (data: APIFollowersData[]): number | string => {
+const calculateChange = (data: APIStatsData[]): number | string => {
   const sevenDaysAgo = moment().subtract(7, 'days').format('YYYY-MM-DD');
   const currentFollowersCount = followersCount({
     date: moment().format('DD-MM-YYYY'),
@@ -32,7 +32,7 @@ const calculateChange = (data: APIFollowersData[]): number | string => {
   return change !== currentFollowersCount ? signedChange : 0;
 };
 
-const transformData = (data: APIFollowersData[]) =>
+const transformData = (data: APIStatsData[]): StatsData[] =>
   data.map((item) => {
     return {
       ...item,
@@ -42,10 +42,10 @@ const transformData = (data: APIFollowersData[]) =>
     };
   });
 
-export const prepareFollowersData = (data: APIFollowersData[]) => {
+export const prepareStatsDetails = (data: APIStatsData[]): StatsDetails => {
   return {
     change: calculateChange(data),
-    tranformedData: transformData(data),
+    transformedData: transformData(data),
   };
 };
 

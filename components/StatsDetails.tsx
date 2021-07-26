@@ -1,7 +1,7 @@
 import { Dialog, makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
+import { StatsData } from '../types/general';
 
-import { FollowersData } from '../types/general';
 import CustomLineChart from './LineChart';
 
 const useStyles = makeStyles((theme) => ({
@@ -18,17 +18,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-interface FollowersDetailsProps {
+interface StatsDetailsProps {
   handleClose: () => void;
   open: boolean;
-  data: FollowersData[];
+  data: StatsData[];
+  title: string;
 }
 
-const FollowersDetails = ({
+const StatsDetails = ({
   open,
   data,
   handleClose,
-}: FollowersDetailsProps): JSX.Element => {
+  title,
+}: StatsDetailsProps): JSX.Element => {
   const classes = useStyles();
 
   return (
@@ -46,7 +48,7 @@ const FollowersDetails = ({
         align="center"
         className={classes.title}
       >
-        Followers
+        {title}
       </Typography>
       <div className={classes.chartContainer}>
         <CustomLineChart data={data} lineDataKey="count" xDataKey="date" />
@@ -55,4 +57,4 @@ const FollowersDetails = ({
   );
 };
 
-export default FollowersDetails;
+export default StatsDetails;
