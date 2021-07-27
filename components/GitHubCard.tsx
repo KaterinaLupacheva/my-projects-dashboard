@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     padding: theme.spacing(1),
-    color: theme.palette.primary.main,
+    color: theme.palette.text.primary,
   },
   statsRow: {
     display: 'flex',

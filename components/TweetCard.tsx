@@ -33,8 +33,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: 'grey',
   },
   tweet: {
-    backgroundColor: theme.palette.primary.main,
-    color: '#fff',
+    backgroundColor: theme.palette.primary.light,
+    color: theme.palette.text.primary,
   },
   reply: {
     color: theme.palette.secondary.main,

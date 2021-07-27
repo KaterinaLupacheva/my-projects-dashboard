@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: theme.spacing(3),
   },
   link: {
-    color: theme.palette.primary.main,
+    color: theme.palette.text.primary,
     fontWeight: 'bolder',
   },
 }));

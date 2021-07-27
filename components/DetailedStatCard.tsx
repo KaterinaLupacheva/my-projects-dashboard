@@ -12,7 +12,7 @@ import StatsDetails from './StatsDetails';
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
     textAlign: 'center',
-    color: theme.palette.primary.main,
+    color: theme.palette.text.primary,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

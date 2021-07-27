@@ -1,8 +1,8 @@
-import Button from '@material-ui/core/Button';
+import { IconButton } from '@material-ui/core';
 import TableCell from '@material-ui/core/TableCell';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import moment from 'moment';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { IMappedDoc } from '../../types/general';
 import BlogViewsDetails from '../BlogViewsDetails';
@@ -28,14 +28,9 @@ const BlogItem = ({ row }: BlogItemProps): JSX.Element => {
       </TableCell>
       <TableCell>{totalViews}</TableCell>
       <TableCell>
-        <Button
-          size="small"
-          variant="contained"
-          endIcon={<OpenInNewIcon />}
-          onClick={() => setIsModalOpen(true)}
-        >
-          Details
-        </Button>
+        <IconButton onClick={() => setIsModalOpen(true)} size="small">
+          <OpenInNewIcon fontSize="small" color="secondary" />
+        </IconButton>
       </TableCell>
       <BlogViewsDetails
         open={isModalOpen}
