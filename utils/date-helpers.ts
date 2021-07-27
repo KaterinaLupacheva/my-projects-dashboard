@@ -1,4 +1,5 @@
 import moment, { Moment } from 'moment';
+import { CHART_DATE_FORMAT } from '../constants/date-formats';
 
 export const timestampToDate = (timestamp: string): Date | string | number => {
   const options = {
@@ -27,9 +28,9 @@ export const daysRange = (
 
 export const getDate = (dateValue: string): string => {
   if (dateValue.length > 10) {
-    return moment(new Date(dateValue).getTime()).format('YYYY-MM-DD');
+    return moment(new Date(dateValue).getTime()).format(CHART_DATE_FORMAT);
   } else {
-    return moment(dateValue, 'DD-MM-YYYY').format('YYYY-MM-DD');
+    return moment(dateValue, 'DD-MM-YYYY').format(CHART_DATE_FORMAT);
   }
 };
 
@@ -45,3 +46,10 @@ export const checkDateExists = (array: any[]) =>
         : item.date;
     return dbDate === curDate;
   });
+
+export const dateDiff = (start: string, end: string): number =>
+  moment
+    .duration(
+      moment(end, CHART_DATE_FORMAT).diff(moment(start, CHART_DATE_FORMAT))
+    )
+    .asDays();
