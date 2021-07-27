@@ -88,11 +88,12 @@ interface SideBarProps {
 const Sidebar = ({ open, handleDrawerClose }: SideBarProps): JSX.Element => {
   const classes = useStyles();
   const router = useRouter();
-  const initialSelection = () => {
-    return MENU_LIST_ITEMS.findIndex((el) => el.route === router.pathname);
-  };
-
-  const [selectedIndex, setSelectedIndex] = useState(initialSelection());
+  const initialSelection = MENU_LIST_ITEMS.findIndex(
+    (el) => el.route === router.pathname
+  );
+  const [selectedIndex, setSelectedIndex] = useState(
+    initialSelection !== -1 ? initialSelection : 0
+  );
 
   return (
     <Drawer
