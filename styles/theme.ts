@@ -1,26 +1,25 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-// Create a theme instance.
 const theme = createMuiTheme({
   palette: {
     primary: {
       main: '#243354',
-      // grey: '#A4A6B3',
-      // selected: '#DDE2FF',
+      light: '#8C94AC',
+      dark: '#162036',
+      contrastText: '#FFF',
     },
     secondary: {
       main: '#E13D4E',
     },
-    // textPrimary: 'rgba(0, 0, 0, 0.87)',
-    // error: {
-    //   main: red.A400,
-    // },
+    text: {
+      primary: '#243354',
+      secondary: '#000',
+    },
     background: {
       default: '#edf0f2',
       paper: '#fff',
-      // dark: '#363740',
-      // selected: '#6B6C72',
     },
+    divider: '#A4A6B3',
   },
 });
 

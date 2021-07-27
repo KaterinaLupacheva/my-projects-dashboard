@@ -17,8 +17,6 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
 import { MENU_LIST_ITEMS } from '../../constants/menu-items';
-// import logo from '../../public/logo.png';
-import { CustomTheme } from '../../styles/CustomTheme';
 import { drawerWidth } from '../../styles/theme';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -46,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    backgroundColor: CustomTheme.color.bgDark,
+    backgroundColor: theme.palette.primary.dark,
   },
   drawerPaperClose: {
     overflowX: 'hidden',
@@ -59,21 +57,20 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: theme.spacing(9),
     },
   },
-  divider: {
-    backgroundColor: CustomTheme.color.grey,
-  },
   list: {
     padding: 0,
   },
   selected: {
-    backgroundColor: `${CustomTheme.color.bgSelected} !important`,
-    fontWeight: 600,
+    backgroundColor: `${theme.palette.primary.light} !important`,
   },
   link: {
     textDecoration: 'none',
   },
   linkText: {
-    color: CustomTheme.color.grey,
+    color: theme.palette.primary.light,
+  },
+  text: {
+    ...theme.typography.h6,
   },
   linkTextSelected: {
     color: theme.palette.primary.contrastText,
@@ -118,7 +115,7 @@ const Sidebar = ({ open, handleDrawerClose }: SideBarProps): JSX.Element => {
           </IconButton>
         </div>
       </div>
-      <Divider classes={{ root: classes.divider }} />
+      <Divider />
       <List classes={{ root: classes.list }}>
         {MENU_LIST_ITEMS.map(({ route, Icon, name }, id) => (
           <Link href={route} key={id}>
@@ -147,6 +144,7 @@ const Sidebar = ({ open, handleDrawerClose }: SideBarProps): JSX.Element => {
                       id === selectedIndex
                         ? classes.linkTextSelected
                         : classes.linkText,
+                    primary: classes.text,
                   }}
                 />
               </ListItem>
@@ -154,7 +152,7 @@ const Sidebar = ({ open, handleDrawerClose }: SideBarProps): JSX.Element => {
           </Link>
         ))}
       </List>
-      <Divider classes={{ root: classes.divider }} />
+      <Divider />
     </Drawer>
   );
 };

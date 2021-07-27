@@ -7,7 +7,6 @@ import Paper from '@ramonak/paper';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { CustomTheme } from '../styles/CustomTheme';
 import { IArticle } from '../types/general';
 import { timestampToDate } from '../utils/date-helpers';
 
@@ -17,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   container: {
     textDecoration: 'none',
-    color: CustomTheme.color.textPrimary,
+    color: theme.palette.text.primary,
     width: '100%',
   },
   rowContainer: {
