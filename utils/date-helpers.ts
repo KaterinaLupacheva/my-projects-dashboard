@@ -1,4 +1,5 @@
 import moment, { Moment } from 'moment';
+
 import { CHART_DATE_FORMAT } from '../constants/date-formats';
 
 export const timestampToDate = (timestamp: string): Date | string | number => {

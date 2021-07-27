@@ -1,6 +1,6 @@
 import moment from 'moment';
-import { CHART_DATE_FORMAT } from '../constants/date-formats';
 
+import { CHART_DATE_FORMAT } from '../constants/date-formats';
 import { DailyViews } from '../types/general';
 import { dateDiff, getDate } from './date-helpers';
 

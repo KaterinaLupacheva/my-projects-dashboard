@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { useState } from 'react';
+import Footer from '../Footer';
 
 import Sidebar from './Sidebar';
 import TopAppBar from './TopAppBar';
@@ -28,9 +29,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     minHeight: '90vh',
     display: 'flex',
     flexDirection: 'column',
-  },
-  copyright: {
-    marginTop: 'auto',
   },
 }));
 
@@ -60,26 +58,11 @@ const AppBarWithSidebar = ({
           <Grid container spacing={3}>
             {children}
           </Grid>
-          <Box pt={4} className={classes.copyright}>
-            <Copyright />
-          </Box>
         </Container>
+        <Footer />
       </main>
     </div>
   );
 };
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://ramonak.io/">
-        ramonak.io
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 export default AppBarWithSidebar;
