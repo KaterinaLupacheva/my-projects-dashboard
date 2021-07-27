@@ -1,15 +1,8 @@
-import {
-  Box,
-  Container,
-  Grid,
-  Link,
-  Theme,
-  Typography,
-} from '@material-ui/core';
+import { Container, Grid, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { useState } from 'react';
-import Footer from '../Footer';
 
+import Footer from '../Footer';
 import Sidebar from './Sidebar';
 import TopAppBar from './TopAppBar';
 
