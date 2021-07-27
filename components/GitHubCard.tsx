@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     display: 'flex',
     justifyContent: 'center',
+    color: theme.palette.secondary.main,
   },
   icon: {
     marginLeft: theme.spacing(1),
@@ -31,6 +32,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     padding: theme.spacing(1),
+    color: theme.palette.primary.main,
   },
   statsRow: {
     display: 'flex',
@@ -42,6 +44,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   paperContainer: {
     height: '100%',
+    backgroundColor: theme.palette.background.paper,
   },
   content: {
     display: 'flex',

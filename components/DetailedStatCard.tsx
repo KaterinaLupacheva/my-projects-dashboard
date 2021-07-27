@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
+    backgroundColor: theme.palette.background.paper,
   },
   container: {
     justifyContent: 'space-between',

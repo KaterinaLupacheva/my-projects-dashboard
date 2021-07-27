@@ -12,6 +12,9 @@ import { IArticle } from '../types/general';
 import { timestampToDate } from '../utils/date-helpers';
 
 const useStyles = makeStyles((theme: Theme) => ({
+  wrapper: {
+    backgroundColor: theme.palette.background.paper,
+  },
   container: {
     textDecoration: 'none',
     color: CustomTheme.color.textPrimary,
@@ -51,7 +54,7 @@ const DevtoCard = (props: IArticle): JSX.Element => {
   const classes = useStyles();
 
   return (
-    <Box m={2}>
+    <Box m={2} className={classes.wrapper}>
       <Paper elevation={3}>
         <Link href={url}>
           <a className={classes.container} target="_blank">

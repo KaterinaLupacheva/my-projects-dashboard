@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(1),
     display: 'flex',
     justifyContent: 'space-between',
+    backgroundColor: theme.palette.background.paper,
   },
   avatar: {
     borderRadius: '100%',
@@ -34,6 +35,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   margin: {
     marginBottom: theme.spacing(3),
+  },
+  link: {
+    color: theme.palette.primary.main,
+    fontWeight: 'bolder',
   },
 }));
 
@@ -64,7 +69,10 @@ const TwitterUserInfo = (props: ITweeterUser): JSX.Element => {
               />
               <div>
                 <Link href={`https://twitter.com/${screen_name}`}>
-                  <a target="_blank">{`@${screen_name}`}</a>
+                  <a
+                    target="_blank"
+                    className={classes.link}
+                  >{`@${screen_name}`}</a>
                 </Link>
               </div>
             </div>
@@ -76,7 +84,9 @@ const TwitterUserInfo = (props: ITweeterUser): JSX.Element => {
               <div className={classes.row}>
                 <LinkIcon fontSize="small" />
                 <Link href={`https://${name}`}>
-                  <a target="_blank">{name}</a>
+                  <a target="_blank" className={classes.link}>
+                    {name}
+                  </a>
                 </Link>
               </div>
               <div className={classes.row}>

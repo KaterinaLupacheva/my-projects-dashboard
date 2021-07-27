@@ -12,13 +12,13 @@ import useSWR from 'swr';
 import { IGithubUser } from '../types/general';
 import { fetcher } from '../utils/fetcher';
 import DetailedStatCard from './DetailedStatCard';
-import StatCard from './StatCard';
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
     padding: theme.spacing(1),
     display: 'flex',
     justifyContent: 'space-between',
+    backgroundColor: theme.palette.background.paper,
   },
   avatar: {
     borderRadius: '100%',
@@ -40,6 +40,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   margin: {
     marginBottom: theme.spacing(3),
+  },
+  link: {
+    color: theme.palette.primary.main,
+    fontWeight: 'bolder',
   },
 }));
 
@@ -88,7 +92,7 @@ const GithubUserInfo = (props: IGithubUser): JSX.Element => {
             )}
             <div>
               <Link href={html_url}>
-                <a>{`@${login}`}</a>
+                <a className={classes.link}>{`@${login}`}</a>
               </Link>
             </div>
           </div>
@@ -100,7 +104,7 @@ const GithubUserInfo = (props: IGithubUser): JSX.Element => {
             <div className={classes.row}>
               <LanguageIcon fontSize="small" />
               <Link href={`https://${blog}`}>
-                <a target="_blank">
+                <a target="_blank" className={classes.link}>
                   <Typography>{blog}</Typography>
                 </a>
               </Link>

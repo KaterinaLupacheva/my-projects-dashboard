@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   container: {
     marginTop: theme.spacing(1),
     height: '100%',
+    backgroundColor: theme.palette.background.paper,
   },
   row: {
     display: 'flex',
@@ -30,6 +31,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   link: {
     textDecoration: 'none',
     color: 'grey',
+  },
+  tweet: {
+    backgroundColor: theme.palette.primary.main,
+    color: '#fff',
+  },
+  reply: {
+    color: theme.palette.secondary.main,
+    borderColor: theme.palette.secondary.main,
   },
 }));
 
@@ -77,7 +86,8 @@ const TweetCard = (props: ITweet): JSX.Element => {
         <div className={classes.rowSpaceBetween}>
           <Chip
             variant="outlined"
-            color={in_reply_to_status_id ? 'secondary' : 'primary'}
+            className={in_reply_to_status_id ? classes.reply : classes.tweet}
+            // color={in_reply_to_status_id ? 'secondary' : 'primary'}
             label={in_reply_to_status_id ? 'Reply' : 'Tweet'}
           />
           <div className={classes.row}>

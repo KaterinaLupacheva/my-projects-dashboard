@@ -1,4 +1,4 @@
-import { Box, Typography } from '@material-ui/core';
+import { Box, Grid, Typography } from '@material-ui/core';
 
 import CustomHead from '../components/Head';
 import NpmPackageCard from '../components/NpmPackageCard';
@@ -12,10 +12,13 @@ const Npm = (): JSX.Element => {
         <Typography variant="h3" align="center" gutterBottom>
           NPM packages
         </Typography>
-
-        {packages.map((p, id) => (
-          <NpmPackageCard packageName={p} key={id} />
-        ))}
+        <Grid container spacing={3}>
+          {packages.map((p, id) => (
+            <Grid item key={id} xs={12}>
+              <NpmPackageCard packageName={p} />
+            </Grid>
+          ))}
+        </Grid>
       </Box>
     </>
   );
