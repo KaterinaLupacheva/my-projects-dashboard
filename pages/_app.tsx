@@ -1,12 +1,11 @@
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { MuiThemeProvider } from '@material-ui/core/styles';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import AppBarWithSidebar from '../components/MainLayout';
-import theme from '../styles/theme';
+import { ThemeProvider } from '../context/ThemeContext';
 
 export default function MyApp(props: AppProps): JSX.Element {
   const { Component, pageProps } = props;
@@ -28,13 +27,13 @@ export default function MyApp(props: AppProps): JSX.Element {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <MuiThemeProvider theme={theme}>
+      <ThemeProvider>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <AppBarWithSidebar>
           <Component {...pageProps} />
         </AppBarWithSidebar>
-      </MuiThemeProvider>
+      </ThemeProvider>
     </>
   );
 }

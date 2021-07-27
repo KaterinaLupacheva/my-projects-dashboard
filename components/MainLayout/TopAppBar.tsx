@@ -11,6 +11,7 @@ import clsx from 'clsx';
 import React from 'react';
 
 import { drawerWidth } from '../../styles/theme';
+import ThemeToggler from '../ThemeToggler';
 
 const useStyles = makeStyles((theme: Theme) => ({
   appBar: {
@@ -72,6 +73,7 @@ const TopAppBar = ({ open, handleDrawerOpen }: TopAppBarProps): JSX.Element => {
         >
           My Projects Dashboard
         </Typography>
+        <ThemeToggler />
       </Toolbar>
     </AppBar>
   );
