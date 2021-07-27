@@ -29,7 +29,7 @@ const Ramonak = (): JSX.Element => {
       <Typography variant="h3" align="center" gutterBottom>
         Blog posts Views count
       </Typography>
-      <ViewsTable data={docs[GROUP.RAMONAK_BLOG]} />
+      <ViewsTable data={docs[GROUP.RAMONAK_BLOG]} withPagination />
       <Box margin={5} />
       <Typography variant="h3" align="center" gutterBottom>
         NPM packages demos views

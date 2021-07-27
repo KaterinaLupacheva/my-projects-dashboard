@@ -161,9 +161,13 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface ViewsTableProps {
   data: IMappedDoc[];
+  withPagination?: boolean;
 }
 
-export default function EnhancedTable({ data }: ViewsTableProps): JSX.Element {
+export default function EnhancedTable({
+  data,
+  withPagination = false,
+}: ViewsTableProps): JSX.Element {
   const classes = useStyles();
   const [order, setOrder] = React.useState<Order>('desc');
   const [orderBy, setOrderBy] = React.useState<SortableProps>('thisWeekViews');
@@ -227,15 +231,17 @@ export default function EnhancedTable({ data }: ViewsTableProps): JSX.Element {
             </TableBody>
           </Table>
         </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={data.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onChangePage={handleChangePage}
-          onChangeRowsPerPage={handleChangeRowsPerPage}
-        />
+        {withPagination && (
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={data.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onChangePage={handleChangePage}
+            onChangeRowsPerPage={handleChangeRowsPerPage}
+          />
+        )}
       </Paper>
     </div>
   );
