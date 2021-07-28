@@ -7,7 +7,7 @@ import Paper from '@ramonak/paper';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { ITweeterUser } from '../types/general';
+import { ITwitterUser } from '../types/general';
 import StatsCard from './StatCard';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const TwitterUserInfo = (props: ITweeterUser): JSX.Element => {
+const TwitterUserInfo = (props: ITwitterUser): JSX.Element => {
   const {
     profile_image_url_https,
     screen_name,

@@ -100,7 +100,7 @@ export interface ITweet {
   truncated: boolean;
 }
 
-export interface ITweeterUser {
+export interface ITwitterUser {
   profile_image_url_https: string;
   screen_name: string;
   name: string;
