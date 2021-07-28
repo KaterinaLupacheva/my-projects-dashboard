@@ -6,9 +6,13 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Paper from '@ramonak/paper';
 import Image from 'next/image';
 import Link from 'next/link';
+import useSWR from 'swr';
+import { CircularProgress } from '@material-ui/core';
 
 import { ITwitterUser } from '../types/general';
+import { fetcher } from '../utils/fetcher';
 import StatsCard from './StatCard';
+import DetailedStatCard from './DetailedStatCard';
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
@@ -52,6 +56,10 @@ const TwitterUserInfo = (props: ITwitterUser): JSX.Element => {
     followers_count,
     friends_count,
   } = props;
+
+  const { data } = useSWR('/api/stats/twitter', fetcher);
+  if (!data) return <CircularProgress color="inherit" />;
+
   const classes = useStyles();
 
   return (
@@ -103,7 +111,11 @@ const TwitterUserInfo = (props: ITwitterUser): JSX.Element => {
         </Paper>
       </Grid>
       <Grid item xs={12} md={3}>
-        <StatsCard title="Followers" value={followers_count} />
+        <DetailedStatCard
+          data={data?.followersStats}
+          title="Followers"
+          value={followers_count}
+        />
       </Grid>
       <Grid item xs={12} md={3}>
         <StatsCard title="Following" value={friends_count} />

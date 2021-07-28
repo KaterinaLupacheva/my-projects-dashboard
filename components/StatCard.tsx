@@ -23,7 +23,7 @@ interface StatCardProps {
 const StatCard = ({ value, title }: StatCardProps): JSX.Element => {
   const classes = useStyles();
   return (
-    <Paper customClass={classes.paper} elevation={20}>
+    <Paper customClass={classes.paper} elevation={3}>
       <div>
         <Typography variant="h4">{value}</Typography>
         <Typography variant="button">{title}</Typography>
