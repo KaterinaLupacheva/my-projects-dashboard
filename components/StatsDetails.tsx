@@ -23,6 +23,7 @@ interface StatsDetailsProps {
   open: boolean;
   data: StatsData[];
   title: string;
+  isDevto?: boolean;
 }
 
 const StatsDetails = ({
@@ -30,6 +31,7 @@ const StatsDetails = ({
   data,
   handleClose,
   title,
+  isDevto,
 }: StatsDetailsProps): JSX.Element => {
   const classes = useStyles();
 
@@ -51,7 +53,12 @@ const StatsDetails = ({
         {title}
       </Typography>
       <div className={classes.chartContainer}>
-        <CustomLineChart data={data} lineDataKey="count" xDataKey="date" />
+        <CustomLineChart
+          data={data}
+          lineDataKey="count"
+          xDataKey="date"
+          isDevto={isDevto}
+        />
       </div>
     </Dialog>
   );

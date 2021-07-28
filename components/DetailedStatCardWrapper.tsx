@@ -9,6 +9,7 @@ interface DetailedStatCardWrapperProps {
   query: string;
   value: number;
   title: string;
+  isDevto?: boolean;
 }
 
 const DetailedStatCardWrapper = ({

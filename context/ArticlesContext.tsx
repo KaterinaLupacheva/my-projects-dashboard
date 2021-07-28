@@ -1,4 +1,5 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useContext, useState } from 'react';
+
 import { IArticle } from '../types/general';
 
 type ArticlesState = {

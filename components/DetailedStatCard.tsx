@@ -46,12 +46,14 @@ interface DetailedStatCardProps {
   data: any;
   value: number;
   title: string;
+  isDevto?: boolean;
 }
 
 const DetailedStatCard = ({
   data,
   value,
   title,
+  ...otherProps
 }: DetailedStatCardProps): JSX.Element => {
   const classes = useStyles();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -80,6 +82,7 @@ const DetailedStatCard = ({
         handleClose={handleModalClose}
         data={transformedData}
         title={title}
+        {...otherProps}
       />
     </Paper>
   );

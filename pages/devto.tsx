@@ -16,6 +16,7 @@ import DetailedStatCardWrapper from '../components/DetailedStatCardWrapper';
 import DevtoCard from '../components/DevtoCard';
 import CustomHead from '../components/Head';
 import StatCard from '../components/StatCard';
+import { useArticlesContext } from '../context/ArticlesContext';
 import type { DevtoSortOptions } from '../types/general';
 import { IArticle } from '../types/general';
 import { fetcher } from '../utils/fetcher';
@@ -26,6 +27,7 @@ const Devto = (): JSX.Element => {
     undefined
   );
   const [sortType, setSortType] = useState<DevtoSortOptions>('date');
+  const { setArticles } = useArticlesContext();
 
   useEffect(() => {
     const sortArray = (type: DevtoSortOptions) => {
@@ -44,6 +46,7 @@ const Devto = (): JSX.Element => {
     };
 
     data && sortArray(sortType);
+    setArticles(data?.articles);
   }, [sortType]);
 
   if (error) return <div>failed to load</div>;
@@ -70,6 +73,7 @@ const Devto = (): JSX.Element => {
               title="Followers"
               value={data.followersCount}
               query="/api/stats/devto"
+              isDevto
             />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>

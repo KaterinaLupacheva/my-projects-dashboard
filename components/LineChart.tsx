@@ -11,16 +11,20 @@ import {
   YAxis,
 } from 'recharts';
 
+import CustomChartTick from './CustomChartTick';
+
 interface CustomLineChartProps {
   data: Record<string, unknown>[];
   lineDataKey: LineProps['dataKey'];
   xDataKey: XAxisProps['dataKey'];
+  isDevto?: boolean;
 }
 
 const CustomLineChart = ({
   data,
   lineDataKey,
   xDataKey,
+  isDevto,
 }: CustomLineChartProps): JSX.Element => {
   const theme = useTheme();
   return (
@@ -34,7 +38,12 @@ const CustomLineChart = ({
           dot={{ r: 2 }}
         />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-        <XAxis dataKey={xDataKey} tick={{ fill: theme.palette.text.primary }} />
+        <XAxis
+          dataKey={xDataKey}
+          tick={
+            isDevto ? <CustomChartTick /> : { fill: theme.palette.text.primary }
+          }
+        />
         <YAxis
           domain={['auto', 'auto']}
           tick={{ fill: theme.palette.text.primary }}

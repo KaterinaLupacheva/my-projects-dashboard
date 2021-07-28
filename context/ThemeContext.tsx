@@ -29,7 +29,7 @@ function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
   );
 }
 
-function useTheme(): ThemeState {
+function useThemeContext(): ThemeState {
   const context = React.useContext(ThemeContext);
   if (context === undefined) {
     throw new Error('useTheme must be used within a CountProvider');
@@ -37,4 +37,4 @@ function useTheme(): ThemeState {
   return context;
 }
 
-export { ThemeProvider, useTheme };
+export { ThemeProvider, useThemeContext };

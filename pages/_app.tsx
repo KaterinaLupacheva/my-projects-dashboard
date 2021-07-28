@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import AppBarWithSidebar from '../components/MainLayout';
+import { ArticlesContextProvider } from '../context/ArticlesContext';
 import { ThemeProvider } from '../context/ThemeContext';
 
 export default function MyApp(props: AppProps): JSX.Element {
@@ -28,11 +29,13 @@ export default function MyApp(props: AppProps): JSX.Element {
         />
       </Head>
       <ThemeProvider>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <AppBarWithSidebar>
-          <Component {...pageProps} />
-        </AppBarWithSidebar>
+        <ArticlesContextProvider>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <AppBarWithSidebar>
+            <Component {...pageProps} />
+          </AppBarWithSidebar>
+        </ArticlesContextProvider>
       </ThemeProvider>
     </>
   );
