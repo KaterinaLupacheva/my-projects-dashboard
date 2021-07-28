@@ -62,12 +62,14 @@ const NpmPackageCard = ({ packageName }: NpmPackageCardProps): JSX.Element => {
                   <StatCard
                     title="Average per day"
                     value={averageDownloads(data?.lastMonthDownloads.downloads)}
+                    withBorder
                   />
                 </Grid>
                 <Grid item xs={12} sm={6} md={12}>
                   <StatCard
                     title="Weekly downloads"
                     value={data?.weeklyDownloads.downloads}
+                    withBorder
                   />
                 </Grid>
               </Grid>

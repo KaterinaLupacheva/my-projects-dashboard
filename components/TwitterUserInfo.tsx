@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@material-ui/core';
+import { CircularProgress, Grid, Typography } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import LinkIcon from '@material-ui/icons/Link';
@@ -7,12 +7,11 @@ import Paper from '@ramonak/paper';
 import Image from 'next/image';
 import Link from 'next/link';
 import useSWR from 'swr';
-import { CircularProgress } from '@material-ui/core';
 
 import { ITwitterUser } from '../types/general';
 import { fetcher } from '../utils/fetcher';
-import StatsCard from './StatCard';
 import DetailedStatCard from './DetailedStatCard';
+import StatsCard from './StatCard';
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
@@ -57,10 +56,10 @@ const TwitterUserInfo = (props: ITwitterUser): JSX.Element => {
     friends_count,
   } = props;
 
+  const classes = useStyles();
+
   const { data } = useSWR('/api/stats/twitter', fetcher);
   if (!data) return <CircularProgress color="inherit" />;
-
-  const classes = useStyles();
 
   return (
     <Grid container spacing={2} className={classes.margin}>
