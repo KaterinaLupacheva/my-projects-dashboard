@@ -6,6 +6,7 @@ import { connectToDatabase } from '../../../utils/mongodb';
 import { countTotalStarsAndForks } from '../../../utils/stats-helpers';
 import { queryDevto } from '../devto';
 import { queryGithub } from '../github';
+import { queryTwitter } from '../twitter';
 
 export default async (
   req: NextApiRequest,
@@ -21,6 +22,7 @@ export default async (
 
         await handleDevtoStats(statsCollection);
         await handleGithubStats(statsCollection);
+        await handleTwitterStats(statsCollection);
 
         res.status(200).json('status: OK');
       } else {
@@ -71,7 +73,7 @@ async function handleGithubStats(statsCollection: any) {
 
   const { stars, forks } = countTotalStarsAndForks(repos, user.login);
 
-  // Check if devto doc exists.
+  // Check if github doc exists.
   let githubDoc = await checkDocExists(statsCollection, {
     name: 'github',
   });
@@ -103,6 +105,41 @@ async function handleGithubStats(statsCollection: any) {
           repos: { date: curDate, count: user.public_repos },
           stars: { date: curDate, count: stars },
           forks: { date: curDate, count: forks },
+        },
+      }
+    );
+  }
+}
+
+async function handleTwitterStats(statsCollection: any) {
+  const { userData } = await queryTwitter();
+
+  // Check if twitter doc exists.
+  let twitterDoc = await checkDocExists(statsCollection, {
+    name: 'twitter',
+  });
+
+  const curDate = new Date();
+  //if doesn't exist, create new doc
+  if (!twitterDoc) {
+    twitterDoc = await insertDoc(statsCollection, {
+      name: 'twitter',
+      followers: [{ date: curDate, count: userData.followers_count }],
+    });
+  }
+
+  const dateExists = checkDateExists(twitterDoc.followers);
+
+  //update counts
+  if (!dateExists) {
+    await statsCollection.updateOne(
+      { name: 'twitter' },
+      {
+        $push: {
+          followers: {
+            date: curDate,
+            count: userData.followers_count,
+          },
         },
       }
     );

@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+
 import { ITweet, ITwitterUser } from '../../types/general';
 
 type APITwitter = {

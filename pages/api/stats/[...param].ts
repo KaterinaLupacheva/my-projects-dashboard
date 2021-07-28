@@ -31,4 +31,10 @@ export default async (
       forksStats: result.forks,
     });
   }
+
+  if (slug === 'twitter') {
+    return res.status(200).json({
+      followersStats: result.followers,
+    });
+  }
 };
