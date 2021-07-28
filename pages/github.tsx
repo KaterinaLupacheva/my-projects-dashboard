@@ -13,6 +13,7 @@ import { useState } from 'react';
 import useSWR from 'swr';
 
 import BackDropWithSpinner from '../components/BackdropWithSpinner';
+import ErrorPage from '../components/ErrorPage';
 import GithubCard from '../components/GitHubCard';
 import GithubUserInfo from '../components/GithubUserInfo';
 import CustomHead from '../components/Head';
@@ -24,9 +25,8 @@ const GitHub = (): JSX.Element => {
   const { data, error } = useSWR('/api/github', fetcher);
   const [sortType, setSortType] = useState<GithubSortOptions>('stars');
 
-  if (error) return <div>failed to load</div>;
+  if (error) return <ErrorPage />;
   if (!data) return <BackDropWithSpinner open={true} />;
-  if (!data.user || !data.repos) return <div>Error</div>;
 
   const starsAndForks = countTotalStarsAndForks(data.repos, data.user.login);
 

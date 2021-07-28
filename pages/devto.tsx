@@ -14,6 +14,7 @@ import useSWR from 'swr';
 import BackDropWithSpinner from '../components/BackdropWithSpinner';
 import DetailedStatCardWrapper from '../components/DetailedStatCardWrapper';
 import DevtoCard from '../components/DevtoCard';
+import ErrorPage from '../components/ErrorPage';
 import CustomHead from '../components/Head';
 import StatCard from '../components/StatCard';
 import { useArticlesContext } from '../context/ArticlesContext';
@@ -45,13 +46,14 @@ const Devto = (): JSX.Element => {
       setSortedArticles(sorted);
     };
 
-    data && sortArray(sortType);
-    setArticles(data?.articles);
+    if (data) {
+      sortArray(sortType);
+      setArticles(data.articles);
+    }
   }, [sortType]);
 
-  if (error) return <div>failed to load</div>;
+  if (error) return <ErrorPage />;
   if (!data) return <BackDropWithSpinner open={true} />;
-  if (!data.articles) return <div>Error</div>;
 
   const renderArticles = (articles: Array<IArticle>) => {
     return (

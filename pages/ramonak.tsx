@@ -9,17 +9,17 @@ import { GROUP } from '../constants/slugs';
 import { IMappedDoc } from '../types/general';
 import { fetcher } from '../utils/fetcher';
 import { mapSlugs } from '../utils/table-data';
+import ErrorPage from '../components/ErrorPage';
+
+type MappedDocs = {
+  [key in keyof typeof GROUP]: IMappedDoc[];
+};
 
 const Ramonak = (): JSX.Element => {
   const { data, error } = useSWR('/api/views', fetcher);
 
-  if (error) return <div>failed to load</div>;
+  if (error) return <ErrorPage />;
   if (!data) return <BackDropWithSpinner open={true} />;
-  if (!data.docs) return <div>Error</div>;
-
-  type MappedDocs = {
-    [key in keyof typeof GROUP]: IMappedDoc[];
-  };
 
   const docs: MappedDocs = mapSlugs(data);
 

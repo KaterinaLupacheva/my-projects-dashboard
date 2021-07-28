@@ -7,6 +7,7 @@ import { INpmDownloads } from '../types/general';
 import { fetcher } from '../utils/fetcher';
 import CustomLineChart from './LineChart';
 import StatCard from './StatCard';
+import ErrorPage from '../components/ErrorPage';
 
 const useStyles = makeStyles((theme: Theme) => ({
   paperContainer: {
@@ -29,7 +30,7 @@ const NpmPackageCard = ({ packageName }: NpmPackageCardProps): JSX.Element => {
   const classes = useStyles();
   const { data, error } = useSWR(`/api/npm/${packageName}`, fetcher);
 
-  if (error) return <div>failed to load</div>;
+  if (error) return <ErrorPage />;
 
   const averageDownloads = (downloadsData: INpmDownloads[]) => {
     const sum = downloadsData.reduce((a, b) => a + b.downloads, 0);

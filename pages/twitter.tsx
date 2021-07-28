@@ -18,14 +18,14 @@ import TweetCard from '../components/TweetCard';
 import TwitterUserInfo from '../components/TwitterUserInfo';
 import { TwitterSortOptions } from '../types/general';
 import { fetcher } from '../utils/fetcher';
+import ErrorPage from '../components/ErrorPage';
 
 const Twitter = (): JSX.Element => {
   const { data, error } = useSWR('/api/twitter', fetcher);
   const [sortType, setSortType] = useState<TwitterSortOptions>('date');
 
-  if (error) return <div>failed to load</div>;
+  if (error) return <ErrorPage />;
   if (!data) return <BackDropWithSpinner open={true} />;
-  if (!data.userData || !data.tweetsData) return <div>Error</div>;
 
   const sortArray = (type: TwitterSortOptions) => {
     const types = {
