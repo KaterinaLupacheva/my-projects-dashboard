@@ -8,7 +8,6 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
-import React from 'react';
 
 import { drawerWidth } from '../../styles/theme';
 import ThemeToggler from '../ThemeToggler';

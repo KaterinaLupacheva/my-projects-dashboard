@@ -2,7 +2,7 @@ import { IconButton } from '@material-ui/core';
 import TableCell from '@material-ui/core/TableCell';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import moment from 'moment';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { IMappedDoc } from '../../types/general';
 import BlogViewsDetails from '../BlogViewsDetails';

@@ -14,7 +14,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { MENU_LIST_ITEMS } from '../../constants/menu-items';
 import { drawerWidth } from '../../styles/theme';

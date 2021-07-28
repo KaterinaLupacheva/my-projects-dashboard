@@ -2,7 +2,6 @@ import { IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Brightness2 from '@material-ui/icons/Brightness2';
 import WbSunny from '@material-ui/icons/WbSunny';
-import React from 'react';
 
 import { useThemeContext } from '../context/ThemeContext';
 

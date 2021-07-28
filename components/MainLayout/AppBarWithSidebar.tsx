@@ -1,6 +1,6 @@
 import { Container, Grid, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import Footer from '../Footer';
 import Sidebar from './Sidebar';
