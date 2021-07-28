@@ -3,11 +3,11 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@ramonak/paper';
 import useSWR from 'swr';
 
+import ErrorPage from '../components/ErrorPage';
 import { INpmDownloads } from '../types/general';
 import { fetcher } from '../utils/fetcher';
 import CustomLineChart from './LineChart';
 import StatCard from './StatCard';
-import ErrorPage from '../components/ErrorPage';
 
 const useStyles = makeStyles((theme: Theme) => ({
   paperContainer: {

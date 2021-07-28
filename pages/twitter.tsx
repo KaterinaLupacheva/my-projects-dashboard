@@ -13,12 +13,12 @@ import { useState } from 'react';
 import useSWR from 'swr';
 
 import BackDropWithSpinner from '../components/BackdropWithSpinner';
+import ErrorPage from '../components/ErrorPage';
 import CustomHead from '../components/Head';
 import TweetCard from '../components/TweetCard';
 import TwitterUserInfo from '../components/TwitterUserInfo';
 import { TwitterSortOptions } from '../types/general';
 import { fetcher } from '../utils/fetcher';
-import ErrorPage from '../components/ErrorPage';
 
 const Twitter = (): JSX.Element => {
   const { data, error } = useSWR('/api/twitter', fetcher);

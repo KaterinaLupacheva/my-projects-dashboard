@@ -3,13 +3,13 @@ import Typography from '@material-ui/core/Typography';
 import useSWR from 'swr';
 
 import BackDropWithSpinner from '../components/BackdropWithSpinner';
+import ErrorPage from '../components/ErrorPage';
 import CustomHead from '../components/Head';
 import ViewsTable from '../components/ViewsTable/ViewsTable';
 import { GROUP } from '../constants/slugs';
 import { IMappedDoc } from '../types/general';
 import { fetcher } from '../utils/fetcher';
 import { mapSlugs } from '../utils/table-data';
-import ErrorPage from '../components/ErrorPage';
 
 type MappedDocs = {
   [key in keyof typeof GROUP]: IMappedDoc[];
