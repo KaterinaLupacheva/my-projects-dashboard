@@ -16,12 +16,18 @@ const CustomChartTick = (props: any) => {
   const { x, y, payload } = props;
   const theme = useTheme();
   const classes = useStyles();
+
   const { articles } = useArticlesContext();
 
   const article = articles.find(
     (a) => getDate(a.published_at) === payload.value
   );
 
+  const handleClick = () => {
+    if (article) {
+      window.location.href = article.url;
+    }
+  };
   return (
     <g transform={`translate(${x},${y})`}>
       <text
@@ -34,13 +40,13 @@ const CustomChartTick = (props: any) => {
         {payload.value}
       </text>
       {article && (
-        <MUTooltip title="Post">
+        <MUTooltip title={article.title}>
           <circle
             cx="0"
             cy="40"
             r="10"
             fill={theme.palette.secondary.main}
-            onClick={() => console.log('click')}
+            onClick={handleClick}
             className={classes.circle}
           />
         </MUTooltip>

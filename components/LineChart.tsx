@@ -27,9 +27,10 @@ const CustomLineChart = ({
   isDevto,
 }: CustomLineChartProps): JSX.Element => {
   const theme = useTheme();
+  console.log(isDevto);
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <LineChart data={data}>
+      <LineChart data={data} margin={{ top: 5, right: 0, left: 0, bottom: 30 }}>
         <Line
           type="monotone"
           dataKey={lineDataKey}
