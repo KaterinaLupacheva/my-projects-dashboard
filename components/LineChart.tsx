@@ -38,6 +38,7 @@ const CustomLineChart = ({
         <YAxis
           domain={['auto', 'auto']}
           tick={{ fill: theme.palette.text.primary }}
+          allowDecimals={false}
         />
         <Tooltip />
       </LineChart>
