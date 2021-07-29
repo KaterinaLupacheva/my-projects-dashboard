@@ -1,5 +1,5 @@
-import { useSpring, animated, config } from 'react-spring';
 import { makeStyles } from '@material-ui/core/styles';
+import { animated, config, useSpring } from 'react-spring';
 
 const useStyles = makeStyles((theme) => ({
   number: {

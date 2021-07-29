@@ -2,6 +2,7 @@ import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@ramonak/paper';
 import clsx from 'clsx';
+
 import AnimatedNumber from './AnimatedNumber';
 
 const useStyles = makeStyles((theme) => ({
