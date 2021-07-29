@@ -7,6 +7,7 @@ import Paper from '@ramonak/paper';
 import { useState } from 'react';
 
 import { prepareStatsDetails } from '../utils/stats-helpers';
+import AnimatedNumber from './AnimatedNumber';
 import StatsDetails from './StatsDetails';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -68,7 +69,7 @@ const DetailedStatCard = ({
   return (
     <Paper customClass={classes.paper} elevation={3}>
       <div className={classes.container}>
-        <Typography variant="h4">{value}</Typography>
+        <AnimatedNumber value={value} />
         <Typography variant="button">{title}</Typography>
       </div>
       <div className={classes.column}>

@@ -1,9 +1,10 @@
 import { Typography } from '@material-ui/core';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@ramonak/paper';
 import clsx from 'clsx';
+import AnimatedNumber from './AnimatedNumber';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(1),
     textAlign: 'center',
@@ -27,13 +28,14 @@ interface StatCardProps {
 
 const StatCard = ({ value, title, withBorder }: StatCardProps): JSX.Element => {
   const classes = useStyles();
+
   return (
     <Paper
       customClass={clsx(classes.paper, withBorder && classes.border)}
       elevation={3}
     >
       <div>
-        <Typography variant="h4">{value}</Typography>
+        <AnimatedNumber value={value} />
         <Typography variant="button">{title}</Typography>
       </div>
     </Paper>
