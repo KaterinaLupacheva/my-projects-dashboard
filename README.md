@@ -1,5 +1,7 @@
 # Personal Dev Dashboard
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world)
+
 ---
 
 ## Technologies used
@@ -20,7 +22,7 @@
 - [Twitter API](https://developer.twitter.com/en/docs)
 - [npm API](https://github.com/npm/registry/blob/master/docs/REGISTRY-API.md)
 
----------
+---
 
 [Create GitHub personal access token](https://github.com/settings/tokens)
 
