@@ -3,7 +3,7 @@ import moment, { Moment } from 'moment';
 import { CHART_DATE_FORMAT } from '../constants/date-formats';
 
 export const timestampToDate = (timestamp: string): Date | string | number => {
-  const options = {
+  const options: Intl.DateTimeFormatOptions = {
     weekday: 'long',
     year: 'numeric',
     month: 'long',

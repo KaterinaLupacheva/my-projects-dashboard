@@ -7,7 +7,7 @@ import {
   IViews,
   IViewsComparison,
 } from '../types/general';
-import { daysRange } from './date-helpers';
+import { daysRange, getDate } from './date-helpers';
 
 const lastSevenDaysRange = daysRange(moment().subtract(6, 'days'), moment());
 const prevSevenDaysRange = daysRange(
@@ -18,7 +18,7 @@ const prevSevenDaysRange = daysRange(
 const countViews = (range: string[], viewsData: DailyViews[]) => {
   let views = 0;
   range.forEach((date) => {
-    const targetDate = viewsData.find((d) => d.date === date);
+    const targetDate = viewsData.find((d) => getDate(d.date) === getDate(date));
     if (targetDate) {
       views += targetDate.views;
     }
