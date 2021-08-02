@@ -74,6 +74,7 @@ export interface ISlug {
   description: string;
   published: string;
   group: GROUP;
+  url?: string;
 }
 
 export interface IMappedDoc extends ISlug {

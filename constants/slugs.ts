@@ -1,45 +1,53 @@
+import { ISlug } from '../types/general';
+
 export enum GROUP {
   NPM_PACKAGE = 'NPM_PACKAGE',
   RAMONAK_BLOG = 'RAMONAK_BLOG',
   APP = 'APP',
 }
 
-export const SLUGS = [
+export const SLUGS: ISlug[] = [
   {
     published: '2020-04-09',
     slug: 'react-progress-bar',
     description: 'React progress bar playground',
     group: GROUP.NPM_PACKAGE,
+    url: 'https://katerinalupacheva.github.io/react-progress-bar/',
   },
   {
     published: '2020-05-31',
     slug: 'react-excel',
     description: 'React-excel library demo',
     group: GROUP.NPM_PACKAGE,
+    url: 'https://katerinalupacheva.github.io/react-excel/',
   },
   {
     published: '2020-11-03',
     slug: 'paper-component',
     description: 'Paper component library demo',
     group: GROUP.NPM_PACKAGE,
+    url: 'https://katerinalupacheva.github.io/paper-component/',
   },
   {
     published: '2019-09-30',
     slug: 'ramonak: top-10-women-in-tech-business',
     description: 'Top10 women in tech business',
     group: GROUP.RAMONAK_BLOG,
+    url: 'https://ramonak.io/posts/top-10-women-in-tech-business',
   },
   {
     published: '2019-10-22',
     slug: 'ramonak: what-is-progressive-web-app',
     description: 'What is progressive web app',
     group: GROUP.RAMONAK_BLOG,
+    url: 'https://ramonak.io/posts/what-is-progressive-web-app',
   },
   {
     published: '2019-12-04',
     slug: 'ramonak: how-to-deploy-vaadin-14-app-to-heroku',
     description: 'How to deploy Vaading app to Heroku',
     group: GROUP.RAMONAK_BLOG,
+    url: 'https://ramonak.io/posts/how-to-deploy-vaadin-14-app-to-heroku',
   },
   {
     published: '2019-09-12',
@@ -197,23 +205,27 @@ export const SLUGS = [
     slug: 'app: tabata',
     description: 'Tabata App',
     group: GROUP.APP,
+    url: 'https://tabata.ramonak.io/',
   },
   {
     published: '2020-10-29',
     slug: 'app: financial-manager',
     description: 'Financial Manager App',
     group: GROUP.APP,
+    url: 'https://fm.ramonak.io/',
   },
   {
     published: '2020-03-10',
     slug: 'app: github-api-dashboard',
     description: 'GitHub API Dashboard',
     group: GROUP.APP,
+    url: 'https://github-dashboard.ramonak.io/',
   },
   {
     published: '2020-04-25',
     slug: 'app: coffee-dashboard',
     description: 'Coffee Shop Dashboard',
     group: GROUP.APP,
+    url: 'https://coffee-dashboard.netlify.app/',
   },
 ];

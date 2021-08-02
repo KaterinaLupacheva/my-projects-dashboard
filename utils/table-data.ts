@@ -4,6 +4,7 @@ import { GROUP, SLUGS } from '../constants/slugs';
 import {
   DailyViews,
   IMappedDoc,
+  ISlug,
   IViews,
   IViewsComparison,
 } from '../types/general';
@@ -44,9 +45,11 @@ export const mapSlugs = (data: any) => {
       const { thisWeekViews, change } = viewsComparison(doc.viewsData);
       mappedDocs.push({
         ...doc,
-        published: obj.published,
-        description: obj.description,
-        group: obj.group,
+        ...obj,
+        // published: obj.published,
+        // description: obj.description,
+        // group: obj.group,
+        url: obj.url || getBlogUrl(obj),
         thisWeekViews,
         change,
       });
@@ -54,6 +57,7 @@ export const mapSlugs = (data: any) => {
       mappedDocs.push({
         ...obj,
         _id: id,
+        url: obj.url || getBlogUrl(obj),
         totalViews: 0,
         viewsData: [] as DailyViews[],
         thisWeekViews: 0,
@@ -63,6 +67,13 @@ export const mapSlugs = (data: any) => {
     }
   });
   return groupBy(mappedDocs, 'group');
+};
+
+const getBlogUrl = (slugObj: ISlug) => {
+  if (slugObj.group === GROUP.RAMONAK_BLOG) {
+    const slug = slugObj.slug.split('ramonak:')[1];
+    return `https://ramonak.io/posts/${slug.trim()}`;
+  }
 };
 
 type ObjectKey = keyof Omit<IMappedDoc, 'published'>;
