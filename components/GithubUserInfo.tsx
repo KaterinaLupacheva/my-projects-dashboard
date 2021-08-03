@@ -115,7 +115,11 @@ const GithubUserInfo = (props: IGithubUser): JSX.Element => {
             </div>
             <div className={classes.row}>
               <WorkOutlineIcon fontSize="small" />
-              <Typography>{company}</Typography>
+              <Link href="https://sikoba.com">
+                <a target="_blank" className={classes.link}>
+                  <Typography>{company}</Typography>
+                </a>
+              </Link>
             </div>
           </div>
         </Paper>
