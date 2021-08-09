@@ -83,11 +83,11 @@ interface EnhancedSortableHeadCellProps {
 
 function EnhancedSortableHeadCell(props: EnhancedSortableHeadCellProps) {
   const { headCell, order, orderBy, onRequestSort, classes } = props;
-  const createSortHandler = (property: SortableHeadCell['id']) => (
-    event: React.MouseEvent<unknown>
-  ) => {
-    onRequestSort(event, property);
-  };
+  const createSortHandler =
+    (property: SortableHeadCell['id']) =>
+    (event: React.MouseEvent<unknown>) => {
+      onRequestSort(event, property);
+    };
   return (
     <TableCell
       key={headCell.id}

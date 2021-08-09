@@ -13,14 +13,8 @@ interface BlogItemProps {
 }
 
 const BlogItem = ({ row }: BlogItemProps): JSX.Element => {
-  const {
-    published,
-    description,
-    thisWeekViews,
-    change,
-    totalViews,
-    url,
-  } = row;
+  const { published, description, thisWeekViews, change, totalViews, url } =
+    row;
 
   const theme = useTheme();
   const [isModalOpen, setIsModalOpen] = useState(false);
