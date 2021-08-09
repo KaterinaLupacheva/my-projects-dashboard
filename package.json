@@ -18,13 +18,13 @@
     "@types/react": "^17.0.1",
     "moment": "^2.29.1",
     "mongodb": "^3.6.3",
-    "next": "10.0.1",
+    "next": "^11.0.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-spring": "^9.2.4",
     "recharts": "^2.0.10",
     "swr": "^0.3.8",
-    "typescript": "^4.1.5"
+    "typescript": "^4.3.5"
   },
   "devDependencies": {
     "@types/mongodb": "^3.6.8",
