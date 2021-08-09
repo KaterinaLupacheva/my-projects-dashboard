@@ -11,34 +11,34 @@
     "lint": "eslint --ext js,jsx,ts,tsx --fix"
   },
   "dependencies": {
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
     "@ramonak/paper": "^2.1.0",
-    "@types/node": "^14.14.25",
-    "@types/react": "^17.0.1",
+    "@types/node": "^14.17.9",
+    "@types/react": "^17.0.16",
     "moment": "^2.29.1",
-    "mongodb": "^3.6.3",
+    "mongodb": "^3.6.11",
     "next": "^11.0.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-spring": "^9.2.4",
     "recharts": "^2.0.10",
-    "swr": "^0.3.8",
+    "swr": "^0.3.11",
     "typescript": "^4.3.5"
   },
   "devDependencies": {
-    "@types/mongodb": "^3.6.8",
+    "@types/mongodb": "^3.6.20",
     "@types/recharts": "^1.8.19",
-    "@typescript-eslint/eslint-plugin": "^4.15.0",
-    "@typescript-eslint/parser": "^4.15.0",
-    "eslint": "^7.19.0",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
+    "eslint": "^7.32.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "prettier": "^2.2.1"
+    "prettier": "^2.3.2"
   },
   "optionalDependencies": {
     "husky": "^4.3.8"
