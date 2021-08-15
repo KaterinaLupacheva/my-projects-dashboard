@@ -11,10 +11,10 @@ const followersCount = ({
   data: APIStatsData[];
 }): number => {
   const dayStat = data.find((item: APIStatsData) => {
-    if (typeof item.date !== 'string') {
-      return item.date.toISOString().substring(0, 10) === date;
+    if (item.date.toString().length > 10) {
+      return item.date.toString().substring(0, 10) === date;
     } else {
-      return item.date === date;
+      return item.date.toString() === date;
     }
   });
   return dayStat?.count || 0;
@@ -23,7 +23,7 @@ const followersCount = ({
 const calculateChange = (data: APIStatsData[]): number | string => {
   const sevenDaysAgo = moment().subtract(7, 'days').format('YYYY-MM-DD');
   const currentFollowersCount = followersCount({
-    date: moment().format('DD-MM-YYYY'),
+    date: moment().format('YYYY-MM-DD'),
     data,
   });
   const change =

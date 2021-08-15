@@ -239,7 +239,7 @@ export default function EnhancedTable({
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
-            onChangeRowsPerPage={handleChangeRowsPerPage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
           />
         )}
       </Paper>
