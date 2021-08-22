@@ -86,7 +86,7 @@ const GitHub = (): JSX.Element => {
             }
           >
             <FormControlLabel value="stars" control={<Radio />} label="Stars" />
-            <FormControlLabel value="forks" control={<Radio />} label="forks" />
+            <FormControlLabel value="forks" control={<Radio />} label="Forks" />
             <FormControlLabel value="upd" control={<Radio />} label="Updated" />
           </RadioGroup>
         </FormControl>
