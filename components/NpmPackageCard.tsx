@@ -34,8 +34,7 @@ const NpmPackageCard = ({ packageName }: NpmPackageCardProps): JSX.Element => {
 
   const averageDownloads = (downloadsData: INpmDownloads[]) => {
     const sum = downloadsData.reduce((a, b) => a + b.downloads, 0);
-    const avg = Math.round(sum / downloadsData.length) || 0;
-    return avg;
+    return Math.round(sum / downloadsData.length) || 0;
   };
 
   return (

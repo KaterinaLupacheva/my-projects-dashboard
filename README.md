@@ -2,7 +2,7 @@
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world)
 
-The [blog post](https://ramonak.io/posts/personal-dahsboard) with an overview of the development process.
+The [blog post](https://ramonak.io/posts/personal-dashboard) with an overview of the development process.
 
 ## Technologies used
 
@@ -38,7 +38,7 @@ MONGODB_DB=
 APP_API_KEY=
 ```
 
-How to obtain API keys and tokens described in the [blog post](https://ramonak.io/posts/personal-dahsboard).
+How to obtain API keys and tokens described in the [blog post](https://ramonak.io/posts/personal-dashboard).
 
 2. Run the development server:
 
