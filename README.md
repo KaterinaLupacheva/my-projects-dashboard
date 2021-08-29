@@ -2,7 +2,7 @@
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world)
 
----
+The [blog post](https://ramonak.io/posts/personal-dahsboard) with an overview of the development process.
 
 ## Technologies used
 
@@ -24,13 +24,23 @@
 
 ---
 
-[Create GitHub personal access token](https://github.com/settings/tokens)
+## Local development
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+1. Create `.env.local` file with the following environmental variables:
 
-## Getting Started
+```
+DEVTO_API_KEY=
+GITHUB_PERSONAL_TOKEN=
+TWITTER_BEARER_TOKEN=
+TWITTER_USERNAME=
+MONGODB_URI=
+MONGODB_DB=
+APP_API_KEY=
+```
 
-First, run the development server:
+How to obtain API keys and tokens described in the [blog post](https://ramonak.io/posts/personal-dahsboard).
+
+2. Run the development server:
 
 ```bash
 npm run dev

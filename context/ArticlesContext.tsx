@@ -29,7 +29,7 @@ const useArticlesContext = (): ArticlesState => {
   const context = useContext(ArticlesContext);
   if (context === undefined) {
     throw new Error(
-      'useArticlesContext must be used within a ArticlesContextProvider'
+      'useArticlesContext must be used within an ArticlesContextProvider'
     );
   }
   return context;
