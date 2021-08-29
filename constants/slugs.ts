@@ -201,6 +201,12 @@ export const SLUGS: ISlug[] = [
     group: GROUP.RAMONAK_BLOG,
   },
   {
+    published: '2021-08-29',
+    slug: 'ramonak: personal-dashboard',
+    description: 'Next.js, Material UI, MongoDB Personal Dashboard',
+    group: GROUP.RAMONAK_BLOG,
+  },
+  {
     published: '2020-03-12',
     slug: 'app: tabata',
     description: 'Tabata App',
