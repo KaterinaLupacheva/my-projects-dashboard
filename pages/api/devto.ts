@@ -18,7 +18,7 @@ export async function queryDevto(): Promise<APIDevto> {
   });
 
   const followersResponse = await fetch(
-    'https://dev.to/api/followers/users?per_page=300',
+    'https://dev.to/api/followers/users?per_page=1000',
     {
       headers: requestHeaders,
     }
