@@ -207,6 +207,12 @@ export const SLUGS: ISlug[] = [
     group: GROUP.RAMONAK_BLOG,
   },
   {
+    published: '2021-11-28',
+    slug: 'ramonak: nextjs-dashboard-layout',
+    description: 'Next.js, TypeScript, styled-components Dashboard layout',
+    group: GROUP.RAMONAK_BLOG,
+  },
+  {
     published: '2020-03-12',
     slug: 'app: tabata',
     description: 'Tabata App',
