@@ -32,10 +32,14 @@ const NpmPackageCard = ({ packageName }: NpmPackageCardProps): JSX.Element => {
 
   if (error) return <ErrorPage />;
 
-  const averageDownloads = (downloadsData: INpmDownloads[]) => {
+  const getAverageDownloads = (downloadsData: INpmDownloads[]) => {
     const sum = downloadsData.reduce((a, b) => a + b.downloads, 0);
     return Math.round(sum / downloadsData.length) || 0;
   };
+
+  const avLastMonthDownloads = data?.lastMonthDownloads.downloads
+    ? getAverageDownloads(data.lastMonthDownloads.downloads)
+    : 0;
 
   return (
     <Paper elevation={3} customClass={classes.paperContainer}>
@@ -61,7 +65,7 @@ const NpmPackageCard = ({ packageName }: NpmPackageCardProps): JSX.Element => {
                 <Grid item xs={12} sm={6} md={12}>
                   <StatCard
                     title="Average per day"
-                    value={averageDownloads(data?.lastMonthDownloads.downloads)}
+                    value={avLastMonthDownloads}
                     withBorder
                   />
                 </Grid>
