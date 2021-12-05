@@ -213,6 +213,13 @@ export const SLUGS: ISlug[] = [
     group: GROUP.RAMONAK_BLOG,
   },
   {
+    published: '2021-06-05',
+    slug: 'ramonak: custom-eslint-config',
+    description:
+      'How to create custom reusable ESLint, TypeScript, Prettier config',
+    group: GROUP.RAMONAK_BLOG,
+  },
+  {
     published: '2020-03-12',
     slug: 'app: tabata',
     description: 'Tabata App',

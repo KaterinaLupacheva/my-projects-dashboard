@@ -3,4 +3,5 @@ export const packages = [
   '@ramonak/react-excel',
   '@ramonak/paper',
   '@ramonak/react-button-group',
+  'eslint-config-ramonak',
 ];
