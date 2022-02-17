@@ -213,10 +213,17 @@ export const SLUGS: ISlug[] = [
     group: GROUP.RAMONAK_BLOG,
   },
   {
-    published: '2021-06-05',
+    published: '2021-12-05',
     slug: 'ramonak: custom-eslint-config',
     description:
       'How to create custom reusable ESLint, TypeScript, Prettier config',
+    group: GROUP.RAMONAK_BLOG,
+  },
+  {
+    published: '2022-02-18',
+    slug: 'ramonak: highcharts-react-pdf',
+    description:
+      'How to export multiple charts into multipage pdf document with React.js, Highcharts and jsPDF.',
     group: GROUP.RAMONAK_BLOG,
   },
   {
